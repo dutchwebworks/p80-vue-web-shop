@@ -4,7 +4,7 @@
 }
 
 .wrapper {
-  max-width: 960px;
+  max-width: 1024px;
   margin: 0 auto;
 }
 
@@ -27,6 +27,10 @@
 
 .movie-product__description {
   flex: 1 0 auto;
+}
+
+.movie-product__img {
+  text-align: center;
 }
 
 /*# sourceMappingURL=style.css.map */
