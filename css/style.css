@@ -1,11 +1,28 @@
+.movie-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(225px, 1fr));
+}
+
+.wrapper {
+  max-width: 960px;
+  margin: 0 auto;
+}
+
 .intro__title {
   font-family: sans-serif;
   color: #017bab;
 }
 
 .movie-product {
+  display: flex;
+  flex-direction: column;
   border: 1px solid #ccc;
   padding: 20px;
+  font-family: sans-serif;
+}
+
+.movie-product__description {
+  flex: 1 0 auto;
 }
 
 /*# sourceMappingURL=style.css.map */
