@@ -7,12 +7,21 @@
 	"helpers/mixins";
 
 // ---------------------------------------------
+// Layout
+// ---------------------------------------------
+
+@import
+	"layout/movie-list";
+
+// ---------------------------------------------
 // Modules
 // ---------------------------------------------
 
 @import
 	"modules/footer",
-	"modules/header";
+	"modules/header",
+	"modules/intro",
+	"modules/movie-product";
 
 // ---------------------------------------------
 // Layout

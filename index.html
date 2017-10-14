@@ -2,15 +2,49 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link href="css/style.css" rel="stylesheet" type="text/css">
 	<title>Poort80 Vue Web Shop</title>
 </head>
 <body>
-	<h1>Poort80 Vue Web Shop</h1>
+	<div class="intro">
+		<h1 class="intro__title">Poort80 Vue Web Shop</h1>
+	</div>
 
-	<div id="app"></div>
+	<div id="app">
+		<section class="movie-list">
+			<!-- <app-movie-products v-bind:key="movie.$index" v-for="movie in movies"></app-movie-products> -->
+			<app-movie-products></app-movie-products>
+		</section>
+	</div>
+
+	<template id="vue-app-movie-product">
+		<div class="movie-product">
+			<p>Hi</p>
+			<!-- 	
+			<img v-bind:src="movie.imgThumb" class="movie-product__img">
+
+			<h3 class="movie-product__title">
+				<a v-bind:href="imdbLink"></a>>{{ movie.title }}</a>
+			</h3>
+
+			<p class="movie-product__description">{{ movie.description }}</p>
+
+			<p class="movie-product__director">{{ movie.director }}</p>
+
+			<p class="movie-product__price">{{ movie.price }}</p>			
+
+			<ul class="movie-product__actors">
+				<li>{{ movie.actor }}</li>
+			</ul>
+			-->		
+		</div>
+	</template>
 
 	<!-- <script src="https://unpkg.com/vue"></script> -->
+	<!-- <script src="js/libs/jquery-3.2.1.js"></script> -->
 	<script src="js/libs/vue.js"></script>
-	<script src="js/app.js"></script>
+	<script src="js/libs/axios.js"></script>
+	<script src="js/app.js"></script>	
 </body>
 </html>
