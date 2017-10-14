@@ -13,30 +13,30 @@
 		</div>
 
 		<div id="app">
-			<section class="movie-list">
-				<app-movie-product v-bind:movie="movie" v-bind:key="movie.$index" v-for="movie in movies"></app-movie-product>
-			</section>
+			<app-movie-product></app-movie-product>
 		</div>
 	</div>
 
 	<template id="vue-app-movie-product">
-		<div class="movie-product">
-			<a v-bind:href="movie.imdbLink"><img v-bind:src="movie.imgThumb" class="movie-product__img"></a>
+		<section class="movie-list">
+			<div class="movie-product" v-bind:movie="movie" v-bind:key="movie.$index" v-for="movie in movies">
+				<a v-bind:href="movie.imdbLink"><img v-bind:src="movie.imgThumb" class="movie-product__img"></a>
 
-			<h3 class="movie-product__title">
-				<a v-bind:href="movie.imdbLink">{{ movie.title }}</a>
-			</h3>
+				<h3 class="movie-product__title">
+					<a v-bind:href="movie.imdbLink">{{ movie.title }}</a>
+				</h3>
 
-			<p class="movie-product__description">{{ movie.description }}</p>
+				<p class="movie-product__description">{{ movie.description }}</p>
 
-			<p class="movie-product__director">Director: {{ movie.director }}</p>
+				<p class="movie-product__director">Director: {{ movie.director }}</p>
 
-			<ul class="movie-product__actors">
-				<li v-for="actor in movie.actors">{{ actor }}</li>
-			</ul>
+				<ul class="movie-product__actors">
+					<li v-for="actor in movie.actors">{{ actor }}</li>
+				</ul>
 
-			<p class="movie-product__price"><strong>&euro; {{ movie.price }}</strong></p>
-		</div>		
+				<p class="movie-product__price"><strong>&euro; {{ movie.price }}</strong></p>
+			</div>		
+		</section>
 	</template>
 
 	<script src="js/libs/vue.js"></script>
