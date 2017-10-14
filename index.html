@@ -14,7 +14,7 @@
 
 		<div id="app">
 			<section class="movie-list">
-				<div class="movie-product"  v-bind:key="movie.$index" v-for="movie in movies">
+				<div class="movie-product" v-bind:key="movie.$index" v-for="movie in movies">
 					<a v-bind:href="movie.imdbLink"><img v-bind:src="movie.imgThumb" class="movie-product__img"></a>
 
 					<h3 class="movie-product__title">
@@ -25,11 +25,11 @@
 
 					<p class="movie-product__director">Director: {{ movie.director }}</p>
 
-					<p class="movie-product__price"><strong>&euro; {{ movie.price }}</strong></p>
-
 					<ul class="movie-product__actors">
 						<li v-for="actor in movie.actors">{{ actor }}</li>
 					</ul>
+
+					<p class="movie-product__price"><strong>&euro; {{ movie.price }}</strong></p>
 				</div>
 			</section>
 		</div>
