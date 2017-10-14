@@ -1,3 +1,22 @@
-{
-	
-}
+[
+	{
+		"name": "Summer deal",
+		"code": "P80SUMMER2017",
+		"discount": 25
+	},
+	{
+		"name": "Winter deal",
+		"code": "P80WINTER",
+		"discount": 12
+	},
+	{
+		"name": "Nerd joke",
+		"code": "P8040480",
+		"discount": 50
+	},
+	{
+		"name": "Movie monday deal",
+		"code": "AWESOMEMOVIES",
+		"discount": 80
+	}
+]
