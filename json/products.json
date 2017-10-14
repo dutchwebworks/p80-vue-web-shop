@@ -1,3 +1,54 @@
-{
-	
-}
+[
+	{
+		"title": "Star Wars: The Last Jedi",
+		"description": "Having taken her first steps into a larger world in Star Wars: The Force Awakens (2015), Rey continues her epic journey with Finn, Poe, and Luke Skywalker in the next chapter of the saga.",
+		"director": "Rian Johnson",
+		"imgThumb": "img/products/star-wars.jpg",
+		"price": "12.5",
+		"actors": [
+			"Daisy Ridley",
+			"John Boyega",
+			"Mark Hamill "
+		],
+		"imdbLink": "http://www.imdb.com/title/tt2527336/?ref_=nv_sr_3"
+	},
+	{
+		"title": "Stranger Things",
+		"description": "When a young boy disappears, his mother, a police chief, and his friends must confront terrifying forces in order to get him back.",
+		"director": "Matt Duffer",
+		"imgThumb": "img/products/stranger-things.jpg",
+		"price": "15",
+		"actors": [
+			 "Millie Bobby Brown",
+			 "Finn Wolfhard",
+			 "Winona Ryder"
+		],
+		"imdbLink": "http://www.imdb.com/title/tt4574334/?ref_=nv_sr_1"
+	},
+	{
+		"title": "Game of Thrones",
+		"description": "Nine noble families fight for control over the mythical lands of Westeros, while a forgotten race returns after being dormant for thousands of years.",
+		"director": "David Benioff",
+		"imgThumb": "img/products/game-of-thrones.jpg",
+		"price": "34",
+		"actors": [
+			"Emilia Clarke", 
+			"Peter Dinklage", 
+			"Kit Harington"
+		],
+		"imdbLink": "http://www.imdb.com/title/tt0944947/?ref_=wl_li_tt"
+	},
+	{
+		"title": "The Walking Dead",
+		"description": "Sheriff Deputy Rick Grimes wakes up from a coma to learn the world is in ruins, and must lead a group of survivors to stay alive.",
+		"director": "Frank Darabont",
+		"imgThumb": "img/products/walking-dead.jpg",
+		"price": "22",
+		"actors": [
+			 "Andrew Lincoln",
+			 "Norman Reedus",
+			 "Melissa McBride"
+		],
+		"imdbLink": "http://www.imdb.com/title/tt1520211/?ref_=wl_li_tt"
+	}
+]

@@ -31,7 +31,7 @@ module.exports = function(grunt) {
 					spawn: false
 				},
 				files: '<%= config.projectRoot %>/scss/**/*.scss',
-				tasks: ['scss:dev']
+				tasks: ['sass:dev']
 			}
 		},
 
