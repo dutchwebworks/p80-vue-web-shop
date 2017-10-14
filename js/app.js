@@ -10,12 +10,18 @@ var bus = new Vue();
 
 Vue.component("app-movie-product", {
 	template: "#vue-app-movie-product",
-	props: ['movie'],
-	data: function() {
-		return {
-			productsJsonUrl: "json/products.json",
-			movies: []
-		}
+	props: ['movie']	
+});
+
+// ---------------------------------------------
+// Main instance
+// ---------------------------------------------
+
+new Vue({
+	el: "#app",
+	data: {
+		productsJsonUrl: "json/products.json",
+		movies: []
 	},
 	mounted: function(){
 		this.loadMovies(this.productsJsonUrl);
@@ -25,13 +31,5 @@ Vue.component("app-movie-product", {
 			axios.get(url).then(response => this.movies = response.data);
 		}
 	}
-});
-
-// ---------------------------------------------
-// Main instance
-// ---------------------------------------------
-
-new Vue({
-	el: "#app"	
 });
 
