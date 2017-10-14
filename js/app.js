@@ -1,19 +1,20 @@
 // ---------------------------------------------
-// Bus mediator
+// Bus event mediator
 // ---------------------------------------------
 
 var bus = new Vue();
 
-
 // ---------------------------------------------
-// Main instance
+// Components
 // ---------------------------------------------
 
-var app = new Vue({
-	el: "#app",
-	data: {
-		productsJsonUrl: "json/products.json",
-		movies: []
+Vue.component("app-movie-product", {
+	template: "#vue-app-movie-product",
+	data: function() {
+		return {
+			productsJsonUrl: "json/products.json",
+			movies: []
+		}
 	},
 	mounted: function(){
 		this.loadMovies(this.productsJsonUrl);
@@ -22,6 +23,15 @@ var app = new Vue({
 		loadMovies: function(url) {
 			axios.get(url).then(response => this.movies = response.data);
 		}
-	}
+	}	
+});
+
+// ---------------------------------------------
+// Main instance
+// ---------------------------------------------
+
+new Vue({
+	el: "#app",
+	
 });
 
