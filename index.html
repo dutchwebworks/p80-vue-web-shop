@@ -7,20 +7,24 @@
 	<title>Poort80 Vue Web Shop</title>
 </head>
 <body>
-	<div class="wrapper">
+	<div id="app" class="wrapper">
 		<div class="intro">
 			<h1 class="intro__title">Poort80 Vue Web Shop</h1>
 		</div>
 
-		<div id="app">
-			<app-movie-product></app-movie-product>
-		</div>
+		<app-cart></app-cart>
+
+		<h3>Movies</h3>
+
+		<app-movie-products></app-movie-products>
 	</div>
 
-	<template id="vue-app-movie-product">
+	<template id="vue-app-movie-products">
 		<section class="movie-list">
-			<div class="movie-product" v-bind:movie="movie" v-bind:key="movie.$index" v-for="movie in movies">
-				<a v-bind:href="movie.imdbLink"><img v-bind:src="movie.imgThumb" class="movie-product__img"></a>
+			<div class="movie-product" v-for="movie in movies">
+				<a href="#" class="movie-product__img" v-bind:href="movie.imdbLink">
+					<img v-bind:src="movie.imgThumb">
+				</a>
 
 				<h3 class="movie-product__title">
 					<a v-bind:href="movie.imdbLink">{{ movie.title }}</a>
@@ -35,7 +39,23 @@
 				</ul>
 
 				<p class="movie-product__price"><strong>&euro; {{ movie.price }}</strong></p>
+
+				<button v-on:click="addToCart($event, movie)">Add to cart</button>
 			</div>		
+		</section>
+	</template>
+
+	<template id="vue-app-cart">
+		<section class="cart">
+			<h3 class="cart__title">Shopping cart</h3>
+
+			<ul class="cart__items">
+				<li v-for="(value, key, index) in cartItems">{{ value.title }} &euro;{{ value.price }} <a href="#" v-on:click="removeFromCart($event, value, key)">Remove</a></li>
+			</ul>
+
+			<p class="cart__total" v-show="total > 0">Total: &euro;{{ total }}</p>
+
+			<button class="cart__checkout" v-on:click="checkout" v-show="total > 0">Checkout</button>
 		</section>
 	</template>
 
