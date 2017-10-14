@@ -13,27 +13,31 @@
 		</div>
 
 		<div id="app">
-			<section class="movie-list">
-				<div class="movie-product" v-bind:key="movie.$index" v-for="movie in movies">
-					<a v-bind:href="movie.imdbLink"><img v-bind:src="movie.imgThumb" class="movie-product__img"></a>
-
-					<h3 class="movie-product__title">
-						<a v-bind:href="movie.imdbLink">{{ movie.title }}</a>
-					</h3>
-
-					<p class="movie-product__description">{{ movie.description }}</p>
-
-					<p class="movie-product__director">Director: {{ movie.director }}</p>
-
-					<ul class="movie-product__actors">
-						<li v-for="actor in movie.actors">{{ actor }}</li>
-					</ul>
-
-					<p class="movie-product__price"><strong>&euro; {{ movie.price }}</strong></p>
-				</div>
-			</section>
+			<app-movie-product></app-movie-product>
 		</div>
 	</div>
+
+	<template id="vue-app-movie-product">
+		<section class="movie-list">
+			<div class="movie-product" v-for="movie in movies">
+				<a v-bind:href="movie.imdbLink"><img v-bind:src="movie.imgThumb" class="movie-product__img"></a>
+
+				<h3 class="movie-product__title">
+					<a v-bind:href="movie.imdbLink">{{ movie.title }}</a>
+				</h3>
+
+				<p class="movie-product__description">{{ movie.description }}</p>
+
+				<p class="movie-product__director">Director: {{ movie.director }}</p>
+
+				<ul class="movie-product__actors">
+					<li v-for="actor in movie.actors">{{ actor }}</li>
+				</ul>
+
+				<p class="movie-product__price"><strong>&euro; {{ movie.price }}</strong></p>
+			</div>
+		</section>
+	</template>
 
 	<script src="js/libs/vue.js"></script>
 	<script src="js/libs/axios.js"></script>
