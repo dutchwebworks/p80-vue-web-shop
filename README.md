@@ -7,6 +7,7 @@ Demo project showing:
 * A basic SPA web shop with fictious products
 * Using VueJS for JavaScript
 * External JSON data of shop projects and coupon codes
+* Some pagination
 * Adding products to (sidebar) cart
 * Sidebar cart calculation
 * Making Ajax calls
