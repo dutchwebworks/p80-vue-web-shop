@@ -42,6 +42,7 @@ Vue.component("app-movie-products", {
 	computed: {
 		filteredMovies: function() {
 			var self = this;
+			bus.$emit("setGenre", self.filterByGenre);
 
 			return this.movies.filter((movie) => {
 				return movie.genre.match(self.filterByGenre);
@@ -81,11 +82,17 @@ Vue.component("app-genre", {
 	template: "#vue-app-genre",
 	data: function() {
 		return {
-			genres: []
+			genres: [],
+			selected: ''
 		}
 	},
 	created: function() {
+		var self = this;
+
 		bus.$on("generateGenres", this.generateGenres);
+		bus.$on("setGenre", function(genre){
+			self.selected = genre;
+		});
 	},
 	methods: {
 		generateGenres: function(data) {

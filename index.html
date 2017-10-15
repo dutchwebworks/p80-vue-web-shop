@@ -67,7 +67,7 @@
 		<section class="genre">
 			<p>
 				Filter by genre:
-				<select class="genre__selector" v-on:change="filterMovieList">
+				<select class="genre__selector" v-model="selected" v-on:change="filterMovieList">
 					<option value="">Show all</option>
 					<option v-for="genre in genres">{{ genre }}</option>
 				</select>
