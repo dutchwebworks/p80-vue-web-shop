@@ -11,8 +11,8 @@
 // ---------------------------------------------
 
 @import
-	"layout/movie-list",
 	"layout/movie-container",
+	"layout/movie-list",
 	"layout/wrapper";
 
 // ---------------------------------------------
@@ -26,10 +26,3 @@
 	"modules/header",
 	"modules/intro",
 	"modules/movie-product";
-
-// ---------------------------------------------
-// Layout
-// ---------------------------------------------
-
-@import
-	"layout/grid";
