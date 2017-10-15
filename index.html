@@ -23,7 +23,7 @@
 
 	<template id="vue-app-movie-products">
 		<section class="movie-list">
-			<div class="movie-product" v-for="movie in movies">
+			<div class="movie-product" v-for="movie in filteredMovies">
 				<a href="#" class="movie-product__img" v-bind:href="movie.imdbLink">
 					<img v-bind:src="movie.imgThumb">
 				</a>
@@ -34,7 +34,7 @@
 
 				<p class="movie-product__description">{{ movie.description }}</p>
 
-				<p class="movie-product__genre">{{ movie.genre }}</p>
+				<p class="movie-product__genre">Genre: {{ movie.genre }}</p>
 
 				<p class="movie-product__director">Director: {{ movie.director }}</p>
 
@@ -65,9 +65,13 @@
 
 	<template id="vue-app-genre">
 		<section class="genre">
-			<select class="genre__selector">
-				<option v-for="genre in genres">{{ genre }}</option>
-			</select>
+			<p>
+				Filter by genre:
+				<select class="genre__selector" v-on:change="filterMovieList">
+					<option value="">Show all</option>
+					<option v-for="genre in genres">{{ genre }}</option>
+				</select>
+			</p>
 		</section>
 	</template>
 
