@@ -2,35 +2,38 @@
 	{
 		"title": "Star Wars: The Last Jedi",
 		"description": "Having taken her first steps into a larger world in Star Wars: The Force Awakens (2015), Rey continues her epic journey with Finn, Poe, and Luke Skywalker in the next chapter of the saga.",
+		"genre": "sci-fi",
 		"director": "Rian Johnson",
 		"imgThumb": "img/products/star-wars.jpg",
-		"price": "12.5",
+		"price": 12.5,
 		"actors": [
 			"Daisy Ridley",
 			"John Boyega",
-			"Mark Hamill "
+			"Mark Hamill"
 		],
 		"imdbLink": "http://www.imdb.com/title/tt2527336/?ref_=nv_sr_3"
 	},
 	{
 		"title": "Stranger Things",
+		"genre": "sci-fi",
 		"description": "When a young boy disappears, his mother, a police chief, and his friends must confront terrifying forces in order to get him back.",
 		"director": "Matt Duffer",
 		"imgThumb": "img/products/stranger-things.jpg",
-		"price": "15",
+		"price": 15,
 		"actors": [
-			 "Millie Bobby Brown",
-			 "Finn Wolfhard",
-			 "Winona Ryder"
+			"Millie Bobby Brown",
+			"Finn Wolfhard",
+			"Winona Ryder"
 		],
 		"imdbLink": "http://www.imdb.com/title/tt4574334/?ref_=nv_sr_1"
 	},
 	{
 		"title": "Game of Thrones",
 		"description": "Nine noble families fight for control over the mythical lands of Westeros, while a forgotten race returns after being dormant for thousands of years.",
+		"genre": "drama",
 		"director": "David Benioff",
 		"imgThumb": "img/products/game-of-thrones.jpg",
-		"price": "34",
+		"price": 34,
 		"actors": [
 			"Emilia Clarke", 
 			"Peter Dinklage", 
@@ -41,14 +44,99 @@
 	{
 		"title": "The Walking Dead",
 		"description": "Sheriff Deputy Rick Grimes wakes up from a coma to learn the world is in ruins, and must lead a group of survivors to stay alive.",
+		"genre": "horror",
 		"director": "Frank Darabont",
 		"imgThumb": "img/products/walking-dead.jpg",
-		"price": "22",
+		"price": 22,
 		"actors": [
-			 "Andrew Lincoln",
-			 "Norman Reedus",
-			 "Melissa McBride"
+			"Andrew Lincoln",
+			"Norman Reedus",
+			"Melissa McBride"
 		],
 		"imdbLink": "http://www.imdb.com/title/tt1520211/?ref_=wl_li_tt"
+	},
+	{
+		"title": "The Flash",
+		"description": "After being struck by lightning, Barry Allen wakes up from his coma to discover he's been given the power of super speed, becoming the Flash, fighting crime in Central City.",
+		"genre": "sci-fi",
+		"director": "Greg Berlanti",
+		"imgThumb": "img/products/the-flash.jpg",
+		"price": 16,
+		"actors": [
+			"Grant Gustin", 
+			"Candice Patton", 
+			"Danielle Panabaker"
+		],
+		"imdbLink": "http://www.imdb.com/title/tt3107288/?ref_=nv_sr_1"
+	},
+	{
+		"title": "The Shining",
+		"description": "A family heads to an isolated hotel for the winter where an evil and spiritual presence influences the father into violence, while his psychic son sees horrific forebodings from the past and of the future.",
+		"genre": "horror",
+		"director": "Stanley Kubrick",
+		"imgThumb": "img/products/the-shining.jpg",
+		"price": 89,
+		"actors": [
+			"Jack Nicholson",
+			"Shelley Duvall",
+			"Danny Lloyd"
+		],
+		"imdbLink": "http://www.imdb.com/title/tt0081505/?ref_=nv_sr_1"
+	},
+	{
+		"title": "Full Metal Jacket",
+		"description": "A pragmatic U.S. Marine observes the dehumanizing effects the Vietnam War has on his fellow recruits from their brutal boot camp training to the bloody street fighting in Hue.",
+		"genre": "war",
+		"director": "Stanley Kubrick",
+		"imgThumb": "img/products/full-metal-jacket.jpg",
+		"price": 22,
+		"actors": [
+			"Matthew Modine",
+			"R. Lee Ermey",
+			"Vincent D'Onofrio"
+		],
+		"imdbLink": "http://www.imdb.com/title/tt0093058/?ref_=tt_rec_tt"
+	},
+	{
+		"title": "Fringe",
+		"description": "An FBI agent is forced to work with an institutionalized scientist and his son in order to rationalize a brewing storm of unexplained phenomena.",
+		"genre": "sci-fi",
+		"director": "J.J. Abrams",
+		"imgThumb": "img/products/fringe.jpg",
+		"price": 45,
+		"actors": [
+			"Anna Torv",
+			"Joshua Jackson", 
+			"John Noble"
+		],
+		"imdbLink": "http://www.imdb.com/title/tt1119644/?ref_=fn_al_tt_1"
+	},
+	{
+		"title": "Platoon",
+		"description": "A young soldier in Vietnam faces a moral crisis when confronted with the horrors of war and the duality of man.",
+		"genre": "war",
+		"director": "Oliver Stone",
+		"imgThumb": "img/products/platoon.jpg",
+		"price": 19,
+		"actors": [
+			"Charlie Sheen",
+			"Tom Berenger",
+			"Willem Dafoe"
+		],
+		"imdbLink": "http://www.imdb.com/title/tt0091763/?ref_=fn_al_tt_1"
+	},
+	{
+		"title": "Braveheart",
+		"description": "When his secret bride is executed for assaulting an English soldier who tried to rape her, Sir William Wallace begins a revolt against King Edward I of England.",
+		"genre": "drama",
+		"director": "Mel Gibson",
+		"imgThumb": "img/products/braveheart.jpg",
+		"price": 56,
+		"actors": [
+			"Mel Gibson",
+			"Sophie Marceau",
+			"Patrick McGoohan"
+		],
+		"imdbLink": "http://www.imdb.com/title/tt0112573/?ref_=tt_rec_tt"
 	}
 ]
