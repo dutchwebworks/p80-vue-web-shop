@@ -12,6 +12,7 @@
 
 @import
 	"layout/movie-list",
+	"layout/movie-container",
 	"layout/wrapper";
 
 // ---------------------------------------------
@@ -19,7 +20,9 @@
 // ---------------------------------------------
 
 @import
+	"modules/cart",
 	"modules/footer",
+	"modules/genre",
 	"modules/header",
 	"modules/intro",
 	"modules/movie-product";

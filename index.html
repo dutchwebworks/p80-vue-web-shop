@@ -14,11 +14,13 @@
 
 		<app-cart></app-cart>
 
-		<h3>Movies</h3>
-
 		<app-genre></app-genre>
 
-		<app-movie-products></app-movie-products>
+		<div class="movie-container">
+			<h3>Movies</h3>
+
+			<app-movie-products></app-movie-products>
+		</div>
 	</div>
 
 	<template id="vue-app-movie-products">
@@ -59,19 +61,22 @@
 
 			<p class="cart__total" v-show="total > 0">Total: &euro;{{ total }}</p>
 
+			<button v-on:click="emptyCart" v-show="total > 0">Empty cart</button>
 			<button class="cart__checkout" v-on:click="checkout" v-show="total > 0">Checkout</button>
 		</section>
 	</template>
 
 	<template id="vue-app-genre">
 		<section class="genre">
-			<p>
-				Filter by genre:
-				<select class="genre__selector" v-model="selected" v-on:change="filterMovieList">
-					<option value="">Show all</option>
-					<option v-for="genre in genres">{{ genre }}</option>
-				</select>
-			</p>
+			<h3>Filter by genre:</h3>
+			
+			<label>
+				<input type="radio" name="genre" checked value="" v-on:click="filterMovieList"> Show all
+			</label>
+
+			<label v-for="genre in genres">
+				<input type="radio" name="genre" v-model="selected" v-bind:value="genre" v-on:click="filterMovieList"> {{ genre }}
+			</label>			
 		</section>
 	</template>
 
