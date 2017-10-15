@@ -1,10 +1,10 @@
+.movie-container {
+  grid-column: 2;
+}
+
 .movie-list {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(225px, 1fr));
-}
-
-.movie-container {
-  grid-column: 2;
 }
 
 .wrapper {
