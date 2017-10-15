@@ -21,7 +21,12 @@ Vue.component("app-movie-products", {
 	},
 	methods: {
 		loadMovies: function(url) {
-			axios.get(url).then(response => this.movies = response.data);
+			var self = this;
+
+			axios.get(url).then(function(response){
+				self.movies = response.data;
+				bus.$emit("generateGenres", self.movies);
+			});
 		},
 		addToCart: function(event, item) {
 			bus.$emit("addToCart", item);
@@ -54,6 +59,39 @@ Vue.component("app-cart", {
 			alert("Pay €" + this.total + "?");
 		}
 	},
+});
+
+Vue.component("app-genre", {
+	template: "#vue-app-genre",
+	data: function() {
+		return {
+			genres: []
+		}
+	},
+	created: function() {
+		bus.$on("generateGenres", this.generateGenres);
+	},
+	methods: {
+		generateGenres: function(data) {
+			var genreList = [];
+
+			for(i = 0, j = data.length; i < j; i++){
+				genreList.push(data[i].genre);
+			}
+
+			var unique = new Map();
+			genreList.forEach(d => unique.set(d, d));
+			var uniqueItems = [...unique.keys()];
+
+			genreList.sort(function(a, b){
+			    if(a.firstname < b.firstname) return -1;
+			    if(a.firstname > b.firstname) return 1;
+			    return 0;
+			})
+			
+			this.genres = uniqueItems;
+		}
+	}
 });
 
 // ---------------------------------------------

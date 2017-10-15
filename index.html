@@ -16,6 +16,8 @@
 
 		<h3>Movies</h3>
 
+		<app-genre></app-genre>
+
 		<app-movie-products></app-movie-products>
 	</div>
 
@@ -58,6 +60,14 @@
 			<p class="cart__total" v-show="total > 0">Total: &euro;{{ total }}</p>
 
 			<button class="cart__checkout" v-on:click="checkout" v-show="total > 0">Checkout</button>
+		</section>
+	</template>
+
+	<template id="vue-app-genre">
+		<section class="genre">
+			<select class="genre__selector">
+				<option v-for="genre in genres">{{ genre }}</option>
+			</select>
 		</section>
 	</template>
 
