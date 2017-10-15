@@ -16,12 +16,14 @@
 
 		<h3>Movies</h3>
 
+		<app-genre></app-genre>
+
 		<app-movie-products></app-movie-products>
 	</div>
 
 	<template id="vue-app-movie-products">
 		<section class="movie-list">
-			<div class="movie-product" v-for="movie in movies">
+			<div class="movie-product" v-for="movie in filteredMovies">
 				<a href="#" class="movie-product__img" v-bind:href="movie.imdbLink">
 					<img v-bind:src="movie.imgThumb">
 				</a>
@@ -31,6 +33,8 @@
 				</h3>
 
 				<p class="movie-product__description">{{ movie.description }}</p>
+
+				<p class="movie-product__genre">Genre: <a href="#" v-on:click="filterByGenre = movie.genre">{{ movie.genre }}</a></p>
 
 				<p class="movie-product__director">Director: {{ movie.director }}</p>
 
@@ -56,6 +60,18 @@
 			<p class="cart__total" v-show="total > 0">Total: &euro;{{ total }}</p>
 
 			<button class="cart__checkout" v-on:click="checkout" v-show="total > 0">Checkout</button>
+		</section>
+	</template>
+
+	<template id="vue-app-genre">
+		<section class="genre">
+			<p>
+				Filter by genre:
+				<select class="genre__selector" v-model="selected" v-on:change="filterMovieList">
+					<option value="">Show all</option>
+					<option v-for="genre in genres">{{ genre }}</option>
+				</select>
+			</p>
 		</section>
 	</template>
 

@@ -13,20 +13,42 @@ Vue.component("app-movie-products", {
 	data: function() {
 		return {
 			productsJsonUrl: "json/products.json",
-			movies: []
+			movies: [],
+			filterByGenre: ''
 		}
+	},
+	created: function() {
+		var self = this;
+		bus.$on("filterGenre", function(genre) {
+			self.filterByGenre = genre;
+		});
 	},
 	mounted: function(){
 		this.loadMovies(this.productsJsonUrl);
 	},
 	methods: {
 		loadMovies: function(url) {
-			axios.get(url).then(response => this.movies = response.data);
+			var self = this;
+
+			axios.get(url).then(function(response){
+				self.movies = response.data;
+				bus.$emit("generateGenres", self.movies);
+			});
 		},
 		addToCart: function(event, item) {
 			bus.$emit("addToCart", item);
 		}
-	}	
+	},
+	computed: {
+		filteredMovies: function() {
+			var self = this;
+			bus.$emit("setGenre", self.filterByGenre);
+
+			return this.movies.filter((movie) => {
+				return movie.genre.match(self.filterByGenre);
+			});
+		}
+	}
 });
 
 Vue.component("app-cart", {
@@ -54,6 +76,42 @@ Vue.component("app-cart", {
 			alert("Pay €" + this.total + "?");
 		}
 	},
+});
+
+Vue.component("app-genre", {
+	template: "#vue-app-genre",
+	data: function() {
+		return {
+			genres: [],
+			selected: ''
+		}
+	},
+	created: function() {
+		var self = this;
+
+		bus.$on("generateGenres", this.generateGenres);
+		bus.$on("setGenre", function(genre){
+			self.selected = genre;
+		});
+	},
+	methods: {
+		generateGenres: function(data) {
+			var genreList = [];
+
+			for(i = 0, j = data.length; i < j; i++){
+				genreList.push(data[i].genre);
+			}
+
+			var unique = new Map();
+			genreList.forEach(d => unique.set(d, d));
+			var uniqueItems = [...unique.keys()];		
+			
+			this.genres = uniqueItems.sort();
+		},
+		filterMovieList: function(event) {
+			bus.$emit("filterGenre", event.target.value);
+		}
+	}
 });
 
 // ---------------------------------------------
