@@ -61,6 +61,7 @@
 
 			<p class="cart__total" v-show="total > 0">Total: &euro;{{ total }}</p>
 
+			<button v-on:click="emptyCart" v-show="total > 0">Empty cart</button>
 			<button class="cart__checkout" v-on:click="checkout" v-show="total > 0">Checkout</button>
 		</section>
 	</template>

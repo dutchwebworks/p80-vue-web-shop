@@ -72,6 +72,14 @@ Vue.component("app-cart", {
 			this.total -= parseInt(item.price);
 			this.cartItems.splice(key, 1);
 		},
+		emptyCart: function(){
+			var confirmEmpty = confirm("Empty basket?");
+
+			if(confirmEmpty == true) {
+				this.cartItems = [];
+				this.total = 0;				
+			}
+		},
 		checkout: function() {
 			alert("Pay €" + this.total + "?");
 		}
