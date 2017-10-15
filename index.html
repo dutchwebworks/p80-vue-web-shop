@@ -34,7 +34,7 @@
 
 				<p class="movie-product__description">{{ movie.description }}</p>
 
-				<p class="movie-product__genre">Genre: {{ movie.genre }}</p>
+				<p class="movie-product__genre">Genre: <a href="#" v-on:click="filterByGenre = movie.genre">{{ movie.genre }}</a></p>
 
 				<p class="movie-product__director">Director: {{ movie.director }}</p>
 
