@@ -108,8 +108,8 @@ Vue.component("app-genre", {
 			
 			this.genres = uniqueItems.sort();
 		},
-		filterMovieList: function(event) {
-			bus.$emit("filterGenre", event.target.value);
+		filterMovieList: function(element) {
+			bus.$emit("filterGenre", element.currentTarget.value);
 		}
 	}
 });

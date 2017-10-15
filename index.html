@@ -67,13 +67,15 @@
 
 	<template id="vue-app-genre">
 		<section class="genre">
-			<p>
-				Filter by genre:
-				<select class="genre__selector" v-model="selected" v-on:change="filterMovieList">
-					<option value="">Show all</option>
-					<option v-for="genre in genres">{{ genre }}</option>
-				</select>
-			</p>
+			<p>Filter by genre:</p>
+			
+			<label>
+				<input type="radio" name="genre" value="" v-on:click="filterMovieList"> Show all
+			</label>
+
+			<label v-for="genre in genres">
+				<input type="radio" name="genre" v-model="selected" v-bind:value="genre" v-on:click="filterMovieList"> {{ genre }}
+			</label>			
 		</section>
 	</template>
 
