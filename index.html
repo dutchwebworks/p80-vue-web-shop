@@ -17,7 +17,7 @@
 		<app-genre></app-genre>
 
 		<div class="movie-container">
-			<h3>Movies</h3>	
+			<h3>Movies</h3>
 
 			<app-movie-products></app-movie-products>
 		</div>
@@ -67,10 +67,10 @@
 
 	<template id="vue-app-genre">
 		<section class="genre">
-			<p>Filter by genre:</p>
+			<h3>Filter by genre:</h3>
 			
 			<label>
-				<input type="radio" name="genre" value="" v-on:click="filterMovieList"> Show all
+				<input type="radio" name="genre" checked value="" v-on:click="filterMovieList"> Show all
 			</label>
 
 			<label v-for="genre in genres">
