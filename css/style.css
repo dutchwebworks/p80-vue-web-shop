@@ -59,4 +59,15 @@
   height: auto;
 }
 
+.pagination {
+  margin: 0 40% 40px;
+  padding: 0;
+  display: flex;
+  justify-content: space-between;
+}
+
+.pagination li {
+  list-style: none;
+}
+
 /*# sourceMappingURL=style.css.map */

@@ -24,31 +24,41 @@
 	</div>
 
 	<template id="vue-app-movie-products">
-		<section class="movie-list">
-			<div class="movie-product" v-for="movie in filteredMovies">
-				<a href="#" class="movie-product__img" v-bind:href="movie.imdbLink">
-					<img v-bind:src="movie.imgThumb">
-				</a>
-
-				<h3 class="movie-product__title">
-					<a v-bind:href="movie.imdbLink">{{ movie.title }}</a>
-				</h3>
-
-				<p class="movie-product__description">{{ movie.description }}</p>
-
-				<p class="movie-product__genre">Genre: <a href="#" v-on:click="filterByGenre = movie.genre">{{ movie.genre }}</a></p>
-
-				<p class="movie-product__director">Director: {{ movie.director }}</p>
-
-				<ul class="movie-product__actors">
-					<li v-for="actor in movie.actors">{{ actor }}</li>
+		<div>
+			<section>
+				<ul class="pagination">
+					<li><a href="#">Previous</a></li>
+					<li v-for="index in pagination.nrOfPages"><a href="#" v-on:click="paginatedMovies(index * pagination.increment)">{{ index }}</a></li>
+					<li><a href="#">Next</a></li>
 				</ul>
+			</section>
 
-				<p class="movie-product__price"><strong>&euro; {{ movie.price }}</strong></p>
+			<section class="movie-list">
+				<div class="movie-product" v-for="movie in filteredMovies">
+					<a href="#" class="movie-product__img" v-bind:href="movie.imdbLink">
+						<img v-bind:src="movie.imgThumb">
+					</a>
 
-				<button v-on:click="addToCart($event, movie)">Add to cart</button>
-			</div>		
-		</section>
+					<h3 class="movie-product__title">
+						<a v-bind:href="movie.imdbLink">{{ movie.title }}</a>
+					</h3>
+
+					<p class="movie-product__description">{{ movie.description }}</p>
+
+					<p class="movie-product__genre">Genre: <a href="#" v-on:click="filterByGenre = movie.genre">{{ movie.genre }}</a></p>
+
+					<p class="movie-product__director">Director: {{ movie.director }}</p>
+
+					<ul class="movie-product__actors">
+						<li v-for="actor in movie.actors">{{ actor }}</li>
+					</ul>
+
+					<p class="movie-product__price"><strong>&euro; {{ movie.price }}</strong></p>
+
+					<button v-on:click="addToCart($event, movie)">Add to cart</button>
+				</div>		
+			</section>
+		</div>
 	</template>
 
 	<template id="vue-app-cart">

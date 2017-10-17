@@ -14,7 +14,14 @@ Vue.component("app-movie-products", {
 		return {
 			productsJsonUrl: "json/products.json",
 			movies: [],
-			filterByGenre: ''
+			filterByGenre: '',
+			pagination: {
+				start: 3,
+				end: null,		
+				increment: 4,
+				currentPage: 1,
+				nrOfPages: null
+			}
 		}
 	},
 	created: function() {
@@ -32,11 +39,18 @@ Vue.component("app-movie-products", {
 
 			axios.get(url).then(function(response){
 				self.movies = response.data;
+				self.pagination.end = response.data.length;
+				self.pagination.nrOfPages = Math.ceil(response.data.length / self.pagination.increment);
 				bus.$emit("generateGenres", self.movies);
 			});
 		},
 		addToCart: function(event, item) {
 			bus.$emit("addToCart", item);
+		},
+		paginatedMovies: function(start) {
+			if(start > 0 ) {
+				this.pagination.start = start;
+			}
 		}
 	},
 	computed: {
@@ -44,9 +58,17 @@ Vue.component("app-movie-products", {
 			var self = this;
 			bus.$emit("setGenre", self.filterByGenre);
 
-			return this.movies.filter((movie) => {
+			var newList = this.movies.filter((movie) => {
 				return movie.genre.match(self.filterByGenre);
 			});
+
+			if(this.pagination.start > 0) {
+				// console.log(this.pagination.start, this.pagination.increment);
+				return newList.slice(this.pagination.start, this.pagination.increment);
+			} else {
+				return newList;
+			}
+			// return newList;
 		}
 	}
 });
