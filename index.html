@@ -23,7 +23,7 @@
 		</div>
 	</div>
 
-	<template id="vue-app-movie-products">
+	<script type="text/x-template" id="vue-app-movie-products">
 		<div>
 			<section>
 				<ul class="pagination">
@@ -59,9 +59,9 @@
 				</div>		
 			</section>
 		</div>
-	</template>
+	</script>
 
-	<template id="vue-app-cart">
+	<script type="text/x-template" id="vue-app-cart">
 		<section class="cart">
 			<h3 class="cart__title">Shopping cart</h3>
 
@@ -74,9 +74,9 @@
 			<button v-on:click="emptyCart" v-show="total > 0">Empty cart</button>
 			<button class="cart__checkout" v-on:click="checkout" v-show="total > 0">Checkout</button>
 		</section>
-	</template>
+	</script>
 
-	<template id="vue-app-genre">
+	<script type="text/x-template" id="vue-app-genre">
 		<section class="genre">
 			<h3>Filter by genre:</h3>
 			
@@ -88,7 +88,7 @@
 				<input type="radio" name="genre" v-model="selected" v-bind:value="genre" v-on:click="filterMovieList"> {{ genre }}
 			</label>			
 		</section>
-	</template>
+	</script>
 
 	<script src="js/libs/vue.js"></script>
 	<script src="js/libs/axios.js"></script>
