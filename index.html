@@ -35,7 +35,7 @@
 
 			<section class="movie-list">
 				<div class="movie-product" v-for="movie in filteredMovies">
-					<a href="#" class="movie-product__img" v-bind:href="movie.imdbLink">
+					<a href="#" class="movie-product__img" v-bind:href="movie.imdbLink" target="_blank">
 						<img v-bind:src="movie.imgThumb">
 					</a>
 
@@ -55,7 +55,7 @@
 
 					<p class="movie-product__price"><strong>&euro; {{ movie.price }}</strong></p>
 
-					<button v-on:click="addToCart($event, movie)">Add to cart</button>
+					<button class="movie-product__cta" v-on:click="addToCart($event, movie)">Add to cart</button>
 				</div>		
 			</section>
 		</div>
@@ -66,13 +66,15 @@
 			<h3 class="cart__title">Shopping cart</h3>
 
 			<ul class="cart__items">
-				<li v-for="(value, key, index) in cartItems">{{ value.title }} &euro;{{ value.price }} <a href="#" v-on:click="removeFromCart($event, value, key)">Remove</a></li>
+				<li v-for="(value, key, index) in cartItems"><span>{{ value.title }}</span> <span>&euro;{{ value.price }}</span> <a href="#" v-on:click="removeFromCart($event, value, key)">X</a></li>
 			</ul>
 
 			<p class="cart__total" v-show="total > 0">Total: &euro;{{ total }}</p>
 
-			<button v-on:click="emptyCart" v-show="total > 0">Empty cart</button>
-			<button class="cart__checkout" v-on:click="checkout" v-show="total > 0">Checkout</button>
+			<div class="cart__cta-buttons">
+				<button v-on:click="emptyCart" v-show="total > 0">Empty cart</button>
+				<button class="cart__checkout is-cta" v-on:click="checkout" v-show="total > 0">Checkout</button>
+			</div>
 		</section>
 	</script>
 

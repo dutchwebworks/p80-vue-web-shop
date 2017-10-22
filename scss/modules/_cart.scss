@@ -3,3 +3,69 @@
 	grid-column: 3;
 	font-family: sans-serif;
 }
+
+.cart__items {
+	margin: 0;
+	padding: 0;
+
+	li {
+		display: grid;
+		grid-template-columns: 1fr 50px 20px;
+		grid-gap: 10px;
+		margin: 0 0 10px 0;
+		list-style: none;
+
+		span:nth-child(2){
+			text-align: right;
+		}
+
+		*:nth-child(3) {
+			text-align: right;
+		}
+	}
+
+	a {
+		text-decoration: none;
+		font-weight: 700;
+		color: crimson;
+
+		&:hover {
+			color: #000;
+		}
+	}
+}
+
+.cart__total {
+	border-top: 1px solid #000;
+	padding-top: 10px;
+	text-align: right;
+	padding-right: 30px;
+	font-weight: 700;
+}
+
+.cart__cta-buttons {
+	display: flex;
+	justify-content: space-between;
+
+	button {
+		border: 0;
+		border-radius: 8px;
+		padding: 5px 10px;
+		font-size: 18px;
+		background-color: #ccc;
+		color: #000;
+		cursor: pointer;
+
+		&.is-cta,
+		&:hover {
+			background-color: #017bab;
+			color: #fff;
+		}
+
+		&.is-cta {
+			&:hover {
+				background-color: deeppink;
+			}
+		}
+	}
+}
