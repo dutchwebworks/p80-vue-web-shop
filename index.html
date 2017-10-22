@@ -45,7 +45,7 @@
 
 					<p class="movie-product__description">{{ movie.description }}</p>
 
-					<p class="movie-product__genre">Genre: <a href="#" v-on:click="filterByGenre = movie.genre">{{ movie.genre }}</a></p>
+					<p class="movie-product__genre">Genre: <a href="#" v-on:click="filterByGenre = movie.genre">{{ movie.genre | capitalizeFirstLetter}}</a></p>
 
 					<p class="movie-product__director">Director: {{ movie.director }}</p>
 
@@ -85,7 +85,7 @@
 			</label>
 
 			<label v-for="genre in genres">
-				<input type="radio" name="genre" v-model="selected" v-bind:value="genre" v-on:click="filterMovieList"> {{ genre }}
+				<input type="radio" name="genre" v-model="selected" v-bind:value="genre" v-on:click="filterMovieList"> {{ genre | capitalizeFirstLetter }}
 			</label>			
 		</section>
 	</script>

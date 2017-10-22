@@ -155,6 +155,14 @@ Vue.component("app-genre", {
 });
 
 // ---------------------------------------------
+// Globlal filters
+// ---------------------------------------------
+
+Vue.filter("capitalizeFirstLetter", function(string){
+	return string.charAt(0).toUpperCase() + string.slice(1);
+});
+
+// ---------------------------------------------
 // Main instance
 // ---------------------------------------------
 
