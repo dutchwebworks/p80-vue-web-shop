@@ -17,14 +17,14 @@
 		<app-genre></app-genre>
 
 		<div class="movie-container">
-			<h3>Movies</h3>
-
 			<app-movie-products></app-movie-products>
 		</div>
 	</div>
 
 	<script type="text/x-template" id="vue-app-movie-products">
 		<div>
+			<h3>Movies: {{ pagination.total }}</h3>
+
 			<section v-if="showPagination">
 				<ul class="pagination">
 					<li><a href="#" v-on:click="prevPage">Previous</a></li>

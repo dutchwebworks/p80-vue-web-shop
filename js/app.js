@@ -33,7 +33,8 @@ Vue.component("app-movie-products", {
 			self.pagination.start = 0;		
 
 			if(genre == "") {	
-				self.showPagination = true;				
+				self.showPagination = true;	
+				self.pagination.currentPage = 0;
 			} else {
 				self.showPagination = false;
 			}
