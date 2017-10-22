@@ -7,7 +7,17 @@
 }
 
 .movie-product__title {
-	flex-basis: 42px;
+	a {
+		color: #017bab;
+		text-decoration: none;
+	}
+}
+
+.movie-product__genre {
+	a {
+		color: #017bab;
+		text-decoration: none;
+	}
 }
 
 .movie-product__description {

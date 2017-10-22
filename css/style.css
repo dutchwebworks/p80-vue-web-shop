@@ -1,5 +1,6 @@
 .movie-container {
   grid-column: 2;
+  font-family: sans-serif;
 }
 
 .movie-list {
@@ -17,10 +18,12 @@
 .cart {
   grid-row: 2;
   grid-column: 3;
+  font-family: sans-serif;
 }
 
 .genre {
   grid-column: 1;
+  font-family: sans-serif;
 }
 
 .genre label {
@@ -45,8 +48,14 @@
   font-family: sans-serif;
 }
 
-.movie-product__title {
-  flex-basis: 42px;
+.movie-product__title a {
+  color: #017bab;
+  text-decoration: none;
+}
+
+.movie-product__genre a {
+  color: #017bab;
+  text-decoration: none;
 }
 
 .movie-product__description {
@@ -68,6 +77,27 @@
 
 .pagination li {
   list-style: none;
+}
+
+.pagination li + li {
+  margin-left: 10px;
+}
+
+.pagination a {
+  display: inline-block;
+  background-color: #ccc;
+  padding: 5px 10px;
+  border-radius: 8px;
+  text-align: center;
+  text-decoration: none;
+  color: #000;
+  font-size: 16px;
+}
+
+.pagination li:hover a,
+.pagination .is-active a {
+  background-color: #017bab;
+  color: #fff;
 }
 
 /*# sourceMappingURL=style.css.map */

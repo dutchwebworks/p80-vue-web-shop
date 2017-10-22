@@ -25,13 +25,13 @@
 
 	<script type="text/x-template" id="vue-app-movie-products">
 		<div>
-			<!-- section>
+			<section v-if="showPagination">
 				<ul class="pagination">
-					<li><a href="#">Previous</a></li>
-					<li v-for="(page, index) in pagination.nrOfPages"><a href="#" v-on:click="paginatedMovies(page)">{{ page }}</a></li>
-					<li><a href="#">Next</a></li>
+					<li><a href="#" v-on:click="prevPage">Previous</a></li>
+					<li v-for="(page, index) in pagination.pages" v-bind:class="{ 'is-active': (pagination.currentPage == index) }"><a href="#" v-on:click="paginatedMovies(index)">{{ page }}</a></li>
+					<li><a href="#" v-on:click="nextPage">Next</a></li>
 				</ul>
-			</section -->
+			</section>
 
 			<section class="movie-list">
 				<div class="movie-product" v-for="movie in filteredMovies">

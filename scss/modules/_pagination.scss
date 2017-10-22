@@ -7,4 +7,27 @@
 	li {
 		list-style: none;
 	}
+
+	li + li {
+		margin-left: 10px;
+	}
+
+	a {
+		display: inline-block;
+		background-color: #ccc;
+		padding: 5px 10px;
+		border-radius: 8px;
+		text-align: center;
+		text-decoration: none;
+		color: #000;
+		font-size: 16px;
+	}
+
+	li:hover,
+	.is-active {
+		a {
+			background-color: #017bab;
+			color: #fff;
+		}
+	}
 }
