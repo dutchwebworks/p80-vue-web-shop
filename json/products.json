@@ -227,7 +227,7 @@
 		"title": "The Revenant",
 		"description": "A frontiersman on a fur trading expedition in the 1820s fights for survival after being mauled by a bear and left for dead by members of his own hunting team.",
 		"genre": "action",
-		"director": " Alejandro González Iñárritu",
+		"director": "Alejandro González Iñárritu",
 		"imgThumb": "img/products/the-revenant.jpg",
 		"price": 180,
 		"actors": [
@@ -236,5 +236,19 @@
 			"Will Poulter"
 		],
 		"imdbLink": "http://www.imdb.com/title/tt1663202/?ref_=nm_flmg_act_4"
+	},
+	{
+		"title": "The Mask",
+		"description": "Bank clerk Stanley Ipkiss is transformed into a manic superhero when he wears a mysterious mask.",
+		"genre": "comedy",
+		"director": "Chuck Russell",
+		"imgThumb": "img/products/the-mask.jpg",
+		"price": 26,
+		"actors": [
+			"Jim Carrey",
+			"Cameron Diaz",
+			"Peter Riegert"
+		],
+		"imdbLink": "http://www.imdb.com/title/tt0110475//?ref_=nm_flmg_act_4"
 	}
 ]
