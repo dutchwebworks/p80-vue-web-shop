@@ -16,10 +16,9 @@ Vue.component("app-movie-products", {
 			movies: [],
 			filterByGenre: '',
 			pagination: {
-				start: 3,
-				end: null,		
-				increment: 4,
-				currentPage: 1,
+				start: 0,
+				nrOfItems: null,		
+				increment: 5,
 				nrOfPages: null
 			}
 		}
@@ -28,6 +27,7 @@ Vue.component("app-movie-products", {
 		var self = this;
 		bus.$on("filterGenre", function(genre) {
 			self.filterByGenre = genre;
+			self.pagination.start = 0;
 		});
 	},
 	mounted: function(){
@@ -39,7 +39,7 @@ Vue.component("app-movie-products", {
 
 			axios.get(url).then(function(response){
 				self.movies = response.data;
-				self.pagination.end = response.data.length;
+				self.pagination.nrOfItems = response.data.length;
 				self.pagination.nrOfPages = Math.ceil(response.data.length / self.pagination.increment);
 				bus.$emit("generateGenres", self.movies);
 			});
@@ -47,10 +47,8 @@ Vue.component("app-movie-products", {
 		addToCart: function(event, item) {
 			bus.$emit("addToCart", item);
 		},
-		paginatedMovies: function(start) {
-			if(start > 0 ) {
-				this.pagination.start = start;
-			}
+		paginatedMovies: function(index) {
+			this.pagination.start = index;
 		}
 	},
 	computed: {
@@ -63,8 +61,12 @@ Vue.component("app-movie-products", {
 			});
 
 			if(this.pagination.start > 0) {
-				// console.log(this.pagination.start, this.pagination.increment);
-				return newList.slice(this.pagination.start, this.pagination.increment);
+				// var pagesCount = (this.pagination.nrOfItems - 1) / this.pagination.increment + 1;
+				var start = (this.pagination.start - 1) * this.pagination.increment + 1;
+				var end = Math.min(start + this.pagination.increment - 1, this.pagination.nrOfItems);
+
+				console.log(start, end);
+				return newList.slice(start, end);
 			} else {
 				return newList;
 			}

@@ -28,7 +28,7 @@
 			<section>
 				<ul class="pagination">
 					<li><a href="#">Previous</a></li>
-					<li v-for="index in pagination.nrOfPages"><a href="#" v-on:click="paginatedMovies(index * pagination.increment)">{{ index }}</a></li>
+					<li v-for="(page, index) in pagination.nrOfPages"><a href="#" v-on:click="paginatedMovies(index)">{{ page }}</a></li>
 					<li><a href="#">Next</a></li>
 				</ul>
 			</section>
