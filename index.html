@@ -25,13 +25,13 @@
 
 	<script type="text/x-template" id="vue-app-movie-products">
 		<div>
-			<section>
+			<!-- section>
 				<ul class="pagination">
 					<li><a href="#">Previous</a></li>
-					<li v-for="(page, index) in pagination.nrOfPages"><a href="#" v-on:click="paginatedMovies(index)">{{ page }}</a></li>
+					<li v-for="(page, index) in pagination.nrOfPages"><a href="#" v-on:click="paginatedMovies(page)">{{ page }}</a></li>
 					<li><a href="#">Next</a></li>
 				</ul>
-			</section>
+			</section -->
 
 			<section class="movie-list">
 				<div class="movie-product" v-for="movie in filteredMovies">

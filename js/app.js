@@ -49,6 +49,17 @@ Vue.component("app-movie-products", {
 		},
 		paginatedMovies: function(index) {
 			this.pagination.start = index;
+		},
+		getPagination: function(totalItemsCount, numberOfItemsPerPage, page) {
+			var pagesCount = (totalItemsCount - 1) / numberOfItemsPerPage + 1;
+			var start = (page - 1) * numberOfItemsPerPage + 1;
+			var end = Math.min(start + numberOfItemsPerPage - 1, totalItemsCount);
+			
+			return {
+				start: start,
+				end: end,
+				total: totalItemsCount
+			}
 		}
 	},
 	computed: {
@@ -60,17 +71,14 @@ Vue.component("app-movie-products", {
 				return movie.genre.match(self.filterByGenre);
 			});
 
-			if(this.pagination.start > 0) {
-				// var pagesCount = (this.pagination.nrOfItems - 1) / this.pagination.increment + 1;
-				var start = (this.pagination.start - 1) * this.pagination.increment + 1;
-				var end = Math.min(start + this.pagination.increment - 1, this.pagination.nrOfItems);
+			var sliced = this.getPagination(this.pagination.nrOfItems, this.pagination.increment, this.pagination.start);
+			console.log(sliced.start, sliced.end);
 
-				console.log(start, end);
-				return newList.slice(start, end);
+			if(this.pagination.start > 0) {
+				return newList.slice(sliced.start, sliced.end);
 			} else {
 				return newList;
 			}
-			// return newList;
 		}
 	}
 });
