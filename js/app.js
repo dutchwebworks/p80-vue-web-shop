@@ -31,10 +31,10 @@ Vue.component("app-movie-products", {
 		bus.$on("filterGenre", function(genre) {
 			self.filterByGenre = genre;
 			self.pagination.start = 0;		
+			self.pagination.currentPage = 0;
 
 			if(genre == "") {	
 				self.showPagination = true;	
-				self.pagination.currentPage = 0;
 			} else {
 				self.showPagination = false;
 			}
@@ -82,6 +82,9 @@ Vue.component("app-movie-products", {
 				this.pagination.currentPage++;	
 				this.pagination.start = this.pagination.pageIncrementCounter[this.pagination.currentPage];
 			}
+		},
+		filterMovieList: function(genre) {
+			bus.$emit("filterGenre", genre);
 		},
 		_getPagination: function(totalItemsCount, numberOfItemsPerPage, page) {
 			var pagesCount = (totalItemsCount - 1) / numberOfItemsPerPage + 1;
