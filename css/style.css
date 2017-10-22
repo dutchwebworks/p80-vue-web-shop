@@ -21,6 +21,69 @@
   font-family: sans-serif;
 }
 
+.cart__items {
+  margin: 0;
+  padding: 0;
+}
+
+.cart__items li {
+  display: grid;
+  grid-template-columns: 1fr 50px 20px;
+  grid-gap: 10px;
+  margin: 0 0 10px 0;
+  list-style: none;
+}
+
+.cart__items li span:nth-child(2) {
+  text-align: right;
+}
+
+.cart__items li *:nth-child(3) {
+  text-align: right;
+}
+
+.cart__items a {
+  text-decoration: none;
+  font-weight: 700;
+  color: crimson;
+}
+
+.cart__items a:hover {
+  color: #000;
+}
+
+.cart__total {
+  border-top: 1px solid #000;
+  padding-top: 10px;
+  text-align: right;
+  padding-right: 30px;
+  font-weight: 700;
+}
+
+.cart__cta-buttons {
+  display: flex;
+  justify-content: space-between;
+}
+
+.cart__cta-buttons button {
+  border: 0;
+  border-radius: 8px;
+  padding: 5px 10px;
+  font-size: 18px;
+  background-color: #ccc;
+  color: #000;
+  cursor: pointer;
+}
+
+.cart__cta-buttons button.is-cta, .cart__cta-buttons button:hover {
+  background-color: #017bab;
+  color: #fff;
+}
+
+.cart__cta-buttons button.is-cta:hover {
+  background-color: deeppink;
+}
+
 .genre {
   grid-column: 1;
   font-family: sans-serif;
@@ -28,6 +91,10 @@
 
 .genre label {
   display: block;
+}
+
+.genre label + label {
+  margin-top: 5px;
 }
 
 .intro {
@@ -53,9 +120,17 @@
   text-decoration: none;
 }
 
+.movie-product__title a:hover {
+  color: deeppink;
+}
+
 .movie-product__genre a {
   color: #017bab;
   text-decoration: none;
+}
+
+.movie-product__genre a:hover {
+  color: deeppink;
 }
 
 .movie-product__description {
@@ -66,6 +141,21 @@
   text-align: center;
   max-width: 100%;
   height: auto;
+}
+
+.movie-product__cta {
+  border: 0;
+  border-radius: 8px;
+  padding: 5px 10px;
+  font-size: 18px;
+  background-color: #ccc;
+  color: #000;
+  cursor: pointer;
+}
+
+.movie-product__cta:hover {
+  background-color: #017bab;
+  color: #fff;
 }
 
 .pagination {

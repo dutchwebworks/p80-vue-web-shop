@@ -106,12 +106,9 @@ Vue.component("app-movie-products", {
 			var newList = this.movies.filter((movie) => {
 				return movie.genre.match(self.filterByGenre);
 			});
-
-			var start = self.pagination.start;
+			
 			var end = self.pagination.start + self.pagination.increment;
-
-			console.log(start, end);
-			return newList.slice(start, end);
+			return newList.slice(self.pagination.start, end);
 		}
 	}
 });
