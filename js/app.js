@@ -10,10 +10,9 @@ var bus = new Vue();
 
 Vue.component("app-movie-products", {
 	template: "#vue-app-movie-products",
+	props: ['filteredMovies'],
 	data: function() {
 		return {
-			productsJsonUrl: "json/products.json",
-			movies: [],
 			filterByGenre: '',
 			showPagination: true,
 			pagination: {
@@ -26,44 +25,7 @@ Vue.component("app-movie-products", {
 			}
 		}
 	},
-	created: function() {
-		var self = this;
-		bus.$on("filterGenre", function(genre) {
-			self.filterByGenre = genre;
-			self.pagination.start = 0;		
-			self.pagination.currentPage = 0;
-
-			if(genre == "") {	
-				self.showPagination = true;	
-			} else {
-				self.showPagination = false;
-			}
-		});
-	},
-	mounted: function(){
-		this.loadMovies(this.productsJsonUrl);
-	},
-	methods: {
-		loadMovies: function(url) {
-			var self = this;
-
-			axios.get(url).then(function(response){
-				self.movies = response.data;
-				self.pagination.total = response.data.length;
-				self.pagination.pages = Math.ceil(response.data.length / self.pagination.increment);
-				bus.$emit("generateGenres", self.movies);
-
-				var counter = 0;
-
-				for(i = 1, j = self.pagination.pages; i < j; i++) {
-					counter += self.pagination.increment;
-					self.pagination.pageIncrementCounter[i] = counter;
-				}
-			});
-		},
-		addToCart: function(event, item) {
-			bus.$emit("addToCart", item);
-		},
+	methods: {		
 		paginatedMovies: function(index) {
 			this.pagination.currentPage = index;
 			this.pagination.start = this.pagination.pageIncrementCounter[index];
@@ -83,34 +45,13 @@ Vue.component("app-movie-products", {
 				this.pagination.start = this.pagination.pageIncrementCounter[this.pagination.currentPage];
 			}
 		},
+		addToCart: function(event, item) {
+			bus.$emit("addToCart", item);
+		},
 		filterMovieList: function(genre) {
 			bus.$emit("filterGenre", genre);
-		},
-		_getPagination: function(totalItemsCount, numberOfItemsPerPage, page) {
-			var pagesCount = (totalItemsCount - 1) / numberOfItemsPerPage + 1;
-			var start = (page - 1) * numberOfItemsPerPage + 1;
-			var end = Math.min(start + numberOfItemsPerPage - 1, totalItemsCount);
-			
-			return {
-				start: start,
-				end: end,
-				total: totalItemsCount
-			}
 		}
-	},
-	computed: {
-		filteredMovies: function() {
-			var self = this;
-			bus.$emit("setGenre", self.filterByGenre);
-
-			var newList = this.movies.filter((movie) => {
-				return movie.genre.match(self.filterByGenre);
-			});
-			
-			var end = self.pagination.start + self.pagination.increment;
-			return newList.slice(self.pagination.start, end);
-		}
-	}
+	}	
 });
 
 Vue.component("app-cart", {
@@ -197,6 +138,69 @@ Vue.filter("capitalizeFirstLetter", function(string){
 // ---------------------------------------------
 
 new Vue({
-	el: "#app"	
+	el: "#app",
+	data: {
+		productsJsonUrl: "json/products.json",
+		movies: [],
+		filterByGenre: '',
+		showPagination: true,
+		pagination: {
+			pageIncrementCounter: [0],
+			currentPage: 0,
+			start: 0,
+			total: null,		
+			increment: 4,
+			pages: null
+		}
+	},
+	created: function() {
+		var self = this;
+		bus.$on("filterGenre", function(genre) {
+			self.filterByGenre = genre;
+			self.pagination.start = 0;		
+			self.pagination.currentPage = 0;
+
+			if(genre == "") {	
+				self.showPagination = true;	
+			} else {
+				self.showPagination = false;
+			}
+		});
+	},
+	mounted: function(){
+		this.loadMovies(this.productsJsonUrl);
+	},
+	methods: {
+		loadMovies: function(url) {
+			var self = this;
+
+			axios.get(url).then(function(response){
+				self.movies = response.data;
+				self.pagination.total = response.data.length;
+				self.pagination.pages = Math.ceil(response.data.length / self.pagination.increment);
+				bus.$emit("generateGenres", self.movies);
+
+				var counter = 0;
+
+				for(i = 1, j = self.pagination.pages; i < j; i++) {
+					counter += self.pagination.increment;
+					self.pagination.pageIncrementCounter[i] = counter;
+				}
+			});
+		}
+	},
+	computed: {
+		filteredMovies: function() {
+			var self = this;
+			bus.$emit("setGenre", self.filterByGenre);
+
+			var newList = this.movies.filter((movie) => {
+				return movie.genre.match(self.filterByGenre);
+			});
+			
+			var end = self.pagination.start + self.pagination.increment;
+			return newList.slice(self.pagination.start, end);
+		}
+	}
 });
 
