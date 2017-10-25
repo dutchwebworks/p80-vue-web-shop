@@ -10,27 +10,18 @@ var bus = new Vue();
 
 Vue.component("app-movie-products", {
 	template: "#vue-app-movie-products",
-	props: ['filteredMovies', 'pagination'],
+	props: ['filteredMovies'],
 	data: function() {
 		return {
 			filterByGenre: '',
-			showPagination: true,
-			pagination: {
-				pageIncrementCounter: [0],
-				currentPage: 0,
-				start: 0,
-				total: null,		
-				increment: 4,
-				pages: null
-			}
 		}
 	},
 	created: function() {
 		var self = this;
 		bus.$on("filterGenre", function(genre) {
 			self.filterByGenre = genre;
-			self.pagination.start = 0;		
-			self.pagination.currentPage = 0;
+			appPagination.start = 0;		
+			appPagination.currentPage = 0;
 
 			if(genre == "") {	
 				self.showPagination = true;	
@@ -39,7 +30,25 @@ Vue.component("app-movie-products", {
 			}
 		});
 	},
-	methods: {		
+	methods: {
+		addToCart: function(event, item) {
+			bus.$emit("addToCart", item);
+		},
+		filterMovieList: function(genre) {
+			bus.$emit("filterGenre", genre);
+		}
+	}	
+});
+
+var appPagination = Vue.component("app-pagination", {
+	template: "#vue-app-pagination",
+	props: ['pagination'],
+	data: function() {
+		return {
+			showPagination: true			
+		}
+	},
+	methods: {
 		paginatedMovies: function(index) {
 			this.pagination.currentPage = index;
 			this.pagination.start = this.pagination.pageIncrementCounter[index];
@@ -59,13 +68,7 @@ Vue.component("app-movie-products", {
 				this.pagination.start = this.pagination.pageIncrementCounter[this.pagination.currentPage];
 			}
 		},
-		addToCart: function(event, item) {
-			bus.$emit("addToCart", item);
-		},
-		filterMovieList: function(genre) {
-			bus.$emit("filterGenre", genre);
-		}
-	}	
+	}
 });
 
 Vue.component("app-cart", {
@@ -156,8 +159,6 @@ new Vue({
 	data: {
 		productsJsonUrl: "json/products.json",
 		movies: [],
-		filterByGenre: '',
-		showPagination: true,
 		pagination: {
 			pageIncrementCounter: [0],
 			currentPage: 0,
@@ -203,4 +204,3 @@ new Vue({
 		}
 	}
 });
-

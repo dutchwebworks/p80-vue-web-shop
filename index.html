@@ -15,7 +15,8 @@
 		<app-genre></app-genre>
 
 		<div class="movie-container">
-			<app-movie-products v-bind:filtered-movies="filteredMovies" v-bind:pagination="pagination"></app-movie-products>
+			<app-pagination v-bind:pagination="pagination"></app-pagination>
+			<app-movie-products v-bind:filtered-movies="filteredMovies"></app-movie-products>
 		</div>
 
 		<app-cart></app-cart>		
@@ -23,15 +24,7 @@
 
 	<script type="text/x-template" id="vue-app-movie-products">
 		<div>
-			<h3>Movies: {{ pagination.total }}</h3>	
-
-			<section v-if="showPagination">
-				<ul class="pagination">
-					<li><a href="#" v-on:click="prevPage">Previous</a></li>
-					<li v-for="(page, index) in pagination.pages" v-bind:class="{ 'is-active': (pagination.currentPage == index) }"><a href="#" v-on:click="paginatedMovies(index)">{{ page }}</a></li>
-					<li><a href="#" v-on:click="nextPage">Next</a></li>
-				</ul>
-			</section>
+			<h3>Movies:</h3>		
 
 			<section class="movie-list">
 				<div class="movie-product" v-for="movie in filteredMovies">
@@ -89,6 +82,16 @@
 			<label v-for="genre in genres">
 				<input type="radio" name="genre" v-model="selected" v-bind:value="genre" v-on:click="filterMovieList"> {{ genre | capitalizeFirstLetter }}
 			</label>			
+		</section>
+	</script>
+
+	<script type="text/x-template" id="vue-app-pagination">
+	    <section v-if="showPagination">
+			<ul class="pagination">
+				<li><a href="#" v-on:click="prevPage">Previous</a></li>
+				<li v-for="(page, index) in pagination.pages" v-bind:class="{ 'is-active': (pagination.currentPage == index) }"><a href="#" v-on:click="paginatedMovies(index)">{{ page }}</a></li>
+				<li><a href="#" v-on:click="nextPage">Next</a></li>
+			</ul>
 		</section>
 	</script>
 
