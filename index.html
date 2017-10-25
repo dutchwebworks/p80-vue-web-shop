@@ -36,7 +36,7 @@
 			<section class="movie-list">
 				<div class="movie-product" v-for="movie in filteredMovies">
 					<a href="#" class="movie-product__img" v-bind:href="movie.imdbLink" target="_blank">
-						<img v-bind:src="movie.imgThumb">
+						<img v-bind:src="movie.imgThumb" v-bind:alt="movie.title">
 					</a>
 
 					<h3 class="movie-product__title">
@@ -45,7 +45,7 @@
 
 					<p class="movie-product__description">{{ movie.description }}</p>
 
-					<p class="movie-product__genre">Genre: <a href="#" v-on:click="filterMovieList(movie.genre)">{{ movie.genre | capitalizeFirstLetter}}</a></p>
+					<p class="movie-product__genre"><a href="#" v-on:click="filterMovieList(movie.genre)">{{ movie.genre | capitalizeFirstLetter}}</a></p>
 
 					<p class="movie-product__director">Director: {{ movie.director }}</p>
 
@@ -66,7 +66,7 @@
 			<h3 class="cart__title">Shopping cart</h3>
 
 			<ul class="cart__items">
-				<li v-for="(value, key, index) in cartItems"><span>{{ value.title }}</span> <span>&euro;{{ value.price }}</span> <a href="#" v-on:click="removeFromCart($event, value, key)">X</a></li>
+				<li v-for="(value, key, index) in cartItems"><span>{{ value.title }}</span> <span>&euro;{{ value.price }}</span> <a href="#" v-on:click="removeFromCart($event, value, key)">&times;</a></li>
 			</ul>
 
 			<p class="cart__total" v-show="total > 0">Total: &euro;{{ total }}</p>
