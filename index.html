@@ -15,7 +15,7 @@
 		<app-genre></app-genre>
 
 		<div class="movie-container">
-			<app-movie-products v-bind:filtered-movies="filteredMovies"></app-movie-products>
+			<app-movie-products v-bind:filtered-movies="filteredMovies" v-bind:pagination="pagination"></app-movie-products>
 		</div>
 
 		<app-cart></app-cart>		
@@ -25,13 +25,13 @@
 		<div>
 			<h3>Movies: {{ pagination.total }}</h3>	
 
-			<!--section v-if="showPagination">
+			<section v-if="showPagination">
 				<ul class="pagination">
 					<li><a href="#" v-on:click="prevPage">Previous</a></li>
 					<li v-for="(page, index) in pagination.pages" v-bind:class="{ 'is-active': (pagination.currentPage == index) }"><a href="#" v-on:click="paginatedMovies(index)">{{ page }}</a></li>
 					<li><a href="#" v-on:click="nextPage">Next</a></li>
 				</ul>
-			</section-->
+			</section>
 
 			<section class="movie-list">
 				<div class="movie-product" v-for="movie in filteredMovies">
