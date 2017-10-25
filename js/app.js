@@ -13,20 +13,21 @@ Vue.component("app-movie-products", {
 	props: ['filteredMovies'],
 	data: function() {
 		return {
-			filterByGenre: '',
+			filterByGenre: "",
 		}
 	},
 	created: function() {
 		var self = this;
+
 		bus.$on("filterGenre", function(genre) {
-			self.filterByGenre = genre;
-			appPagination.start = 0;		
-			appPagination.currentPage = 0;
+			app.filterByGenre = genre;
+			app.start = 0;		
+			app.currentPage = 0;
 
 			if(genre == "") {	
-				self.showPagination = true;	
+				app.showPagination = true;
 			} else {
-				self.showPagination = false;
+				app.showPagination = false;
 			}
 		});
 	},
@@ -40,7 +41,7 @@ Vue.component("app-movie-products", {
 	}	
 });
 
-var appPagination = Vue.component("app-pagination", {
+var appPaging = Vue.component("app-pagination", {
 	template: "#vue-app-pagination",
 	props: ['pagination'],
 	data: function() {
@@ -67,7 +68,7 @@ var appPagination = Vue.component("app-pagination", {
 				this.pagination.currentPage++;	
 				this.pagination.start = this.pagination.pageIncrementCounter[this.pagination.currentPage];
 			}
-		},
+		}
 	}
 });
 
@@ -154,11 +155,12 @@ Vue.filter("capitalizeFirstLetter", function(string){
 // Main instance
 // ---------------------------------------------
 
-new Vue({
+var app = new Vue({
 	el: "#app",
 	data: {
 		productsJsonUrl: "json/products.json",
 		movies: [],
+		filterByGenre: "",
 		pagination: {
 			pageIncrementCounter: [0],
 			currentPage: 0,
