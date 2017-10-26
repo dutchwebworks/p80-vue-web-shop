@@ -26,7 +26,7 @@ Vue.component("app-movie-products", {
 	}	
 });
 
-var appPaging = Vue.component("app-pagination", {
+Vue.component("app-pagination", {
 	template: "#vue-app-pagination",
 	props: ['pagination'],
 	data: function() {
@@ -151,7 +151,7 @@ Vue.filter("capitalizeFirstLetter", function(string){
 // Main instance
 // ---------------------------------------------
 
-var app = new Vue({
+new Vue({
 	el: "#app",
 	data: {
 		productsJsonUrl: "json/products.json",
