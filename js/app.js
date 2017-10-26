@@ -16,21 +16,6 @@ Vue.component("app-movie-products", {
 			filterByGenre: "",
 		}
 	},
-	created: function() {
-		var self = this;
-
-		bus.$on("filterGenre", function(genre) {
-			app.filterByGenre = genre;
-			app.start = 0;		
-			app.currentPage = 0;
-
-			if(genre == "") {	
-				app.showPagination = true;
-			} else {
-				app.showPagination = false;
-			}
-		});
-	},
 	methods: {
 		addToCart: function(event, item) {
 			bus.$emit("addToCart", item);
@@ -46,8 +31,19 @@ var appPaging = Vue.component("app-pagination", {
 	props: ['pagination'],
 	data: function() {
 		return {
-			showPagination: true			
+			showPagination: true		
 		}
+	},
+	created: function() {
+		var self = this;
+
+		bus.$on("filterGenre", function(genre) {
+			if(genre == "") {	
+				self.showPagination = true;
+			} else {
+				self.showPagination = false;
+			}
+		});
 	},
 	methods: {
 		paginatedMovies: function(index) {
@@ -169,6 +165,15 @@ var app = new Vue({
 			increment: 4,
 			pages: null
 		}
+	},
+	created: function() {
+		var self = this;
+
+		bus.$on("filterGenre", function(genre) {
+			self.filterByGenre = genre;
+			self.pagination.start = 0;		
+			self.pagination.currentPage = 0;
+		});
 	},
 	mounted: function(){
 		this.loadMovies(this.productsJsonUrl);
