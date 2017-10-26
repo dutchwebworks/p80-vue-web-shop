@@ -36,14 +36,6 @@ Vue.component("app-pagination", {
 	},
 	created: function() {
 		var self = this;
-
-		bus.$on("filterGenre", function(genre) {
-			if(genre == "") {	
-				self.showPagination = true;
-			} else {
-				self.showPagination = false;
-			}
-		});
 	},
 	methods: {
 		paginatedMovies: function(index) {
@@ -85,12 +77,11 @@ Vue.component("app-cart", {
 			this.total += parseInt(item.price);
 		},
 		removeFromCart: function(event, item, key) {
-			event.preventDefault;
 			this.total -= parseInt(item.price);
 			this.cartItems.splice(key, 1);
 		},
 		emptyCart: function(){
-			var confirmEmpty = confirm("Empty basket?");
+			var confirmEmpty = confirm("Remove all " + this.cartItems.length + " items?");
 
 			if(confirmEmpty == true) {
 				this.cartItems = [];
@@ -98,13 +89,14 @@ Vue.component("app-cart", {
 			}
 		},
 		checkout: function() {
-			alert("Pay €" + this.total + "?");
+			alert("Pay €" + this.total + " for " + this.cartItems.length + " items?");
 		}
 	},
 });
 
 Vue.component("app-genre", {
 	template: "#vue-app-genre",
+	props: ['total'],
 	data: function() {
 		return {
 			genres: [],
@@ -124,14 +116,32 @@ Vue.component("app-genre", {
 			var genreList = [];
 
 			for(i = 0, j = data.length; i < j; i++){
-				genreList.push(data[i].genre);
+				genreList.push({
+					genre: data[i].genre,
+					count: 1
+				});
 			}
 
-			var unique = new Map();
-			genreList.forEach(d => unique.set(d, d));
-			var uniqueItems = [...unique.keys()];		
+			var map = genreList.reduce(function(map, value) {
+				var genre = value.genre;
+				var count = +value.count;
+				map[genre] = (map[genre] || 0) + count
+					return map
+				}, 
+			{});
+
+			var array = Object.keys(map).map(function(genre) {
+				return {
+					genre: genre,
+					count: map[genre]
+				}
+			});
+
+			array.sort(function(a, b){
+				return a.genre > b.genre;
+			});
 			
-			this.genres = uniqueItems.sort();
+			this.genres = array;
 		},
 		filterMovieList: function(element) {
 			bus.$emit("filterGenre", element.currentTarget.value);
@@ -205,6 +215,9 @@ new Vue({
 			var newList = this.movies.filter((movie) => {
 				return movie.genre.match(self.filterByGenre);
 			});
+
+			self.pagination.total = newList.length;
+			self.pagination.pages = Math.ceil(newList.length / self.pagination.increment);
 			
 			var end = self.pagination.start + self.pagination.increment;
 			return newList.slice(self.pagination.start, end);
