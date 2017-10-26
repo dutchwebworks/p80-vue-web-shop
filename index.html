@@ -7,20 +7,36 @@
 	<title>Simple Vue Web Shop</title>
 </head>
 <body>
-	<div id="app" class="wrapper">
-		<div class="intro">
-			<h1 class="intro__title">Simple Vue Web Shop</h1>
-		</div>
-
-		<app-genre v-bind:total="movies.length"></app-genre>
-
-		<div class="movie-container">
-			<app-pagination v-bind:pagination="pagination"></app-pagination>
-			<app-movie-products v-bind:filtered-movies="filteredMovies"></app-movie-products>
-		</div>
-
-		<app-cart></app-cart>		
+	<div id="app">
+		<component :is="selectedComponent">Loading &hellip;</component>		
 	</div>
+
+	<script type="text/x-template" id="vue-app-welcome">
+		<section>
+		    <h1>Welcome to the app</h1>
+
+		    <p>
+		    	<button v-on:click="switchComponent('app-shop')">Start the webshop</button>
+		    </p>
+	    </section>	
+	</script>
+
+	<script type="text/x-template" id="vue-app-shop">
+		<section class="wrapper">
+		    <div class="intro">
+				<h1 class="intro__title">Simple Vue Web Shop</h1>
+			</div>
+
+			<app-genre v-bind:total="movies.length"></app-genre>
+
+			<div class="movie-container">
+				<app-pagination v-bind:pagination="pagination"></app-pagination>
+				<app-movie-products v-bind:filtered-movies="filteredMovies"></app-movie-products>
+			</div>
+
+			<app-cart></app-cart>	
+		</section>		
+	</script>
 
 	<script type="text/x-template" id="vue-app-movie-products">
 		<div>
@@ -93,6 +109,16 @@
 				<li><a href="#" v-on:click.prevent="nextPage">Next</a></li>
 			</ul>
 		</section>
+	</script>
+
+	<script type="text/x-template" id="vue-app-checkout">
+		<section>
+		    <h2>Checkout</h2>
+
+		    <ul class="cart__items">
+		    	<li v-for="(value, key, index) in cartItems"><span>{{ value.title }}</span> <span>&euro;{{ value.price }}</span></a></li>
+		    </ul>
+	    </section>
 	</script>
 
 	<script src="js/libs/vue.js"></script>

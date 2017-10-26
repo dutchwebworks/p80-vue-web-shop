@@ -71,7 +71,7 @@ Vue.component("app-cart", {
 	created: function(){
 		bus.$on("addToCart", this.addToCart);
 	},
-	methods: {		
+	methods: {
 		addToCart: function(item) {
 			this.cartItems.push(item);
 			this.total += parseInt(item.price);
@@ -149,31 +149,30 @@ Vue.component("app-genre", {
 	}
 });
 
-// ---------------------------------------------
-// Globlal filters
-// ---------------------------------------------
-
-Vue.filter("capitalizeFirstLetter", function(string){
-	return string.charAt(0).toUpperCase() + string.slice(1);
+Vue.component("app-welcome", {
+	template: "#vue-app-welcome",
+	methods: {
+		switchComponent: function(name) {
+			bus.$emit("switchComponent", name);
+		}
+	}
 });
 
-// ---------------------------------------------
-// Main instance
-// ---------------------------------------------
-
-new Vue({
-	el: "#app",
-	data: {
-		productsJsonUrl: "json/products.json",
-		movies: [],
-		filterByGenre: "",
-		pagination: {
-			pageIncrementCounter: [0],
-			currentPage: 0,
-			start: 0,
-			total: null,		
-			increment: 4,
-			pages: null
+Vue.component("app-shop", {
+	template: "#vue-app-shop",
+	data: function() {
+		return {
+			productsJsonUrl: "json/products.json",
+			movies: [],
+			filterByGenre: "",			
+			pagination: {
+				pageIncrementCounter: [0],
+				currentPage: 0,
+				start: 0,
+				total: null,		
+				increment: 4,
+				pages: null
+			}
 		}
 	},
 	created: function() {
@@ -183,12 +182,12 @@ new Vue({
 			self.filterByGenre = genre;
 			self.pagination.start = 0;		
 			self.pagination.currentPage = 0;
-		});
+		});		
 	},
 	mounted: function(){
 		this.loadMovies(this.productsJsonUrl);
 	},
-	methods: {
+	methods: {		
 		loadMovies: function(url) {
 			var self = this;
 
@@ -222,5 +221,48 @@ new Vue({
 			var end = self.pagination.start + self.pagination.increment;
 			return newList.slice(self.pagination.start, end);
 		}
+	}
+});
+
+Vue.component("app-checkout", {
+	template: "#vue-app-checkout",
+	data: function() {
+		return {
+			cartItems: [],
+		}
+	},
+	created: function() {
+		this.cartItems = but.$emit("getCartItems");
+	},
+	mounted: function() {
+		
+	},
+	methods: {
+		
+	}
+});
+
+// ---------------------------------------------
+// Globlal filters
+// ---------------------------------------------
+
+Vue.filter("capitalizeFirstLetter", function(string){
+	return string.charAt(0).toUpperCase() + string.slice(1);
+});
+
+// ---------------------------------------------
+// Main instance
+// ---------------------------------------------
+
+new Vue({
+	el: "#app",
+	data: {
+		selectedComponent: "app-welcome",
+	},
+	created: function() {
+		var self = this;
+		bus.$on("switchComponent", function(name){
+			self.selectedComponent = name;
+		});
 	}
 });
