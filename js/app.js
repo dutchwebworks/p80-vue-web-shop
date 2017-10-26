@@ -90,7 +90,7 @@ Vue.component("app-cart", {
 			this.cartItems.splice(key, 1);
 		},
 		emptyCart: function(){
-			var confirmEmpty = confirm("Empty basket?");
+			var confirmEmpty = confirm("Remove all " + this.cartItems.length + " items?");
 
 			if(confirmEmpty == true) {
 				this.cartItems = [];
@@ -98,7 +98,7 @@ Vue.component("app-cart", {
 			}
 		},
 		checkout: function() {
-			alert("Pay €" + this.total + "?");
+			alert("Pay €" + this.total + " for " + this.cartItems.length + " items?");
 		}
 	},
 });

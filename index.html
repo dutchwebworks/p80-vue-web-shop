@@ -24,7 +24,7 @@
 
 	<script type="text/x-template" id="vue-app-movie-products">
 		<div>
-			<h3>Movies:</h3>		
+			<h3>Movies</h3>		
 
 			<section class="movie-list">
 				<div class="movie-product" v-for="movie in filteredMovies">
@@ -56,7 +56,7 @@
 
 	<script type="text/x-template" id="vue-app-cart">
 		<section class="cart">
-			<h3 class="cart__title">Shopping cart</h3>
+			<h3 class="cart__title">Shopping cart: {{ cartItems.length }}</h3>
 
 			<ul class="cart__items">
 				<li v-for="(value, key, index) in cartItems"><span>{{ value.title }}</span> <span>&euro;{{ value.price }}</span> <a href="#" v-on:click="removeFromCart($event, value, key)">&times;</a></li>
