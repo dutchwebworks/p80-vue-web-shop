@@ -130,12 +130,13 @@ Vue.component("app-genre", {
 				});
 			}
 
-			var map = genreList.reduce(function(map, invoice) {
-			var genre = invoice.genre;
-			var price = +invoice.count;
-			map[genre] = (map[genre] || 0) + price
-				return map
-			}, {});
+			var map = genreList.reduce(function(map, value) {
+				var genre = value.genre;
+				var count = +value.count;
+				map[genre] = (map[genre] || 0) + count
+					return map
+				}, 
+			{});
 
 			var array = Object.keys(map).map(function(genre) {
 				return {
