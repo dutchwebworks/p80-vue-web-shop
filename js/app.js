@@ -36,14 +36,6 @@ Vue.component("app-pagination", {
 	},
 	created: function() {
 		var self = this;
-
-		bus.$on("filterGenre", function(genre) {
-			if(genre == "") {	
-				self.showPagination = true;
-			} else {
-				self.showPagination = false;
-			}
-		});
 	},
 	methods: {
 		paginatedMovies: function(index) {
@@ -223,6 +215,9 @@ new Vue({
 			var newList = this.movies.filter((movie) => {
 				return movie.genre.match(self.filterByGenre);
 			});
+
+			self.pagination.total = newList.length;
+			self.pagination.pages = Math.ceil(newList.length / self.pagination.increment);
 			
 			var end = self.pagination.start + self.pagination.increment;
 			return newList.slice(self.pagination.start, end);
