@@ -85,7 +85,6 @@ Vue.component("app-cart", {
 			this.total += parseInt(item.price);
 		},
 		removeFromCart: function(event, item, key) {
-			event.preventDefault;
 			this.total -= parseInt(item.price);
 			this.cartItems.splice(key, 1);
 		},
