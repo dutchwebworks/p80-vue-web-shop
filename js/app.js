@@ -104,6 +104,7 @@ Vue.component("app-cart", {
 
 Vue.component("app-genre", {
 	template: "#vue-app-genre",
+	props: ['total'],
 	data: function() {
 		return {
 			genres: [],
@@ -123,14 +124,31 @@ Vue.component("app-genre", {
 			var genreList = [];
 
 			for(i = 0, j = data.length; i < j; i++){
-				genreList.push(data[i].genre);
+				genreList.push({
+					genre: data[i].genre,
+					count: 1
+				});
 			}
 
-			var unique = new Map();
-			genreList.forEach(d => unique.set(d, d));
-			var uniqueItems = [...unique.keys()];		
+			var map = genreList.reduce(function(map, invoice) {
+			var genre = invoice.genre;
+			var price = +invoice.count;
+			map[genre] = (map[genre] || 0) + price
+				return map
+			}, {});
+
+			var array = Object.keys(map).map(function(genre) {
+				return {
+					genre: genre,
+					count: map[genre]
+				}
+			});
+
+			array.sort(function(a, b){
+				return a.genre > b.genre;
+			});
 			
-			this.genres = uniqueItems.sort();
+			this.genres = array;
 		},
 		filterMovieList: function(element) {
 			bus.$emit("filterGenre", element.currentTarget.value);
