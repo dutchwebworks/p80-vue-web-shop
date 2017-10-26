@@ -4,39 +4,32 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link href="css/style.css" rel="stylesheet" type="text/css">
-	<title>Poort80 Vue Web Shop</title>
+	<title>Simple Vue Web Shop</title>
 </head>
 <body>
 	<div id="app" class="wrapper">
 		<div class="intro">
-			<h1 class="intro__title">Poort80 Vue Web Shop</h1>
+			<h1 class="intro__title">Simple Vue Web Shop</h1>
 		</div>
-
-		<app-cart></app-cart>
 
 		<app-genre></app-genre>
 
 		<div class="movie-container">
-			<app-movie-products></app-movie-products>
+			<app-pagination v-bind:pagination="pagination"></app-pagination>
+			<app-movie-products v-bind:filtered-movies="filteredMovies"></app-movie-products>
 		</div>
+
+		<app-cart></app-cart>		
 	</div>
 
 	<script type="text/x-template" id="vue-app-movie-products">
 		<div>
-			<h3>Movies: {{ pagination.total }}</h3>	
-
-			<section v-if="showPagination">
-				<ul class="pagination">
-					<li><a href="#" v-on:click="prevPage">Previous</a></li>
-					<li v-for="(page, index) in pagination.pages" v-bind:class="{ 'is-active': (pagination.currentPage == index) }"><a href="#" v-on:click="paginatedMovies(index)">{{ page }}</a></li>
-					<li><a href="#" v-on:click="nextPage">Next</a></li>
-				</ul>
-			</section>		
+			<h3>Movies:</h3>		
 
 			<section class="movie-list">
 				<div class="movie-product" v-for="movie in filteredMovies">
 					<a href="#" class="movie-product__img" v-bind:href="movie.imdbLink" target="_blank">
-						<img v-bind:src="movie.imgThumb">
+						<img v-bind:src="movie.imgThumb" v-bind:alt="movie.title">
 					</a>
 
 					<h3 class="movie-product__title">
@@ -45,7 +38,7 @@
 
 					<p class="movie-product__description">{{ movie.description }}</p>
 
-					<p class="movie-product__genre">Genre: <a href="#" v-on:click="filterMovieList(movie.genre)">{{ movie.genre | capitalizeFirstLetter}}</a></p>
+					<p class="movie-product__genre"><a href="#" v-on:click="filterMovieList(movie.genre)">{{ movie.genre | capitalizeFirstLetter}}</a></p>
 
 					<p class="movie-product__director">Director: {{ movie.director }}</p>
 
@@ -66,7 +59,7 @@
 			<h3 class="cart__title">Shopping cart</h3>
 
 			<ul class="cart__items">
-				<li v-for="(value, key, index) in cartItems"><span>{{ value.title }}</span> <span>&euro;{{ value.price }}</span> <a href="#" v-on:click="removeFromCart($event, value, key)">X</a></li>
+				<li v-for="(value, key, index) in cartItems"><span>{{ value.title }}</span> <span>&euro;{{ value.price }}</span> <a href="#" v-on:click="removeFromCart($event, value, key)">&times;</a></li>
 			</ul>
 
 			<p class="cart__total" v-show="total > 0">Total: &euro;{{ total }}</p>
@@ -89,6 +82,16 @@
 			<label v-for="genre in genres">
 				<input type="radio" name="genre" v-model="selected" v-bind:value="genre" v-on:click="filterMovieList"> {{ genre | capitalizeFirstLetter }}
 			</label>			
+		</section>
+	</script>
+
+	<script type="text/x-template" id="vue-app-pagination">
+	    <section v-if="showPagination">
+			<ul class="pagination">
+				<li><a href="#" v-on:click="prevPage">Previous</a></li>
+				<li v-for="(page, index) in pagination.pages" v-bind:class="{ 'is-active': (pagination.currentPage == index) }"><a href="#" v-on:click="paginatedMovies(index)">{{ page }}</a></li>
+				<li><a href="#" v-on:click="nextPage">Next</a></li>
+			</ul>
 		</section>
 	</script>
 

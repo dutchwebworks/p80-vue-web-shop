@@ -5,7 +5,8 @@
 
 .movie-list {
   display: grid;
-  grid-template-columns: repeat(4, minmax(225px, 1fr));
+  grid-gap: 20px;
+  grid-template-columns: repeat(4, minmax(150px, 1fr));
 }
 
 .wrapper {
@@ -32,6 +33,7 @@
   grid-gap: 10px;
   margin: 0 0 10px 0;
   list-style: none;
+  font-size: 14px;
 }
 
 .cart__items li span:nth-child(2) {
@@ -43,7 +45,10 @@
 }
 
 .cart__items a {
+  position: relative;
+  top: -7px;
   text-decoration: none;
+  font-size: 26px;
   font-weight: 700;
   color: crimson;
 }
@@ -91,6 +96,14 @@
 
 .genre label {
   display: block;
+  margin-bottom: 5px;
+  font-weight: 700;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.genre label:hover {
+  color: deepskyblue;
 }
 
 .genre label + label {
@@ -108,44 +121,85 @@
 }
 
 .movie-product {
+  position: relative;
   display: flex;
   flex-direction: column;
-  border: 1px solid #ccc;
-  padding: 20px;
+  border: 1px solid #017bab;
+  padding: 0px;
   font-family: sans-serif;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.movie-product__title {
+  margin: 10px 0 10px 10px;
 }
 
 .movie-product__title a {
-  color: #017bab;
+  font-size: 16px;
+  color: deeppink;
   text-decoration: none;
 }
 
 .movie-product__title a:hover {
-  color: deeppink;
+  color: #017bab;
+}
+
+.movie-product__genre {
+  position: absolute;
+  top: -10px;
+  left: 0px;
+  margin: 10px 0;
+  padding: 5px 10px;
+  background: #017bab;
+  color: white;
+  font-size: 14px;
+  border-radius: 0 0 10px 0;
+}
+
+.movie-product__genre:hover {
+  background-color: deepskyblue;
 }
 
 .movie-product__genre a {
-  color: #017bab;
+  color: white;
   text-decoration: none;
 }
 
 .movie-product__genre a:hover {
-  color: deeppink;
+  color: white;
 }
 
 .movie-product__description {
   flex: 1 0 auto;
+  margin: 0 10px;
+  font-size: 14px;
 }
 
 .movie-product__img {
+  margin-top: 10px;
   text-align: center;
+}
+
+.movie-product__img img {
   max-width: 100%;
-  height: auto;
+  height: 180px;
+}
+
+.movie-product__director {
+  font-size: 14px;
+  margin: 10px 10px;
+}
+
+.movie-product__actors {
+  font-size: 14px;
+  margin: 0 10px;
 }
 
 .movie-product__cta {
   border: 0;
   border-radius: 8px;
+  margin: 10px;
   padding: 5px 10px;
   font-size: 18px;
   background-color: #ccc;
@@ -154,8 +208,15 @@
 }
 
 .movie-product__cta:hover {
-  background-color: #017bab;
+  background-color: deepskyblue;
   color: #fff;
+}
+
+.movie-product__price {
+  margin: 15px;
+  color: deeppink;
+  font-size: 24px;
+  font-weight: 700;
 }
 
 .pagination {
@@ -186,7 +247,7 @@
 
 .pagination li:hover a,
 .pagination .is-active a {
-  background-color: #017bab;
+  background-color: deepskyblue;
   color: #fff;
 }
 
