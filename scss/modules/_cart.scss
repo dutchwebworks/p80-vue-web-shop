@@ -6,7 +6,7 @@
 
 .cart__items {
 	margin: 0;
-	padding: 0;		
+	padding: 0;
 }
 
 .cart__items-item {
@@ -54,6 +54,15 @@
 			color: #000;
 		}
 	}
+
+	&.list-item-enter {
+		opacity: 0;
+	}
+
+	&.list-item-enter-active {
+		-webkit-transition: opacity 1s;
+		transition: opacity 1s;
+	}	
 }
 
 .cart__total {
