@@ -338,6 +338,10 @@
   background-color: deepskyblue;
 }
 
+.pagination__item.is-inactive {
+  visibility: hidden;
+}
+
 .pagination__item + .pagination__item {
   margin-left: 10px;
 }

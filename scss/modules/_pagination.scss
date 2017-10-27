@@ -31,6 +31,10 @@
 			background-color: map-get($color, 01);
 		}
 	}
+
+	&.is-inactive {
+		visibility: hidden;
+	}
 }
 
 .pagination__item + .pagination__item {
