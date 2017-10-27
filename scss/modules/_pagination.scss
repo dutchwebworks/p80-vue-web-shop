@@ -1,33 +1,38 @@
 .pagination {
+
+}
+
+.pagination__list {
 	margin: 0 40% 40px;
 	padding: 0;
 	display: flex;
-	justify-content: space-between;
+	justify-content: space-between;		
+}
 
-	li {
-		list-style: none;
-	}
-
-	li + li {
-		margin-left: 10px;
-	}
+.pagination__item {
+	list-style: none;
 
 	a {
 		display: inline-block;
-		background-color: #ccc;
 		padding: 5px 10px;
 		border-radius: 8px;
 		text-align: center;
 		text-decoration: none;
 		color: #000;
 		font-size: 16px;
+		font-family: sans-serif;
+		background-color: #ccc;
 	}
 
-	li:hover,
-	.is-active {
+	&:hover,
+	&.is-active {
 		a {
-			background-color: deepskyblue;
 			color: #fff;
+			background-color: deepskyblue;
 		}
 	}
+}
+
+.pagination__item + .pagination__item {
+	margin-left: 10px;
 }

@@ -1,5 +1,6 @@
 [
 	{
+		"id": "2527336",
 		"title": "Star Wars: The Last Jedi",
 		"description": "Having taken her first steps into a larger world in Star Wars: The Force Awakens (2015), Rey continues her epic journey with Finn, Poe, and Luke Skywalker in the next chapter of the saga.",
 		"genre": "sci-fi",
@@ -14,6 +15,7 @@
 		"imdbLink": "http://www.imdb.com/title/tt2527336/?ref_=nv_sr_3"
 	},
 	{
+		"id": "4574334",
 		"title": "Stranger Things",
 		"genre": "sci-fi",
 		"description": "When a young boy disappears, his mother, a police chief, and his friends must confront terrifying forces in order to get him back.",
@@ -28,6 +30,7 @@
 		"imdbLink": "http://www.imdb.com/title/tt4574334/?ref_=nv_sr_1"
 	},
 	{
+		"id": "0944947",
 		"title": "Game of Thrones",
 		"description": "Nine noble families fight for control over the mythical lands of Westeros, while a forgotten race returns after being dormant for thousands of years.",
 		"genre": "drama",
@@ -42,6 +45,7 @@
 		"imdbLink": "http://www.imdb.com/title/tt0944947/?ref_=wl_li_tt"
 	},
 	{
+		"id": "1520211",
 		"title": "The Walking Dead",
 		"description": "Sheriff Deputy Rick Grimes wakes up from a coma to learn the world is in ruins, and must lead a group of survivors to stay alive.",
 		"genre": "horror",
@@ -56,6 +60,7 @@
 		"imdbLink": "http://www.imdb.com/title/tt1520211/?ref_=wl_li_tt"
 	},
 	{
+		"id": "3107288",
 		"title": "The Flash",
 		"description": "After being struck by lightning, Barry Allen wakes up from his coma to discover he's been given the power of super speed, becoming the Flash, fighting crime in Central City.",
 		"genre": "sci-fi",
@@ -70,6 +75,7 @@
 		"imdbLink": "http://www.imdb.com/title/tt3107288/?ref_=nv_sr_1"
 	},
 	{
+		"id": "0081505",
 		"title": "The Shining",
 		"description": "A family heads to an isolated hotel for the winter where an evil and spiritual presence influences the father into violence, while his psychic son sees horrific forebodings from the past and of the future.",
 		"genre": "horror",
@@ -84,6 +90,7 @@
 		"imdbLink": "http://www.imdb.com/title/tt0081505/?ref_=nv_sr_1"
 	},
 	{
+		"id": "0093058",
 		"title": "Full Metal Jacket",
 		"description": "A pragmatic U.S. Marine observes the dehumanizing effects the Vietnam War has on his fellow recruits from their brutal boot camp training to the bloody street fighting in Hue.",
 		"genre": "war",
@@ -98,6 +105,7 @@
 		"imdbLink": "http://www.imdb.com/title/tt0093058/?ref_=tt_rec_tt"
 	},
 	{
+		"id": "1119644",
 		"title": "Fringe",
 		"description": "An FBI agent is forced to work with an institutionalized scientist and his son in order to rationalize a brewing storm of unexplained phenomena.",
 		"genre": "sci-fi",
@@ -112,6 +120,7 @@
 		"imdbLink": "http://www.imdb.com/title/tt1119644/?ref_=fn_al_tt_1"
 	},
 	{
+		"id": "0091763",
 		"title": "Platoon",
 		"description": "A young soldier in Vietnam faces a moral crisis when confronted with the horrors of war and the duality of man.",
 		"genre": "war",
@@ -126,6 +135,7 @@
 		"imdbLink": "http://www.imdb.com/title/tt0091763/?ref_=fn_al_tt_1"
 	},
 	{
+		"id": "0112573",
 		"title": "Braveheart",
 		"description": "When his secret bride is executed for assaulting an English soldier who tried to rape her, Sir William Wallace begins a revolt against King Edward I of England.",
 		"genre": "drama",
@@ -140,6 +150,7 @@
 		"imdbLink": "http://www.imdb.com/title/tt0112573/?ref_=tt_rec_tt"
 	},
 	{
+		"id": "3731562",
 		"title": "Kong: Skull Island",
 		"description": "A team of scientists explore an uncharted island in the Pacific, venturing into the domain of the mighty Kong, and must fight to escape a primal Eden.",
 		"genre": "action",
@@ -154,6 +165,7 @@
 		"imdbLink": "http://www.imdb.com/title/tt3731562/?ref_=nv_sr_1"
 	},
 	{
+		"id": "0110912",
 		"title": "Pulp Fiction",
 		"description": "The lives of two mob hit men, a boxer, a gangster's wife, and a pair of diner bandits intertwine in four tales of violence and redemption.",
 		"genre": "drama",
@@ -168,6 +180,7 @@
 		"imdbLink": "http://www.imdb.com/title/tt0110912/?ref_=nv_sr_1"
 	},
 	{
+		"id": "0137523",
 		"title": "Fight Club",
 		"description": "An insomniac office worker, looking for a way to change his life, crosses paths with a devil-may-care soap maker, forming an underground fight club that evolves into something much, much more.",
 		"genre": "drama",
@@ -182,6 +195,7 @@
 		"imdbLink": "http://www.imdb.com/title/tt0137523/?ref_=tt_rec_tt"
 	},
 	{
+		"id": "0133093",
 		"title": "The Matrix",
 		"description": "A computer hacker learns from mysterious rebels about the true nature of his reality and his role in the war against its controllers.",
 		"genre": "sci-fi",
@@ -196,6 +210,7 @@
 		"imdbLink": "http://www.imdb.com/title/tt0133093/?ref_=tt_rec_tti"
 	},
 	{
+		"id": "1375666",
 		"title": "Inception",
 		"description": "A thief, who steals corporate secrets through use of dream-sharing technology, is given the inverse task of planting an idea into the mind of a CEO.",
 		"genre": "sci-fi",
@@ -210,6 +225,7 @@
 		"imdbLink": "http://www.imdb.com/title/tt1375666/?ref_=tt_rec_tti"
 	},
 	{
+		"id": "0993846",
 		"title": "The Wolf of Wall Street",
 		"description": "Based on the true story of Jordan Belfort, from his rise to a wealthy stock-broker living the high life to his fall involving crime, corruption and the federal government.",
 		"genre": "comedy",
@@ -224,6 +240,7 @@
 		"imdbLink": "http://www.imdb.com/title/tt0993846/?ref_=nm_flmg_act_6"
 	},
 	{
+		"id": "1663202",
 		"title": "The Revenant",
 		"description": "A frontiersman on a fur trading expedition in the 1820s fights for survival after being mauled by a bear and left for dead by members of his own hunting team.",
 		"genre": "action",
@@ -238,6 +255,7 @@
 		"imdbLink": "http://www.imdb.com/title/tt1663202/?ref_=nm_flmg_act_4"
 	},
 	{
+		"id": "0110475",
 		"title": "The Mask",
 		"description": "Bank clerk Stanley Ipkiss is transformed into a manic superhero when he wears a mysterious mask.",
 		"genre": "comedy",

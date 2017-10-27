@@ -6,23 +6,23 @@
 
 .cart__items {
 	margin: 0;
-	padding: 0;
+	padding: 0;		
+}
 
-	li {
-		display: grid;
-		grid-template-columns: 1fr 50px 20px;
-		grid-gap: 10px;
-		margin: 0 0 10px 0;
-		list-style: none;
-		font-size: 14px;
+.cart__items-item {
+	display: grid;
+	grid-template-columns: 1fr 50px 20px;
+	grid-gap: 10px;
+	margin: 0 0 10px 0;
+	list-style: none;
+	font-size: 14px;
 
-		span:nth-child(2){
-			text-align: right;
-		}
+	span:nth-child(2){
+		text-align: right;
+	}
 
-		*:nth-child(3) {
-			text-align: right;
-		}
+	*:nth-child(3) {
+		text-align: right;
 	}
 
 	a {
