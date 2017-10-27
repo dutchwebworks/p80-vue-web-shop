@@ -5,8 +5,8 @@
 .pagination__list {
 	margin: 0 40% 40px;
 	padding: 0;
-	display: flex;
-	justify-content: space-between;		
+	@include flexbox;
+	@include justify-content(space-between);
 }
 
 .pagination__item {
@@ -28,7 +28,7 @@
 	&.is-active {
 		a {
 			color: #fff;
-			background-color: deepskyblue;
+			background-color: map-get($color, 01);
 		}
 	}
 }

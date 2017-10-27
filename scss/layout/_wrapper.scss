@@ -1,6 +1,7 @@
 .wrapper {
-	display: grid;
+	@include display-grid;
+	@include grid-template-rows(auto 1fr);
+	@include grid-template-columns(150px 1fr 300px);
 	grid-gap: 20px;
-	grid-template-columns: 150px 1fr 300px;
 	margin: 0 60px;
 }

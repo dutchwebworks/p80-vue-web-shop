@@ -1,6 +1,6 @@
 .cart {
-	grid-row: 2;
-	grid-column: 3;
+	@include grid-row(2);
+	@include grid-column(3);
 	font-family: sans-serif;
 }
 
@@ -10,8 +10,8 @@
 }
 
 .cart__items-item {
-	display: grid;
-	grid-template-columns: 1fr 50px 20px;
+	@include display-grid;
+	@include grid-template-columns(1fr 50px 20px);
 	grid-gap: 10px;
 	margin: 0 0 10px 0;
 	list-style: none;
@@ -19,6 +19,21 @@
 
 	span:nth-child(2){
 		text-align: right;
+	}
+
+	@include grid-override('edge') {
+		span:nth-child(1){
+			-ms-grid-column: 1;
+		}
+
+		span:nth-child(2){
+			-ms-grid-column: 2;
+		}
+
+		span:nth-child(3){
+			@include grid-column(3);
+			-ms-grid-column: 3;
+		}
 	}
 
 	*:nth-child(3) {
@@ -31,7 +46,7 @@
 		text-decoration: none;
 		font-size: 26px;
 		font-weight: 700;
-		color: crimson;
+		color: map-get($color, 04);
 
 		&:hover {
 			color: #000;
@@ -48,8 +63,8 @@
 }
 
 .cart__cta-buttons {
-	display: flex;
-	justify-content: space-between;
+	@include flexbox;
+	@include justify-content(space-between);
 
 	button {
 		border: 0;
@@ -62,7 +77,7 @@
 
 		&.is-cta,
 		&:hover {
-			background-color: #017bab;
+			background-color: map-get($color, 03);
 			color: #fff;
 		}
 
