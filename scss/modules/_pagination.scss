@@ -11,6 +11,8 @@
 
 .pagination__item {
 	list-style: none;
+	-webkit-transition: opacity .5s;
+	transition: opacity .5s;
 
 	a {
 		display: inline-block;
@@ -22,6 +24,8 @@
 		font-size: 16px;
 		font-family: sans-serif;
 		background-color: #ccc;
+		-webkit-transition: background-color .3s, color .3s;
+		transition: background-color .3s, color .3s;
 	}
 
 	&:hover,
@@ -33,7 +37,16 @@
 	}
 
 	&.is-inactive {
-		visibility: hidden;
+		opacity: .3;
+
+		a {
+			cursor: default;
+
+			&:hover {
+				color: #000;
+				background-color: #ccc;
+			}
+		}
 	}
 }
 

@@ -69,6 +69,8 @@
   font-size: 26px;
   font-weight: 700;
   color: crimson;
+  -webkit-transition: color .3s;
+  transition: color .3s;
 }
 
 .cart__items-item a:hover {
@@ -104,6 +106,8 @@
   background-color: #ccc;
   color: #000;
   cursor: pointer;
+  -webkit-transition: background-color .3s, color .3s;
+  transition: background-color .3s, color .3s;
 }
 
 .cart__cta-buttons button.is-cta, .cart__cta-buttons button:hover {
@@ -227,6 +231,8 @@
   font-size: 16px;
   color: deeppink;
   text-decoration: none;
+  -webkit-transition: color .3s;
+  transition: color .3s;
 }
 
 .movie-product__heading a:hover {
@@ -254,6 +260,8 @@
   font-size: 14px;
   border-radius: 0 0 10px 0;
   background: #017bab;
+  -webkit-transition: background-color .3s;
+  transition: background-color .3s;
 }
 
 .movie-product__genre:hover {
@@ -295,6 +303,8 @@
   color: #000;
   cursor: pointer;
   background-color: #ccc;
+  -webkit-transition: background-color .3s, color .3s;
+  transition: background-color .3s, color .3s;
 }
 
 .movie-product__cta:hover {
@@ -319,6 +329,8 @@
 
 .pagination__item {
   list-style: none;
+  -webkit-transition: opacity .5s;
+  transition: opacity .5s;
 }
 
 .pagination__item a {
@@ -331,6 +343,8 @@
   font-size: 16px;
   font-family: sans-serif;
   background-color: #ccc;
+  -webkit-transition: background-color .3s, color .3s;
+  transition: background-color .3s, color .3s;
 }
 
 .pagination__item:hover a, .pagination__item.is-active a {
@@ -339,7 +353,16 @@
 }
 
 .pagination__item.is-inactive {
-  visibility: hidden;
+  opacity: .3;
+}
+
+.pagination__item.is-inactive a {
+  cursor: default;
+}
+
+.pagination__item.is-inactive a:hover {
+  color: #000;
+  background-color: #ccc;
 }
 
 .pagination__item + .pagination__item {

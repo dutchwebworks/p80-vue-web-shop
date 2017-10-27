@@ -52,7 +52,7 @@
 	</script>
 
 	<script type="text/x-template" id="vue-app-pagination">
-	    <section class="pagination" v-if="pagination.pages > 1">
+	    <section class="pagination" v-show="pagination.pages > 1">
 			<ul class="pagination__list">
 				<li class="pagination__item" v-bind:class="{ 'is-inactive' : pagination.currentPage == 0 }"><a href="#" v-on:click.prevent="prevPage">Previous</a></li>
 				<li class="pagination__item" v-for="(page, index) in pagination.pages" v-bind:class="{ 'is-active' : (pagination.currentPage == index) }"><a href="#" v-on:click.prevent="paginatedMovies(index)">{{ page }}</a></li>

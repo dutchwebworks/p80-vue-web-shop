@@ -56,6 +56,8 @@
 		font-size: 16px;
 		color: deeppink;
 		text-decoration: none;
+		-webkit-transition: color .3s;
+		transition: color .3s;
 
 		&:hover {
 			color: map-get($color, 03);
@@ -79,6 +81,8 @@
 	font-size: 14px;
 	border-radius: 0 0 10px 0;
 	background: map-get($color, 03);
+	-webkit-transition: background-color .3s;
+	transition: background-color .3s;
 
 	&:hover {
 		background-color: map-get($color, 01);		
@@ -120,6 +124,8 @@
 	color: #000;
 	cursor: pointer;
 	background-color: #ccc;
+	-webkit-transition: background-color .3s, color .3s;
+	transition: background-color .3s, color .3s;
 
 	&:hover {
 		color: #fff;
