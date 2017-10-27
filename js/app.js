@@ -8,6 +8,10 @@ var bus = new Vue();
 // Components
 // ---------------------------------------------
 
+Vue.component("app-loading", {
+	template: "#vue-app-loading"
+});
+
 Vue.component("app-shop", {
 	template: "#vue-app-shop",
 	data: function() {

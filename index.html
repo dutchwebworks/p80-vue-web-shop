@@ -8,8 +8,17 @@
 </head>
 <body>
 	<div id="app">
-		<component :is="selectedComponent">Loading &hellip;</component>
+		<component :is="selectedComponent">
+			<app-loading></app-loading>
+		</component>				
 	</div>
+
+	<script type="text/x-template" id="vue-app-loading">
+	    <div class="loading">
+			<span class="loading__label">Loading &hellip;</span>
+			<img src="img/ajax-loader.gif" class="loading__img">
+		</div>
+	</script>
 
 	<script type="text/x-template" id="vue-app-shop">
 		<section class="wrapper">

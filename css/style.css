@@ -113,6 +113,12 @@
   font-family: sans-serif;
 }
 
+.loading {
+  margin-top: 20px;
+  text-align: center;
+  font-family: sans-serif;
+}
+
 .movie-product__title {
   font-family: sans-serif;
 }
