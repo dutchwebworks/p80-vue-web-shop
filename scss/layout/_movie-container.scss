@@ -1,4 +1,4 @@
 .movie-container {
-	grid-column: 2;
-	font-family: sans-serif;
+	@include grid-row(2);
+	@include grid-column(2);
 }

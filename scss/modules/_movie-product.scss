@@ -1,26 +1,74 @@
 .movie-product {
-	position: relative;
-	display: flex;
-	flex-direction: column;
-	border: 1px solid #017bab;
-	padding: 0px;
-	font-family: sans-serif;
-	border-radius: 8px;
-	overflow: hidden;
+	
 }
 
 .movie-product__title {
+	font-family: sans-serif;
+}
+
+.movie-product__list {
+	@include display-grid;
+	@include grid-template-columns(minmax(150px, 1fr), 4);
+	grid-gap: 20px;
+}
+
+.movie-product__item {
+	position: relative;
+	@include flexbox;
+	@include flex-direction(column);
+	padding: 0px;
+	overflow: hidden;
+	font-family: sans-serif;
+	border-radius: 8px;
+	border: 1px solid map-get($color, 03);
+
+	// nth-child for Win/IE grid
+	@include grid-override('edge') {		
+		&:nth-child(1) {
+			@include grid-column(1);
+		}
+		&:nth-child(2) {
+			@include grid-column(2);
+		}
+		&:nth-child(3) {
+			@include grid-column(3);
+		}
+		&:nth-child(4) {
+			@include grid-column(4);
+		}
+	}
+}
+
+.movie-product__link {
+	text-align: center;
+}
+
+.movie-product__img {
+	max-width: 100%;
+	height: 180px;		
+	margin-top: 10px;
+}
+
+.movie-product__heading {
 	margin: 10px 0 10px 10px;
 
 	a {
 		font-size: 16px;
 		color: deeppink;
 		text-decoration: none;
+		-webkit-transition: color .3s;
+		transition: color .3s;
 
 		&:hover {
-			color: #017bab;
+			color: map-get($color, 03);
 		}
 	}
+}
+
+.movie-product__description {
+	@include flex(1, 0, auto);
+	margin: 0 10px;
+	font-size: 14px;
 }
 
 .movie-product__genre {
@@ -29,13 +77,15 @@
 	left: 0px;
 	margin: 10px 0;
 	padding: 5px 10px;
-	background: #017bab;
 	color: white;
 	font-size: 14px;
 	border-radius: 0 0 10px 0;
+	background: map-get($color, 03);
+	-webkit-transition: background-color .3s;
+	transition: background-color .3s;
 
 	&:hover {
-		background-color: deepskyblue;		
+		background-color: map-get($color, 01);		
 	}
 
 	a {
@@ -48,51 +98,37 @@
 	}
 }
 
-.movie-product__description {
-	flex: 1 0 auto;
-	margin: 0 10px;
-	font-size: 14px;
-}
-
-.movie-product__img {
-	margin-top: 10px;
-	text-align: center;
-
-	img {
-		max-width: 100%;
-		height: 180px;		
-	}
-}
-
 .movie-product__director {
 	font-size: 14px;
 	margin: 10px 10px;
 }
 
 .movie-product__actors {
-	font-size: 14px;
 	margin: 0 10px;
-}
-
-.movie-product__cta {
-	border: 0;
-	border-radius: 8px;
-	margin: 10px;
-	padding: 5px 10px;
-	font-size: 18px;
-	background-color: #ccc;
-	color: #000;
-	cursor: pointer;
-
-	&:hover {
-		background-color: deepskyblue;
-		color: #fff;
-	}
+	font-size: 14px;
 }
 
 .movie-product__price {
 	margin: 15px;
-	color: deeppink;
+	color: map-get($color, 02);
 	font-size: 24px;
 	font-weight: 700;
+}
+
+.movie-product__cta {
+	margin: 10px;
+	padding: 5px 10px;
+	border: 0;
+	border-radius: 8px;
+	font-size: 18px;
+	color: #000;
+	cursor: pointer;
+	background-color: #ccc;
+	-webkit-transition: background-color .3s, color .3s;
+	transition: background-color .3s, color .3s;
+
+	&:hover {
+		color: #fff;
+		background-color: map-get($color, 01);
+	}
 }

@@ -1,0 +1,97 @@
+// ---------------------------------------------
+// CSS Grid, simple old 2013- and modern spec.
+// ---------------------------------------------
+
+@mixin display-grid {
+	display: -ms-grid;
+	display: grid;
+}
+
+@mixin grid-template-rows($value, $repeat: false) {
+	@if($repeat) {
+		-ms-grid-rows: unquote("(#{$value})[#{$repeat}]");
+		grid-template-rows: repeat($repeat, $value)
+	} @else {
+		-ms-grid-rows: $value;
+		grid-template-rows: $value;
+	}
+}
+
+@mixin grid-template-columns($value, $repeat: false) {
+	@if($repeat) {
+		-ms-grid-columns: unquote("(#{$value})[#{$repeat}]");
+		grid-template-columns: repeat($repeat, $value);
+	} @else {
+		-ms-grid-columns: $value;
+		grid-template-columns: $value;
+	}
+}
+
+@mixin grid-row($value, $span: false) {
+	@if($span) {
+		-ms-grid-row: $value;
+		-ms-grid-row-span: $span;
+		grid-row: unquote("#{$value} / span #{$span}");
+	} @else {
+		-ms-grid-row: $value;
+		grid-row: $value;
+	}
+}
+
+@mixin grid-column($value, $span: false) {
+	@if($span) {
+		-ms-grid-column: $value;
+		-ms-grid-column-span: $span;
+		grid-column: unquote("#{$value} / span #{$span}");
+	} @else {
+		-ms-grid-column: $value;
+		grid-column: $value;
+	}
+}
+
+@mixin align-self($value) {
+	-ms-grid-row-align: $value;
+	align-self: $value;
+}
+
+@mixin justify-self($value) {
+	-ms-grid-column-align: $value;
+	justify-self: $value;
+}
+
+// ---------------------------------------------
+// Using feature queries to reset certain properties
+// used for mobile-first non-CSS Grid browsers
+//
+// More examples on smart and simple overriding:
+// https://rachelandrew.co.uk/css/cheatsheets/grid-fallbacks
+// ---------------------------------------------
+
+@mixin grid-override($browser: false) {
+	@if($browser == 'ie') {
+		// Win/IE 10 & 11 only override
+		@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+			@content;
+		}
+	} @else if($browser == 'edge') {
+		// Win/Edge only override
+		@supports(display: -ms-grid) {
+			@content;
+		}
+	} @else if($browser == 'modern') {
+		// Current CSS Grid spec. override
+		@supports (grid-area: auto) {
+			@content;
+		}
+	} @else {
+		// Win/Edge & current CSS Grid spec. override
+		@supports(display: grid) or (display: -ms-grid) {
+			@content;
+		}
+
+		// Win/IE 10 & 11 override
+		@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+			@content;
+		}
+	}
+}

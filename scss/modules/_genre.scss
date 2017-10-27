@@ -1,20 +1,21 @@
 .genre {
-	grid-column: 1;
-	font-family: sans-serif;
+	@include grid-row(2);
+	@include grid-column(1);
+	font-family: sans-serif;	
+}
 
-	label {
-		display: block;
-		margin-bottom: 5px;
-		font-weight: 700;
-		font-size: 16px;
-		cursor: pointer;
+.genre__item {
+	display: block;
+	margin-bottom: 5px;
+	font-weight: 700;
+	font-size: 16px;
+	cursor: pointer;
 
-		&:hover {
-			color: deepskyblue;
-		}
+	&:hover {
+		color: map-get($color, 01);
 	}
+}
 
-	label + label {
-		margin-top: 5px;
-	}
+.genre__item + .genre__item {
+	margin-top: 5px;
 }

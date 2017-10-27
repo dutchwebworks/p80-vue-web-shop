@@ -4,6 +4,8 @@
 
 @import
 	"helpers/config",
+	"helpers/flexbox",
+	"helpers/grid",
 	"helpers/mixins";
 
 // ---------------------------------------------
@@ -12,7 +14,6 @@
 
 @import
 	"layout/movie-container",
-	"layout/movie-list",
 	"layout/wrapper";
 
 // ---------------------------------------------
@@ -25,5 +26,6 @@
 	"modules/genre",
 	"modules/header",
 	"modules/intro",
+	"modules/loading",
 	"modules/movie-product",
 	"modules/pagination";
