@@ -108,13 +108,14 @@
 }
 
 .cart__cta-buttons button {
+  padding: 5px 10px;
   border: 0;
   border-radius: 8px;
-  padding: 5px 10px;
   font-size: 18px;
-  background-color: #ccc;
   color: #000;
   cursor: pointer;
+  outline: none;
+  background-color: #ccc;
   -webkit-transition: background-color .3s, color .3s;
   transition: background-color .3s, color .3s;
 }
@@ -309,6 +310,7 @@
   border: 0;
   border-radius: 8px;
   font-size: 18px;
+  outline: none;
   color: #000;
   cursor: pointer;
   background-color: #ccc;
