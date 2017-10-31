@@ -214,7 +214,9 @@ Vue.component("app-cart", {
 			}
 		},
 		checkout: function() {
-			alert("Pay €" + this.total + " for " + this.cartItems.length + " items?");
+			bus.cartItems = this.cartItems;		
+			bus.total = this.total;
+			bus.$emit("switchComponent", "app-checkout");
 		}
 	},
 });
@@ -223,14 +225,15 @@ Vue.component("app-checkout", {
 	template: "#vue-app-checkout",
 	data: function() {
 		return {
-			cartItems: [],
 			showJson: false,
+			cartItemIds: [],
 			userData: {
+				cartItemIds: [],
+				total: null,
 				firstname: '',
 				lastname: '',
 				email: '',
 				newsletters: [],
-				// paymentMethod: '',
 				bank: '',
 				creditcard: ''
 			},
@@ -251,15 +254,31 @@ Vue.component("app-checkout", {
 		}
 	},
 	created: function() {
-		// this.cartItems = but.$emit("getCartItems");
+		for(i = 0, j = bus.cartItems.length; i < j; i++) {
+			this.userData.cartItemIds.push(bus.cartItems[i].id);
+		}
+
+		this.cartItems = bus.cartItems;
+		this.userData.total = bus.total;
 	},
 	mounted: function() {
-		
+
 	},
 	methods: {
+		backToShop: function() {
+			bus.$emit("switchComponent", "app-shop");
+		},
 		checkout: function() {
 			if(this.formValid) {
 				this.showJson = true;
+
+				axios.post('/order-products', this.userData)
+					.then(function (response) {
+						console.log(response);
+					})
+					.catch(function (error) {
+						console.log(error);
+					});
 			}
 		}
 	},
@@ -288,7 +307,7 @@ Vue.component("app-checkout", {
 new Vue({
 	el: "#app",
 	data: {
-		selectedComponent: "app-checkout",
+		selectedComponent: "app-shop",
 	},
 	created: function() {
 		var self = this;

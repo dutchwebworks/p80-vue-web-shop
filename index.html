@@ -114,11 +114,19 @@
 		<section class="checkout">
 		    <h2>Checkout</h2>
 
+		    <p>
+		    	<button v-on:click="backToShop">Back to the shop</button>
+		    </p>
+
 		    <h3>Cart items</h3>
 
 		    <ul class="cart__items">
-		    	<!-- <li><span>{{ value.title }}</span> <span>&euro;{{ value.price }}</span></a></li> -->
+		    	<li v-for="item in cartItems"><span>{{ item.title }}</span> <span>&euro;{{ item.price }}</span></a></li>
 		    </ul>
+
+		    <p>
+		    	Total: &euro; {{ userData.total }}
+		    </p>
 
 			<h3>User information</h3>
 
