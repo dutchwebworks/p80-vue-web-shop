@@ -146,17 +146,20 @@
 
 				<h4>Subscribe to our e-mail newsletters</h4>
 
-				<p>
-					<label>
-						<input type="checkbox" value="monthly" v-model="userData.newsletters">
-						Monthly newsletter
-					</label>
-					
-					<label>
-						<input type="checkbox" value="promo" v-model="userData.newsletters">
-						Promo's
-					</label>
-				</p>
+				<ul>
+					<li>
+						<label>
+							<input type="checkbox" value="monthly" v-model="userData.newsletters">
+							Monthly newsletter
+						</label>
+					</li>
+					<li>
+						<label>
+							<input type="checkbox" value="promo" v-model="userData.newsletters">
+							Promo's
+						</label>
+					</li>
+				</ul>					
 
 				<h4>Payment options</h4>
 
@@ -187,6 +190,12 @@
 				<p>
 					<input type="submit" v-on:click.prevent="checkout" v-bind:disabled="!formValid" value="Checkout">
 				</p>
+
+				<div class="userdata" v-show="showJson">
+					<code style="white-space: pre">
+						{{ userData }}
+					</code>
+				</div>
 			</form>
 	    </section>
 	</script>

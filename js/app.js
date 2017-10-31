@@ -224,6 +224,7 @@ Vue.component("app-checkout", {
 	data: function() {
 		return {
 			cartItems: [],
+			showJson: false,
 			userData: {
 				firstname: '',
 				lastname: '',
@@ -257,7 +258,9 @@ Vue.component("app-checkout", {
 	},
 	methods: {
 		checkout: function() {
-
+			if(this.formValid) {
+				this.showJson = true;
+			}
 		}
 	},
 	computed: {
