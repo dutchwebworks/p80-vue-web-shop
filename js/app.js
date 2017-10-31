@@ -229,22 +229,22 @@ Vue.component("app-checkout", {
 				lastname: '',
 				email: '',
 				newsletters: [],
-				payment: '',
+				// paymentMethod: '',
 				bank: '',
 				creditcard: ''
 			},
 			payment: {
 				banks: [
-					'ING',
-					'Rabobank',
-					'ABN-Amro',
-					'SNS',
-					'ASN',
+					{ name: 'ING', value: 'ing' },
+					{ name: 'Rabobank', value: 'rabobank' },
+					{ name: 'ABN-Amro', value: 'abnamro' },
+					{ name: 'SNS', value: 'sns' },
+					{ name: 'ASN', value: 'asn' }
 				],
 				creditcards: [
-					'Mastercard',
-					'Visa',
-					'Pay-Pal'
+					{ name: 'Mastercard', value: 'mastercard' },
+					{ name: 'Visa', value: 'visa' },
+					{ name: 'Pay-Pal', value: 'paypal' }
 				]
 			}
 		}
@@ -258,6 +258,22 @@ Vue.component("app-checkout", {
 	methods: {
 		checkout: function() {
 
+		}
+	},
+	computed: {
+		paymentMethod: function() {
+			if(this.userData.paymentMethod == "ideal") {
+				this.userData.creditcard = '';
+			} else if(this.userData.paymentMethod == "creditcard") {
+				this.userData.bank = '';
+			}
+		},
+		formValid: function() {
+			if(this.userData.paymentMethod == "" || this.userData.paymentMethod == undefined) {
+				return false;
+			} else {
+				return true;
+			}
 		}
 	}
 });

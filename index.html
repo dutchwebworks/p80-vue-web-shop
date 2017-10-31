@@ -150,7 +150,9 @@
 					<label>
 						<input type="checkbox" value="monthly" v-model="userData.newsletters">
 						Monthly newsletter
+					</label>
 					
+					<label>
 						<input type="checkbox" value="promo" v-model="userData.newsletters">
 						Promo's
 					</label>
@@ -160,28 +162,30 @@
 
 				<p>
 					<label>
-						<input type="radio" value="ideal" v-model="userData.payment">
+						<input type="radio" value="ideal" v-model="userData.paymentMethod">
 						iDeal
+					</label>
 					
-						<input type="radio" value="creditcard" v-model="userData.payment">
+					<label>
+						<input type="radio" value="creditcard" v-model="userData.paymentMethod">
 						Creditcard
 					</label>
 				</p>
 
-				<div class="payment payment--ideal" v-show="userData.payment == 'ideal'">
+				<div class="payment payment--ideal" v-show="userData.paymentMethod == 'ideal'">
 					<ul>
-						<li v-for="bank in payment.banks"><label><input type="radio" v-model="userData.bank" v-bind:value="bank">{{ bank }}</label></li>
+						<li v-for="bank in payment.banks"><label><input type="radio" v-model="userData.bank" v-bind:value="bank.value">{{ bank.name }}</label></li>
 					</ul>
 				</div>
 
-				<div class="payment payment--ideal" v-show="userData.payment == 'creditcard'">
+				<div class="payment payment--ideal" v-show="userData.paymentMethod == 'creditcard'">
 					<ul>
-						<li v-for="creditcard in payment.creditcards"><label><input type="radio" v-model="userData.creditcard" v-bind:value="creditcard">{{ creditcard }}</label></li>
+						<li v-for="creditcard in payment.creditcards"><label><input type="radio" v-model="userData.creditcard" v-bind:value="creditcard.value">{{ creditcard.name }}</label></li>
 					</ul>
 				</div>
 
 				<p>
-					<button v-on:click="checkout">Checkout</button>
+					<input type="submit" v-on:click.prevent="checkout" v-bind:disabled="!formValid" value="Checkout">
 				</p>
 			</form>
 	    </section>
