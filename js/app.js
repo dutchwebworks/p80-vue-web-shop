@@ -224,16 +224,41 @@ Vue.component("app-checkout", {
 	data: function() {
 		return {
 			cartItems: [],
+			userData: {
+				firstname: '',
+				lastname: '',
+				email: '',
+				newsletters: [],
+				payment: '',
+				bank: '',
+				creditcard: ''
+			},
+			payment: {
+				banks: [
+					'ING',
+					'Rabobank',
+					'ABN-Amro',
+					'SNS',
+					'ASN',
+				],
+				creditcards: [
+					'Mastercard',
+					'Visa',
+					'Pay-Pal'
+				]
+			}
 		}
 	},
 	created: function() {
-		this.cartItems = but.$emit("getCartItems");
+		// this.cartItems = but.$emit("getCartItems");
 	},
 	mounted: function() {
 		
 	},
 	methods: {
-		
+		checkout: function() {
+
+		}
 	}
 });
 
@@ -244,7 +269,7 @@ Vue.component("app-checkout", {
 new Vue({
 	el: "#app",
 	data: {
-		selectedComponent: "app-shop",
+		selectedComponent: "app-checkout",
 	},
 	created: function() {
 		var self = this;

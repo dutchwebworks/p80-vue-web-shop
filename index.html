@@ -111,12 +111,79 @@
 	</script>
 
 	<script type="text/x-template" id="vue-app-checkout">
-		<section>
+		<section class="checkout">
 		    <h2>Checkout</h2>
 
+		    <h3>Cart items</h3>
+
 		    <ul class="cart__items">
-		    	<li v-for="(value, key, index) in cartItems"><span>{{ value.title }}</span> <span>&euro;{{ value.price }}</span></a></li>
+		    	<!-- <li><span>{{ value.title }}</span> <span>&euro;{{ value.price }}</span></a></li> -->
 		    </ul>
+
+			<h3>User information</h3>
+
+			<form>
+				<p>
+					<label>
+						Firstname
+						<input type="text" name="firstname" v-model="userData.firstname" placeholder="Firstname">
+					</label>
+				</p>
+
+				<p>
+					<label>
+						Lastname
+						<input type="text" name="lastname" v-model="userData.lastname" placeholder="Lastname">
+					</label>
+				</p>
+
+				<p>
+					<label>
+						E-mail
+						<input type="email" name="email" v-model="userData.email" placeholder="e-mail">
+					</label>
+				</p>
+
+				<h4>Subscribe to our e-mail newsletters</h4>
+
+				<p>
+					<label>
+						<input type="checkbox" value="monthly" v-model="userData.newsletters">
+						Monthly newsletter
+					
+						<input type="checkbox" value="promo" v-model="userData.newsletters">
+						Promo's
+					</label>
+				</p>
+
+				<h4>Payment options</h4>
+
+				<p>
+					<label>
+						<input type="radio" value="ideal" v-model="userData.payment">
+						iDeal
+					
+						<input type="radio" value="creditcard" v-model="userData.payment">
+						Creditcard
+					</label>
+				</p>
+
+				<div class="payment payment--ideal" v-show="userData.payment == 'ideal'">
+					<ul>
+						<li v-for="bank in payment.banks"><label><input type="radio" v-model="userData.bank" v-bind:value="bank">{{ bank }}</label></li>
+					</ul>
+				</div>
+
+				<div class="payment payment--ideal" v-show="userData.payment == 'creditcard'">
+					<ul>
+						<li v-for="creditcard in payment.creditcards"><label><input type="radio" v-model="userData.creditcard" v-bind:value="creditcard">{{ creditcard }}</label></li>
+					</ul>
+				</div>
+
+				<p>
+					<button v-on:click="checkout">Checkout</button>
+				</p>
+			</form>
 	    </section>
 	</script>
 
