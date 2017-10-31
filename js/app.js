@@ -194,6 +194,11 @@ Vue.component("app-cart", {
 		}
 	},
 	created: function(){
+		if(bus.cartItems != undefined && bus.cartItems.length > 0) {
+			this.cartItems = bus.cartItems;
+			this.total = bus.total;
+		}
+
 		bus.$on("addToCart", this.addToCart);
 	},
 	methods: {

@@ -114,7 +114,7 @@
 		<section class="checkout">
 		    <h2>Checkout</h2>
 
-		    <p>
+		    <p v-show="!showJson">
 		    	<button v-on:click="backToShop">Back to the shop</button>
 		    </p>
 
@@ -196,7 +196,7 @@
 				</div>
 
 				<p>
-					<input type="submit" v-on:click.prevent="checkout" v-bind:disabled="!formValid" value="Checkout">
+					<input type="submit" v-on:click.prevent="checkout" v-bind:disabled="!formValid || showJson" value="Checkout">
 				</p>
 
 				<div class="userdata" v-show="showJson">
