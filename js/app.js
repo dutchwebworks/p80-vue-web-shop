@@ -296,10 +296,10 @@ Vue.component("app-checkout", {
 			}
 		},
 		formValid: function() {
-			if(this.userData.paymentMethod == "" || this.userData.paymentMethod == undefined) {
-				return false;
-			} else {
+			if(this.userData.bank != "" || this.userData.creditcard != "") {
 				return true;
+			} else {
+				return false;
 			}
 		}
 	}
