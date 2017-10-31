@@ -255,7 +255,7 @@ Vue.component("app-checkout", {
 	},
 	created: function() {
 		for(i = 0, j = bus.cartItems.length; i < j; i++) {
-			this.userData.cartItemIds.push(bus.cartItems[i].id);
+			this.userData.cartItemIds.push(parseInt(bus.cartItems[i].id));
 		}
 
 		this.cartItems = bus.cartItems;
