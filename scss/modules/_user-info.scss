@@ -1,0 +1,85 @@
+.user-info {
+	margin: 0 0 20px 0;
+	font-family: 'Raleway', sans-serif;
+}
+
+.user-info__title {
+	color: map-get($color, 01);
+	font-size: 32px;
+	font-weight: 400;
+}
+
+.user-info__subtitle {
+	color: map-get($color, 02);
+	font-weight: 400;
+	font-size: 18px;
+}
+
+.user-info__row {
+	margin: 0;
+	padding: 0;
+
+	li {
+		margin: 0;
+		padding: 0;
+		list-style: none;
+
+		&.is-active {
+			font-weight: 700;
+		}
+	}	
+}
+
+.user-info__row + .user-info__row,
+.user-info__row .user-info__row  {
+	margin-top: 20px;
+}
+
+.user-info__item {
+	cursor: pointer;
+	font-weight: 400;
+	font-size: 18px;
+
+	input[type="text"],
+	input[type="email"],
+	input[type="password"] {
+		display: block;
+		margin-top: 10px;
+		padding: 10px;
+		border: 1px solid #ddd;
+		border-radius: 10px;
+		font-family: 'Raleway', sans-serif;
+		font-size: 16px;
+		min-width: 250px;
+	}
+
+	&.is-active {
+		font-weight: 700;
+	}
+}
+
+.user-info__submit {
+	padding: 5px 10px;
+	border: 0;
+	border-radius: 8px;
+	font-size: 18px;
+	color: #000;
+	cursor: pointer;
+	outline: none;
+	font-family: 'Raleway', sans-serif;
+	font-weight: 400;
+	font-size: 18px;
+	background-color: map-get($color, 01);
+
+	&.is-cta,
+	&:hover {
+		background-color: map-get($color, 02);
+		color: #fff;
+	}
+
+	&.is-cta {
+		&:hover {
+			background-color: deeppink;
+		}
+	}
+}

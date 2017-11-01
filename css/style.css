@@ -135,19 +135,17 @@
   border: 0;
   border-radius: 8px;
   font-size: 18px;
-  color: #000;
+  color: #fff;
   cursor: pointer;
   outline: none;
   font-family: 'Raleway', sans-serif;
   font-weight: 400;
   font-size: 18px;
-  background-color: #ccc;
-  -webkit-transition: background-color .3s, color .3s;
-  transition: background-color .3s, color .3s;
+  background-color: deepskyblue;
 }
 
 .cart__cta-buttons button.is-cta, .cart__cta-buttons button:hover {
-  background-color: deepskyblue;
+  background-color: deeppink;
   color: #fff;
 }
 
@@ -462,6 +460,89 @@
 
 .pagination__item + .pagination__item {
   margin-left: 10px;
+}
+
+.user-info {
+  margin: 0 0 20px 0;
+  font-family: 'Raleway', sans-serif;
+}
+
+.user-info__title {
+  color: deepskyblue;
+  font-size: 32px;
+  font-weight: 400;
+}
+
+.user-info__subtitle {
+  color: deeppink;
+  font-weight: 400;
+  font-size: 18px;
+}
+
+.user-info__row {
+  margin: 0;
+  padding: 0;
+}
+
+.user-info__row li {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.user-info__row li.is-active {
+  font-weight: 700;
+}
+
+.user-info__row + .user-info__row,
+.user-info__row .user-info__row {
+  margin-top: 20px;
+}
+
+.user-info__item {
+  cursor: pointer;
+  font-weight: 400;
+  font-size: 18px;
+}
+
+.user-info__item input[type="text"],
+.user-info__item input[type="email"],
+.user-info__item input[type="password"] {
+  display: block;
+  margin-top: 10px;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  font-family: 'Raleway', sans-serif;
+  font-size: 16px;
+  min-width: 250px;
+}
+
+.user-info__item.is-active {
+  font-weight: 700;
+}
+
+.user-info__submit {
+  padding: 5px 10px;
+  border: 0;
+  border-radius: 8px;
+  font-size: 18px;
+  color: #000;
+  cursor: pointer;
+  outline: none;
+  font-family: 'Raleway', sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+  background-color: deepskyblue;
+}
+
+.user-info__submit.is-cta, .user-info__submit:hover {
+  background-color: deeppink;
+  color: #fff;
+}
+
+.user-info__submit.is-cta:hover {
+  background-color: deeppink;
 }
 
 /*# sourceMappingURL=style.css.map */

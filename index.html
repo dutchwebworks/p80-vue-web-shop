@@ -116,16 +116,16 @@
 
 	<script type="text/x-template" id="vue-app-checkout">
 		<section class="wrapper-checkout">
-			<div class="intro">
-				<h1 class="intro__title">Vue Web Shop - Checkout</h1>
+			<div class="checkout__intro">
+				<h1 class="checkout__intro-title">Vue Web Shop - Checkout</h1>
 			</div>
 
-			<div class="checkout-cart">
+			<div class="checkout__cart">
 				<p v-show="!showJson">
-					<button v-on:click="backToShop">Back to the shop</button>
+					<button v-on:click="backToShop" class="checkout__button">Back to the shop</button>
 				</p>	
 
-				<h3>Cart items</h3>
+				<h3 class="checkout__cart-title">Cart items</h3>
 
 				<ul class="cart__items">
 					<li v-for="item in cartItems"><span>{{ item.title }}</span> <span>&euro;{{ item.price }}</span></a></li>
@@ -136,76 +136,76 @@
 				</p>
 			</div>
 
-			<div class="checkout-user-info">
-				<h3>User information</h3>
+			<div class="user-info">
+				<h3 class="user-info__title">User information</h3>
 
 				<form>
-					<p>
-						<label>
+					<p class="user-info__row">
+						<label class="user-info__item">
 							Firstname
 							<input type="text" name="firstname" v-model="userData.firstname" placeholder="Firstname">
 						</label>
 					</p>
 
-					<p>
-						<label>
+					<p class="user-info__row">
+						<label class="user-info__item">
 							Lastname
 							<input type="text" name="lastname" v-model="userData.lastname" placeholder="Lastname">
 						</label>
 					</p>
 
-					<p>
-						<label>
+					<p class="user-info__row">
+						<label class="user-info__item">
 							E-mail
 							<input type="email" name="email" v-model="userData.email" placeholder="e-mail">
 						</label>
 					</p>
 
-					<h4>Subscribe to our e-mail newsletters</h4>
+					<h4 class="user-info__subtitle">Subscribe to our e-mail newsletters</h4>
 
-					<ul>
+					<ul class="user-info__row">
 						<li>
-							<label>
+							<label class="user-info__item">
 								<input type="checkbox" value="monthly" v-model="userData.newsletters">
 								Monthly newsletter
 							</label>
 						</li>
 						<li>
-							<label>
+							<label class="user-info__item">
 								<input type="checkbox" value="promo" v-model="userData.newsletters">
 								Promo's
 							</label>
 						</li>
 					</ul>					
 
-					<h4>Payment options</h4>
+					<h4 class="user-info__subtitle">Payment options</h4>
 
-					<p>
-						<label>
+					<p class="user-info__row">
+						<label class="user-info__item" v-bind:class="{ 'is-active' : userData.paymentMethod == 'ideal' }">
 							<input type="radio" value="ideal" v-model="userData.paymentMethod">
 							iDeal
 						</label>
 						
-						<label>
+						<label class="user-info__item" v-bind:class="{ 'is-active' : userData.paymentMethod == 'creditcard' }">
 							<input type="radio" value="creditcard" v-model="userData.paymentMethod">
 							Creditcard
 						</label>
 					</p>
 
-					<div class="payment payment--ideal" v-show="userData.paymentMethod == 'ideal'">
-						<ul>
-							<li v-for="bank in payment.banks"><label><input type="radio" v-model="userData.bank" v-bind:value="bank.value">{{ bank.name }}</label></li>
+					<div class="user-info__row payment payment--ideal" v-show="userData.paymentMethod == 'ideal'">
+						<ul class="user-info__row">
+							<li v-for="bank in payment.banks" v-bind:class="{ 'is-active' : bank.value == userData.bank }"><label><input type="radio" v-model="userData.bank" v-bind:value="bank.value">{{ bank.name }}</label></li>
 						</ul>
 					</div>
 
-					<div class="payment payment--ideal" v-show="userData.paymentMethod == 'creditcard'">
-						<ul>
-							<li v-for="creditcard in payment.creditcards"><label><input type="radio" v-model="userData.creditcard" v-bind:value="creditcard.value">{{ creditcard.name }}</label></li>
+					<div class="user-info__row payment payment--ideal" v-show="userData.paymentMethod == 'creditcard'">
+						<ul class="user-info__row">
+							<li v-for="creditcard in payment.creditcards" v-bind:class="{ 'is-active' : creditcard.value == userData.creditcard }"><label><input type="radio" v-model="userData.creditcard" v-bind:value="creditcard.value">{{ creditcard.name }}</label></li>
 						</ul>
 					</div>
 
-					<p>
-						<input type="submit" v-on:click.prevent="checkout" v-bind:disabled="!formValid || showJson" value="Checkout">
+					<p class="user-info__row">
+						<input type="submit" v-on:click.prevent="checkout" v-bind:disabled="!formValid || showJson" class="user-info__submit is-cta" value="Checkout">
 					</p>
 				</div>			
 

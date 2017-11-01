@@ -95,19 +95,17 @@
 		border: 0;
 		border-radius: 8px;
 		font-size: 18px;
-		color: #000;
+		color: #fff;
 		cursor: pointer;
 		outline: none;
 		font-family: 'Raleway', sans-serif;
 		font-weight: 400;
 		font-size: 18px;
-		background-color: #ccc;
-		-webkit-transition: background-color .3s, color .3s;
-		transition: background-color .3s, color .3s;
+		background-color: map-get($color, 01);
 
 		&.is-cta,
 		&:hover {
-			background-color: map-get($color, 01);
+			background-color: map-get($color, 02);
 			color: #fff;
 		}
 
