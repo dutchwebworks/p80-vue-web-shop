@@ -5,7 +5,16 @@
   grid-column: 2;
 }
 
-.wrapper {
+.wrapper-checkout {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 300px 300px;
+  grid-template-columns: 300px 300px;
+  grid-gap: 20px;
+  margin: 0 60px;
+}
+
+.wrapper-shop {
   display: -ms-grid;
   display: grid;
   -ms-grid-rows: auto 1fr;

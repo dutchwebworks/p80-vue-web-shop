@@ -15,15 +15,15 @@
 	</div>
 
 	<script type="text/x-template" id="vue-app-loading">
-	    <div class="loading">
+		<div class="loading">
 			<span class="loading__label">Loading &hellip;</span>
 			<img src="img/ajax-loader.gif" class="loading__img">
 		</div>
 	</script>
 
 	<script type="text/x-template" id="vue-app-shop">
-		<section class="wrapper">
-		    <div class="intro">
+		<section class="wrapper-shop">
+			<div class="intro">
 				<h1 class="intro__title">Vue Web Shop</h1>
 			</div>
 
@@ -56,7 +56,7 @@
 	</script>
 
 	<script type="text/x-template" id="vue-app-pagination">
-	    <section class="pagination" v-show="pagination.pages > 1">
+		<section class="pagination" v-show="pagination.pages > 1">
 			<ul class="pagination__list">
 				<li class="pagination__item" v-bind:class="{ 'is-inactive' : pagination.currentPage == 0 }"><a href="#" v-on:click.prevent="prevPage">Previous</a></li>
 				<li class="pagination__item" v-for="(page, index) in pagination.pages" v-bind:class="{ 'is-active' : (pagination.currentPage == index) }"><a href="#" v-on:click.prevent="paginatedMovies(index)">{{ page }}</a></li>
@@ -115,93 +115,99 @@
 	</script>
 
 	<script type="text/x-template" id="vue-app-checkout">
-		<section class="checkout">
-		    <h2>Checkout</h2>
+		<section class="wrapper-checkout">
+			<div class="intro">
+				<h1 class="intro__title">Vue Web Shop - Checkout</h1>
+			</div>
 
-		    <p v-show="!showJson">
-		    	<button v-on:click="backToShop">Back to the shop</button>
-		    </p>
+			<div class="checkout-cart">
+				<p v-show="!showJson">
+					<button v-on:click="backToShop">Back to the shop</button>
+				</p>	
 
-		    <h3>Cart items</h3>
+				<h3>Cart items</h3>
 
-		    <ul class="cart__items">
-		    	<li v-for="item in cartItems"><span>{{ item.title }}</span> <span>&euro;{{ item.price }}</span></a></li>
-		    </ul>
-
-		    <p>
-		    	Total: &euro; {{ userData.total }}
-		    </p>
-
-			<h3>User information</h3>
-
-			<form>
-				<p>
-					<label>
-						Firstname
-						<input type="text" name="firstname" v-model="userData.firstname" placeholder="Firstname">
-					</label>
-				</p>
+				<ul class="cart__items">
+					<li v-for="item in cartItems"><span>{{ item.title }}</span> <span>&euro;{{ item.price }}</span></a></li>
+				</ul>
 
 				<p>
-					<label>
-						Lastname
-						<input type="text" name="lastname" v-model="userData.lastname" placeholder="Lastname">
-					</label>
+					Total: &euro; {{ userData.total }}
 				</p>
+			</div>
 
-				<p>
-					<label>
-						E-mail
-						<input type="email" name="email" v-model="userData.email" placeholder="e-mail">
-					</label>
-				</p>
+			<div class="checkout-user-info">
+				<h3>User information</h3>
 
-				<h4>Subscribe to our e-mail newsletters</h4>
-
-				<ul>
-					<li>
+				<form>
+					<p>
 						<label>
-							<input type="checkbox" value="monthly" v-model="userData.newsletters">
-							Monthly newsletter
+							Firstname
+							<input type="text" name="firstname" v-model="userData.firstname" placeholder="Firstname">
 						</label>
-					</li>
-					<li>
+					</p>
+
+					<p>
 						<label>
-							<input type="checkbox" value="promo" v-model="userData.newsletters">
-							Promo's
+							Lastname
+							<input type="text" name="lastname" v-model="userData.lastname" placeholder="Lastname">
 						</label>
-					</li>
-				</ul>					
+					</p>
 
-				<h4>Payment options</h4>
+					<p>
+						<label>
+							E-mail
+							<input type="email" name="email" v-model="userData.email" placeholder="e-mail">
+						</label>
+					</p>
 
-				<p>
-					<label>
-						<input type="radio" value="ideal" v-model="userData.paymentMethod">
-						iDeal
-					</label>
-					
-					<label>
-						<input type="radio" value="creditcard" v-model="userData.paymentMethod">
-						Creditcard
-					</label>
-				</p>
+					<h4>Subscribe to our e-mail newsletters</h4>
 
-				<div class="payment payment--ideal" v-show="userData.paymentMethod == 'ideal'">
 					<ul>
-						<li v-for="bank in payment.banks"><label><input type="radio" v-model="userData.bank" v-bind:value="bank.value">{{ bank.name }}</label></li>
-					</ul>
-				</div>
+						<li>
+							<label>
+								<input type="checkbox" value="monthly" v-model="userData.newsletters">
+								Monthly newsletter
+							</label>
+						</li>
+						<li>
+							<label>
+								<input type="checkbox" value="promo" v-model="userData.newsletters">
+								Promo's
+							</label>
+						</li>
+					</ul>					
 
-				<div class="payment payment--ideal" v-show="userData.paymentMethod == 'creditcard'">
-					<ul>
-						<li v-for="creditcard in payment.creditcards"><label><input type="radio" v-model="userData.creditcard" v-bind:value="creditcard.value">{{ creditcard.name }}</label></li>
-					</ul>
-				</div>
+					<h4>Payment options</h4>
 
-				<p>
-					<input type="submit" v-on:click.prevent="checkout" v-bind:disabled="!formValid || showJson" value="Checkout">
-				</p>
+					<p>
+						<label>
+							<input type="radio" value="ideal" v-model="userData.paymentMethod">
+							iDeal
+						</label>
+						
+						<label>
+							<input type="radio" value="creditcard" v-model="userData.paymentMethod">
+							Creditcard
+						</label>
+					</p>
+
+					<div class="payment payment--ideal" v-show="userData.paymentMethod == 'ideal'">
+						<ul>
+							<li v-for="bank in payment.banks"><label><input type="radio" v-model="userData.bank" v-bind:value="bank.value">{{ bank.name }}</label></li>
+						</ul>
+					</div>
+
+					<div class="payment payment--ideal" v-show="userData.paymentMethod == 'creditcard'">
+						<ul>
+							<li v-for="creditcard in payment.creditcards"><label><input type="radio" v-model="userData.creditcard" v-bind:value="creditcard.value">{{ creditcard.name }}</label></li>
+						</ul>
+					</div>
+
+					<p>
+						<input type="submit" v-on:click.prevent="checkout" v-bind:disabled="!formValid || showJson" value="Checkout">
+					</p>
+				</div>			
 
 				<div class="userdata" v-show="showJson">
 					<code style="white-space: pre">
@@ -209,7 +215,7 @@
 					</code>
 				</div>
 			</form>
-	    </section>
+		</section>
 	</script>
 
 	<script src="js/libs/vue.js"></script>
