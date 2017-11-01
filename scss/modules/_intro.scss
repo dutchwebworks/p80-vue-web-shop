@@ -4,6 +4,11 @@
 }
 
 .intro__title {
-	color: map-get($color, 03);
-	font-family: sans-serif;
+	color: map-get($color, 01);
+	font-family: 'Raleway', sans-serif;
+	font-weight: 400;
+	font-size: 48px;
+	text-align: center;
+	padding: 20px 0;
+	border-bottom: 2px dotted #ddd;
 }

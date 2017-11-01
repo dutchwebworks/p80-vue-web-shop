@@ -3,6 +3,7 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link href="https://fonts.googleapis.com/css?family=Raleway:400,700" rel="stylesheet">
 	<link href="css/style.css" rel="stylesheet" type="text/css">
 	<title>Vue Web Shop</title>
 </head>
@@ -29,11 +30,14 @@
 			<app-genre v-bind:total="movies.length"></app-genre>
 
 			<div class="movie-container">
-				<app-pagination v-bind:pagination="pagination"></app-pagination>
 				<app-movie-products v-bind:filtered-movies="filteredMovies"></app-movie-products>
 			</div>
 
 			<app-cart></app-cart>	
+
+			<app-pagination v-bind:pagination="pagination"></app-pagination>
+
+			<footer class="footer">Vue demo JavaScript project, by Dennis Burger, oct. / nov. 2017</footer>
 		</section>		
 	</script>
 
@@ -41,11 +45,11 @@
 		<section class="genre">
 			<h3 class="genre__title">Filter by genre</h3>
 			
-			<label class="genre__item">
+			<label class="genre__item" v-bind:class="{ 'is-active' : selected == '' }">
 				<input type="radio" name="genre" checked value="" v-on:click="filterMovieList"> Show all ({{ total }})
 			</label>
 
-			<label class="genre__item" v-for="genre in genres">
+			<label class="genre__item" v-for="genre in genres" v-bind:class="{ 'is-active' : genre.genre == selected }">
 				<input type="radio" name="genre" v-model="selected" v-bind:value="genre.genre" v-on:click="filterMovieList"> {{ genre.genre | capitalizeFirstLetter }} ({{ genre.count }})
 			</label>			
 		</section>
@@ -67,17 +71,17 @@
 
 			<div class="movie-product__list">
 				<div class="movie-product__item" v-for="movie in filteredMovies">
-					<a href="#" v-bind:href="movie.imdbLink" class="movie-product__link" target="_blank">
+					<a href="#" v-bind:href="movie.imdbLink" class="movie-product__link" target="_blank" title="Open IMDB page">
 						<img v-bind:src="movie.imgThumb" class="movie-product__img" v-bind:alt="movie.title">
 					</a>
 
 					<h3 class="movie-product__heading">
-						<a v-bind:href="movie.imdbLink" class="movie-product__heading-link">{{ movie.title }}</a>
+						<a v-bind:href="movie.imdbLink" class="movie-product__heading-link" title="Open IMDB page" target="_blank">{{ movie.title }}</a>
 					</h3>
 
 					<p class="movie-product__description">{{ movie.description }}</p>
 
-					<p class="movie-product__genre"><a href="#" v-on:click="filterMovieList(movie.genre)">{{ movie.genre | capitalizeFirstLetter}}</a></p>
+					<p class="movie-product__genre"><a href="#" v-on:click="filterMovieList(movie.genre)" v-bind:title="'Filter by ' + movie.genre | capitalizeFirstLetter">{{ movie.genre | capitalizeFirstLetter }}</a></p>
 
 					<p class="movie-product__director">Director: {{ movie.director }}</p>
 
@@ -85,7 +89,7 @@
 						<li class="movie-product__actors-item" v-for="actor in movie.actors">{{ actor }}</li>
 					</ul>
 
-					<p class="movie-product__price"><strong>&euro; {{ movie.price }}</strong></p>
+					<p class="movie-product__price"><strong>&euro; {{ movie.price | formatPrice }}</strong></p>
 
 					<button class="movie-product__cta" v-on:click.prevent="addToCart($event, movie)">Add to cart</button>
 				</div>		
@@ -98,10 +102,10 @@
 			<h3 class="cart__title">Shopping cart: {{ cartItems.length }} items</h3>
 
 			<transition-group name="list-item" tag="ul" class="cart__items">
-				<li class="cart__items-item" v-for="(value, key, index) in cartItems" :key="key"><span>{{ value.title }}</span> <span>&euro;{{ value.price }}</span> <a href="#" v-on:click.prevent="removeFromCart($event, value, key)">&times;</a></li>
+				<li class="cart__items-item" v-for="(value, key, index) in cartItems" :key="key"><span>{{ value.title }}</span> <span>&euro;{{ value.price | formatPrice }}</span> <a href="#" v-on:click.prevent="removeFromCart($event, value, key)">&times;</a></li>
 			</transition-group>
 
-			<p class="cart__total" v-show="total > 0">Total: &euro;{{ total }}</p>
+			<p class="cart__total" v-show="total > 0">Total: &euro;{{ total | formatPrice }}</p>
 
 			<div class="cart__cta-buttons">
 				<button v-on:click.prevent="emptyCart" v-show="total > 0">Empty cart</button>

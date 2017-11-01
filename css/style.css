@@ -10,8 +10,9 @@
   display: grid;
   -ms-grid-rows: auto 1fr;
   grid-template-rows: auto 1fr;
-  -ms-grid-columns: 150px 1fr 300px;
-  grid-template-columns: 150px 1fr 300px;
+  -ms-grid-columns: 250px 1fr 350px;
+  grid-template-columns: 250px 1fr 350px;
+  grid-template-rows: auto minmax(800px, auto);
   grid-gap: 20px;
   margin: 0 60px;
 }
@@ -22,6 +23,16 @@
   -ms-grid-column: 3;
   grid-column: 3;
   font-family: sans-serif;
+  padding: 20px;
+  border-radius: 10px;
+  background-color: #eee;
+}
+
+.cart__title {
+  margin-top: 0;
+  font-family: 'Raleway', sans-serif;
+  font-weight: 400;
+  font-size: 28px;
 }
 
 .cart__items {
@@ -37,7 +48,8 @@
   grid-gap: 10px;
   margin: 0 0 10px 0;
   list-style: none;
-  font-size: 14px;
+  font-family: 'Raleway', sans-serif;
+  font-size: 18px;
 }
 
 .cart__items-item span:nth-child(2) {
@@ -64,9 +76,9 @@
 
 .cart__items-item a {
   position: relative;
-  top: -7px;
+  top: -10px;
   text-decoration: none;
-  font-size: 26px;
+  font-size: 32px;
   font-weight: 700;
   color: crimson;
   -webkit-transition: color .3s;
@@ -91,7 +103,9 @@
   padding-top: 10px;
   text-align: right;
   padding-right: 30px;
+  font-family: 'Raleway', sans-serif;
   font-weight: 700;
+  font-size: 24px;
 }
 
 .cart__cta-buttons {
@@ -115,18 +129,34 @@
   color: #000;
   cursor: pointer;
   outline: none;
+  font-family: 'Raleway', sans-serif;
+  font-weight: 400;
+  font-size: 18px;
   background-color: #ccc;
   -webkit-transition: background-color .3s, color .3s;
   transition: background-color .3s, color .3s;
 }
 
 .cart__cta-buttons button.is-cta, .cart__cta-buttons button:hover {
-  background-color: #017bab;
+  background-color: deepskyblue;
   color: #fff;
 }
 
 .cart__cta-buttons button.is-cta:hover {
   background-color: deeppink;
+}
+
+.footer {
+  -ms-grid-row: 4;
+  grid-row: 4;
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 3;
+  grid-column: 1 / span 3;
+  font-family: 'Raleway', sans-serif;
+  font-size: 22px;
+  color: #ddd;
+  padding: 20px 0;
+  text-align: center;
 }
 
 .genre {
@@ -135,18 +165,33 @@
   -ms-grid-column: 1;
   grid-column: 1;
   font-family: sans-serif;
+  padding: 20px;
+  border-radius: 10px;
+  background-color: #eee;
+}
+
+.genre__title {
+  margin-top: 0;
+  font-family: 'Raleway', sans-serif;
+  font-weight: 400;
+  font-size: 28px;
 }
 
 .genre__item {
   display: block;
   margin-bottom: 5px;
-  font-weight: 700;
-  font-size: 16px;
+  font-family: 'Raleway', sans-serif;
+  font-weight: 400;
+  font-size: 22px;
   cursor: pointer;
 }
 
 .genre__item:hover {
   color: deepskyblue;
+}
+
+.genre__item.is-active {
+  font-weight: 700;
 }
 
 .genre__item + .genre__item {
@@ -162,8 +207,13 @@
 }
 
 .intro__title {
-  color: #017bab;
-  font-family: sans-serif;
+  color: deepskyblue;
+  font-family: 'Raleway', sans-serif;
+  font-weight: 400;
+  font-size: 48px;
+  text-align: center;
+  padding: 20px 0;
+  border-bottom: 2px dotted #ddd;
 }
 
 .loading {
@@ -172,8 +222,19 @@
   font-family: sans-serif;
 }
 
+.movie-product {
+  box-sizing: border-box;
+  height: 100%;
+  padding: 20px;
+  border-radius: 10px;
+  background-color: #eee;
+}
+
 .movie-product__title {
-  font-family: sans-serif;
+  margin-top: 0px;
+  font-family: 'Raleway', sans-serif;
+  font-weight: 400;
+  font-size: 32px;
 }
 
 .movie-product__list {
@@ -197,11 +258,14 @@
   -moz-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;
+  height: 100%;
+  box-sizing: border-box;
   padding: 0px;
   overflow: hidden;
   font-family: sans-serif;
   border-radius: 8px;
-  border: 1px solid #017bab;
+  border: 1px solid deepskyblue;
+  background-color: #fff;
 }
 
 @supports (display: -ms-grid) {
@@ -230,15 +294,17 @@
 .movie-product__img {
   max-width: 100%;
   height: 180px;
-  margin-top: 10px;
+  margin: 20px 0;
 }
 
 .movie-product__heading {
-  margin: 10px 0 10px 10px;
+  margin: 20px 0 10px 10px;
 }
 
 .movie-product__heading a {
-  font-size: 16px;
+  font-family: 'Raleway', sans-serif;
+  font-weight: 400;
+  font-size: 24px;
   color: deeppink;
   text-decoration: none;
   -webkit-transition: color .3s;
@@ -246,7 +312,7 @@
 }
 
 .movie-product__heading a:hover {
-  color: #017bab;
+  color: deepskyblue;
 }
 
 .movie-product__description {
@@ -257,7 +323,9 @@
   -ms-flex: 1 0 auto;
   flex: 1 0 auto;
   margin: 0 10px;
-  font-size: 14px;
+  font-size: 12px;
+  font-family: 'Raleway', sans-serif;
+  font-size: 18px;
 }
 
 .movie-product__genre {
@@ -267,15 +335,15 @@
   margin: 10px 0;
   padding: 5px 10px;
   color: white;
+  font-family: 'Raleway', sans-serif;
+  font-weight: 400;
   font-size: 14px;
   border-radius: 0 0 10px 0;
-  background: #017bab;
-  -webkit-transition: background-color .3s;
-  transition: background-color .3s;
+  background: deepskyblue;
 }
 
 .movie-product__genre:hover {
-  background-color: deepskyblue;
+  background-color: deeppink;
 }
 
 .movie-product__genre a {
@@ -288,20 +356,28 @@
 }
 
 .movie-product__director {
+  font-family: 'Raleway', sans-serif;
+  font-weight: 700;
   font-size: 14px;
-  margin: 10px 10px;
+  margin: 30px 10px;
 }
 
 .movie-product__actors {
+  font-family: 'Raleway', sans-serif;
   margin: 0 10px;
   font-size: 14px;
 }
 
 .movie-product__price {
   margin: 15px;
+  text-align: center;
   color: deeppink;
-  font-size: 24px;
-  font-weight: 700;
+}
+
+.movie-product__price strong {
+  font-family: 'Raleway', sans-serif;
+  font-weight: 400;
+  font-size: 28px;
 }
 
 .movie-product__cta {
@@ -309,18 +385,26 @@
   padding: 5px 10px;
   border: 0;
   border-radius: 8px;
+  font-family: 'Raleway', sans-serif;
+  font-weight: 400;
   font-size: 18px;
   outline: none;
-  color: #000;
+  color: #fff;
   cursor: pointer;
-  background-color: #ccc;
-  -webkit-transition: background-color .3s, color .3s;
-  transition: background-color .3s, color .3s;
+  background-color: deepskyblue;
 }
 
 .movie-product__cta:hover {
-  color: #fff;
-  background-color: deepskyblue;
+  background-color: deeppink;
+}
+
+.pagination {
+  margin-top: 40px;
+  -ms-grid-row: 3;
+  grid-row: 3;
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 3;
+  grid-column: 1 / span 3;
 }
 
 .pagination__list {
@@ -331,22 +415,15 @@
   display: -moz-flex;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: justify;
-  -ms-flex-pack: justify;
-  -webkit-justify-content: space-between;
-  -moz-justify-content: space-between;
-  justify-content: space-between;
 }
 
 .pagination__item {
   list-style: none;
-  -webkit-transition: opacity .3s;
-  transition: opacity .3s;
 }
 
 .pagination__item a {
   display: inline-block;
-  padding: 5px 10px;
+  padding: 8px 15px;
   border-radius: 8px;
   text-align: center;
   text-decoration: none;
@@ -354,8 +431,6 @@
   font-size: 16px;
   font-family: sans-serif;
   background-color: #ccc;
-  -webkit-transition: background-color 1s, color .3s;
-  transition: background-color 1s, color .3s;
 }
 
 .pagination__item:hover a, .pagination__item.is-active a {

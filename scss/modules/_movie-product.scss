@@ -1,9 +1,16 @@
 .movie-product {
-	
+	box-sizing: border-box;
+	height: 100%;
+	padding: 20px;
+	border-radius: 10px;
+	background-color: #eee;
 }
 
 .movie-product__title {
-	font-family: sans-serif;
+	margin-top: 0px;
+	font-family: 'Raleway', sans-serif;
+	font-weight: 400;
+	font-size: 32px;
 }
 
 .movie-product__list {
@@ -16,11 +23,14 @@
 	position: relative;
 	@include flexbox;
 	@include flex-direction(column);
+	height: 100%;
+	box-sizing: border-box;
 	padding: 0px;
 	overflow: hidden;
 	font-family: sans-serif;
 	border-radius: 8px;
-	border: 1px solid map-get($color, 03);
+	border: 1px solid map-get($color, 01);
+	background-color: #fff;
 
 	// nth-child for Win/IE grid
 	@include grid-override('edge') {		
@@ -46,21 +56,23 @@
 .movie-product__img {
 	max-width: 100%;
 	height: 180px;		
-	margin-top: 10px;
+	margin: 20px 0;
 }
 
 .movie-product__heading {
-	margin: 10px 0 10px 10px;
+	margin: 20px 0 10px 10px;
 
 	a {
-		font-size: 16px;
+		font-family: 'Raleway', sans-serif;
+		font-weight: 400;
+		font-size: 24px;
 		color: deeppink;
 		text-decoration: none;
 		-webkit-transition: color .3s;
 		transition: color .3s;
 
 		&:hover {
-			color: map-get($color, 03);
+			color: map-get($color, 01);
 		}
 	}
 }
@@ -68,7 +80,9 @@
 .movie-product__description {
 	@include flex(1, 0, auto);
 	margin: 0 10px;
-	font-size: 14px;
+	font-size: 12px;
+	font-family: 'Raleway', sans-serif;
+	font-size: 18px;
 }
 
 .movie-product__genre {
@@ -78,14 +92,14 @@
 	margin: 10px 0;
 	padding: 5px 10px;
 	color: white;
+	font-family: 'Raleway', sans-serif;
+	font-weight: 400;
 	font-size: 14px;
 	border-radius: 0 0 10px 0;
-	background: map-get($color, 03);
-	-webkit-transition: background-color .3s;
-	transition: background-color .3s;
+	background: map-get($color, 01);
 
 	&:hover {
-		background-color: map-get($color, 01);		
+		background-color: map-get($color, 02);		
 	}
 
 	a {
@@ -99,20 +113,28 @@
 }
 
 .movie-product__director {
+	font-family: 'Raleway', sans-serif;
+	font-weight: 700;
 	font-size: 14px;
-	margin: 10px 10px;
+	margin: 30px 10px;
 }
 
 .movie-product__actors {
+	font-family: 'Raleway', sans-serif;
 	margin: 0 10px;
 	font-size: 14px;
 }
 
 .movie-product__price {
 	margin: 15px;
+	text-align: center;
 	color: map-get($color, 02);
-	font-size: 24px;
-	font-weight: 700;
+
+	strong {
+		font-family: 'Raleway', sans-serif;
+		font-weight: 400;
+		font-size: 28px;		
+	}
 }
 
 .movie-product__cta {
@@ -120,16 +142,15 @@
 	padding: 5px 10px;
 	border: 0;
 	border-radius: 8px;
+	font-family: 'Raleway', sans-serif;
+	font-weight: 400;
 	font-size: 18px;
 	outline: none;
-	color: #000;
+	color: #fff;
 	cursor: pointer;
-	background-color: #ccc;
-	-webkit-transition: background-color .3s, color .3s;
-	transition: background-color .3s, color .3s;
+	background-color: map-get($color, 01);
 
 	&:hover {
-		color: #fff;
-		background-color: map-get($color, 01);
+		background-color: map-get($color, 02);
 	}
 }

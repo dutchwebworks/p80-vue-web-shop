@@ -84,7 +84,8 @@ Vue.component("app-genre", {
 	data: function() {
 		return {
 			genres: [],
-			selected: ''
+			selected: '',
+			isActiveClass: 'is-active'
 		}
 	},
 	created: function() {
@@ -204,7 +205,7 @@ Vue.component("app-cart", {
 	methods: {
 		addToCart: function(item) {
 			this.cartItems.push(item);
-			this.total += parseInt(item.price);
+			this.total += item.price;
 		},
 		removeFromCart: function(event, item, key) {
 			this.total -= parseInt(item.price);
@@ -328,4 +329,13 @@ new Vue({
 
 Vue.filter("capitalizeFirstLetter", function(string){
 	return string.charAt(0).toUpperCase() + string.slice(1);
+});
+
+Vue.filter("formatPrice", function(string){
+	var price = string;
+
+	if(string % 1 === 0) {
+		price = string + ",-";
+	}
+	return price;
 });
