@@ -27,6 +27,7 @@
 	list-style: none;
 	font-family: 'Raleway', sans-serif;
 	font-size: 18px;
+	font-weight: 400;
 
 	span:nth-child(2){
 		text-align: right;
@@ -77,7 +78,7 @@
 }
 
 .cart__total {
-	border-top: 1px solid #000;
+	border-top: 1px solid #444;
 	padding-top: 10px;
 	text-align: right;
 	padding-right: 30px;

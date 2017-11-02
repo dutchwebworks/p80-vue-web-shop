@@ -16,7 +16,7 @@
 .movie-product__list {
 	@include display-grid;
 	@include grid-template-columns(minmax(150px, 1fr), 4);
-	grid-gap: 20px;
+	grid-gap: 10px;
 }
 
 .movie-product__item {
@@ -25,7 +25,7 @@
 	@include flex-direction(column);
 	height: 100%;
 	box-sizing: border-box;
-	padding: 0px;
+	padding: 5px;
 	overflow: hidden;
 	font-family: sans-serif;
 	border-radius: 8px;

@@ -1,6 +1,13 @@
 .intro {
-	@include grid-row(1);
+	@include grid-row(1);	
+}
+
+.intro--shop {
 	@include grid-column(1, 3);
+}
+
+.intro--checkout {
+	@include grid-column(1, 4);
 }
 
 .intro__title {

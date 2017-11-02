@@ -1,9 +1,19 @@
 .user-info {
+	box-sizing: border-box;
+	height: 100%;
 	margin: 0 0 20px 0;
 	font-family: 'Raleway', sans-serif;
+	padding: 20px;
+	border-radius: 10px;
+	background-color: #eee;
+}
+
+.user-info--checkout {
+	@include grid-column(2);
 }
 
 .user-info__title {
+	margin-top: 0;
 	color: map-get($color, 01);
 	font-size: 32px;
 	font-weight: 400;
@@ -13,6 +23,12 @@
 	color: map-get($color, 02);
 	font-weight: 400;
 	font-size: 18px;
+}
+
+.user-info__option-list {
+	li + li {
+		margin-top: 10px;
+	}
 }
 
 .user-info__row {
@@ -63,7 +79,7 @@
 	border: 0;
 	border-radius: 8px;
 	font-size: 18px;
-	color: #000;
+	color: #fff;
 	cursor: pointer;
 	outline: none;
 	font-family: 'Raleway', sans-serif;

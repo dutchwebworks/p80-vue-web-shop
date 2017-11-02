@@ -1,0 +1,67 @@
+.checkout__cart {
+	@include grid-column(3);
+	box-sizing: border-box;
+	height: 100%;
+	padding: 20px;
+	border-radius: 10px;
+	background-color: #eee;
+}
+
+.checkout__title {
+	margin-top: 0;
+	color: map-get($color, 01);
+	font-family: 'Raleway', sans-serif;
+	font-size: 32px;
+	font-weight: 400;
+}
+
+.checkout__items {
+	margin: 0;
+	padding: 0;
+
+	li {
+		@include flexbox;
+		@include justify-content(space-between);
+		margin: 0 0 10px 0;
+		list-style: none;
+		font-family: 'Raleway', sans-serif;
+		font-size: 18px;
+		font-weight: 400;
+	}
+}
+
+.checkout__total {
+	border-top: 1px solid #444;
+	padding-top: 10px;
+	text-align: right;
+	padding-right: 30px;
+	font-family: 'Raleway', sans-serif;
+	font-weight: 700;
+	font-size: 24px;
+}
+
+.checkout__button {
+	padding: 5px 10px;
+	border: 0;
+	border-radius: 8px;
+	font-size: 18px;
+	color: #fff;
+	cursor: pointer;
+	outline: none;
+	font-family: 'Raleway', sans-serif;
+	font-weight: 400;
+	font-size: 18px;
+	background-color: map-get($color, 01);
+
+	&.is-cta,
+	&:hover {
+		background-color: map-get($color, 02);
+		color: #fff;
+	}
+
+	&.is-cta {
+		&:hover {
+			background-color: deeppink;
+		}
+	}
+}
