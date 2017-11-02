@@ -2,10 +2,10 @@
 	box-sizing: border-box;
 	height: 100%;
 	margin: 0 0 20px 0;
-	font-family: 'Raleway', sans-serif;
+	font-family: map-get($fonts, custom);
 	padding: 20px;
 	border-radius: 10px;
-	background-color: #eee;
+	background-color: map-get($color, 05);
 }
 
 .user-info--checkout {
@@ -64,7 +64,7 @@
 		padding: 10px;
 		border: 1px solid #ddd;
 		border-radius: 10px;
-		font-family: 'Raleway', sans-serif;
+		font-family: map-get($fonts, custom);
 		font-size: 16px;
 		min-width: 250px;
 	}
@@ -79,10 +79,10 @@
 	border: 0;
 	border-radius: 8px;
 	font-size: 18px;
-	color: #fff;
+	color: map-get($color, 06);
 	cursor: pointer;
 	outline: none;
-	font-family: 'Raleway', sans-serif;
+	font-family: map-get($fonts, custom);
 	font-weight: 400;
 	font-size: 18px;
 	background-color: map-get($color, 01);
@@ -94,7 +94,7 @@
 
 	&.is-cta,
 	&:hover {
-		color: #fff;
+		color: map-get($color, 06);
 		background-color: map-get($color, 02);
 	}
 
@@ -102,7 +102,7 @@
 		&:hover {
 			color: map-get($color, 02);
 			border-color: map-get($color, 01);
-			background-color: #fff;		
+			background-color: map-get($color, 06);		
 		}
 	}
 }

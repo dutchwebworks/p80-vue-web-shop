@@ -4,12 +4,12 @@
 	font-family: sans-serif;
 	padding: 20px;
 	border-radius: 10px;
-	background-color: #eee;
+	background-color: map-get($color, 05);
 }
 
 .cart-shop__title {
 	margin-top: 0;
-	font-family: 'Raleway', sans-serif;
+	font-family: map-get($fonts, custom);
 	font-weight: 400;
 	font-size: 28px;
 }
@@ -25,12 +25,13 @@
 	grid-gap: 10px;
 	margin: 0 0 10px 0;
 	list-style: none;
-	font-family: 'Raleway', sans-serif;
+	font-family: map-get($fonts, custom);
 	font-size: 18px;
 	font-weight: 400;
 
 	span:nth-child(2){
 		text-align: right;
+		font-family: map-get($fonts, normal);
 	}
 
 	@include grid-override('edge') {
@@ -50,6 +51,7 @@
 
 	*:nth-child(3) {
 		text-align: right;
+		font-family: map-get($fonts, normal);
 	}
 
 	a {
@@ -59,11 +61,9 @@
 		font-size: 32px;
 		font-weight: 700;
 		color: map-get($color, 04);
-		-webkit-transition: color .3s;
-		transition: color .3s;
 
 		&:hover {
-			color: #000;
+			color: map-get($color, 03);
 		}
 	}
 
@@ -78,11 +78,11 @@
 }
 
 .cart-shop__total {
-	border-top: 1px solid #444;
+	border-top: 1px solid map-get($color, 03);
 	padding-top: 10px;
 	text-align: right;
 	padding-right: 30px;
-	font-family: 'Raleway', sans-serif;
+	font-family: map-get($fonts, normal);
 	font-weight: 700;
 	font-size: 24px;
 }
@@ -96,17 +96,17 @@
 		border: 0;
 		border-radius: 8px;
 		font-size: 18px;
-		color: #fff;
+		color: map-get($color, 06);
 		cursor: pointer;
 		outline: none;
-		font-family: 'Raleway', sans-serif;
+		font-family: map-get($fonts, custom);
 		font-weight: 400;
 		font-size: 18px;
 		background-color: map-get($color, 01);
 
 		&.is-cta,
 		&:hover {
-			color: #fff;
+			color: map-get($color, 06);
 			background-color: map-get($color, 02);
 		}
 
@@ -114,7 +114,7 @@
 			&:hover {
 				color: map-get($color, 02);
 				border-color: map-get($color, 01);
-				background-color: #fff;		
+				background-color: map-get($color, 06);		
 			}
 		}
 	}

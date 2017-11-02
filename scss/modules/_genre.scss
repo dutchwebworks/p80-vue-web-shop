@@ -4,12 +4,12 @@
 	font-family: sans-serif;
 	padding: 20px;
 	border-radius: 10px;
-	background-color: #eee;
+	background-color: map-get($color, 05);
 }
 
 .genre__title {
 	margin-top: 0;
-	font-family: 'Raleway', sans-serif;
+	font-family: map-get($fonts, custom);
 	font-weight: 400;
 	font-size: 28px;
 }
@@ -17,7 +17,7 @@
 .genre__item {
 	display: block;
 	margin-bottom: 5px;
-	font-family: 'Raleway', sans-serif;
+	font-family: map-get($fonts, custom);
 	font-weight: 400;
 	font-size: 22px;
 	cursor: pointer;

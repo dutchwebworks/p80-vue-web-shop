@@ -5,6 +5,17 @@
 $color: (
 	01: deepskyblue,
 	02: deeppink,
-	03: #017bab,
-	04: crimson
+	03: #444,
+	04: crimson,
+	05: #eee,
+	06: #fff
+);
+
+// ---------------------------------------------
+// Fonts
+// ---------------------------------------------
+
+$fonts: (
+	custom: Raleway + ', sans-serif',
+	normal: Helvetica + ', sans-serif',
 );

@@ -20,7 +20,7 @@
 		border-radius: 8px;
 		text-align: center;
 		text-decoration: none;
-		color: #000;
+		color: map-get($color, 03);
 		font-size: 16px;
 		font-family: sans-serif;
 		background-color: #ccc;
@@ -29,19 +29,19 @@
 	&:hover,
 	&.is-active {
 		a {
-			color: #fff;
+			color: map-get($color, 06);
 			background-color: map-get($color, 01);
 		}
 	}
 
 	&.is-inactive {
-		opacity: .3;
+		opacity: .5;
 
 		a {
 			cursor: default;
 
 			&:hover {
-				color: #000;
+				color: map-get($color, 03);
 				background-color: #ccc;
 			}
 		}

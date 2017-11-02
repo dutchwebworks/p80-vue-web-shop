@@ -12,7 +12,7 @@
 
 .heading__title {
 	color: map-get($color, 01);
-	font-family: 'Raleway', sans-serif;
+	font-family: map-get($fonts, custom);
 	font-weight: 400;
 	font-size: 48px;
 	text-align: center;

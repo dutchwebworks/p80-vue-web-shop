@@ -41,7 +41,7 @@
 
 .ajax-data__title {
   margin-top: 0;
-  font-family: 'Raleway', sans-serif;
+  font-family: Raleway, sans-serif;
   font-weight: 400;
   font-size: 32px;
   color: #444;
@@ -60,7 +60,7 @@
 .cart-checkout__title {
   margin-top: 0;
   color: deepskyblue;
-  font-family: 'Raleway', sans-serif;
+  font-family: Raleway, sans-serif;
   font-size: 32px;
   font-weight: 400;
 }
@@ -83,7 +83,7 @@
   justify-content: space-between;
   margin: 0 0 10px 0;
   list-style: none;
-  font-family: 'Raleway', sans-serif;
+  font-family: Raleway, sans-serif;
   font-size: 18px;
   font-weight: 400;
 }
@@ -93,7 +93,7 @@
   padding-top: 10px;
   text-align: right;
   padding-right: 30px;
-  font-family: 'Raleway', sans-serif;
+  font-family: Raleway, sans-serif;
   font-weight: 700;
   font-size: 24px;
 }
@@ -106,7 +106,7 @@
   color: #fff;
   cursor: pointer;
   outline: none;
-  font-family: 'Raleway', sans-serif;
+  font-family: Raleway, sans-serif;
   font-weight: 400;
   font-size: 18px;
   background-color: deepskyblue;
@@ -134,7 +134,7 @@
 
 .cart-shop__title {
   margin-top: 0;
-  font-family: 'Raleway', sans-serif;
+  font-family: Raleway, sans-serif;
   font-weight: 400;
   font-size: 28px;
 }
@@ -152,13 +152,14 @@
   grid-gap: 10px;
   margin: 0 0 10px 0;
   list-style: none;
-  font-family: 'Raleway', sans-serif;
+  font-family: Raleway, sans-serif;
   font-size: 18px;
   font-weight: 400;
 }
 
 .cart-shop__items-item span:nth-child(2) {
   text-align: right;
+  font-family: Helvetica, sans-serif;
 }
 
 @supports (display: -ms-grid) {
@@ -177,6 +178,7 @@
 
 .cart-shop__items-item *:nth-child(3) {
   text-align: right;
+  font-family: Helvetica, sans-serif;
 }
 
 .cart-shop__items-item a {
@@ -186,12 +188,10 @@
   font-size: 32px;
   font-weight: 700;
   color: crimson;
-  -webkit-transition: color .3s;
-  transition: color .3s;
 }
 
 .cart-shop__items-item a:hover {
-  color: #000;
+  color: #444;
 }
 
 .cart-shop__items-item.list-item-enter {
@@ -208,7 +208,7 @@
   padding-top: 10px;
   text-align: right;
   padding-right: 30px;
-  font-family: 'Raleway', sans-serif;
+  font-family: Helvetica, sans-serif;
   font-weight: 700;
   font-size: 24px;
 }
@@ -234,7 +234,7 @@
   color: #fff;
   cursor: pointer;
   outline: none;
-  font-family: 'Raleway', sans-serif;
+  font-family: Raleway, sans-serif;
   font-weight: 400;
   font-size: 18px;
   background-color: deepskyblue;
@@ -252,7 +252,7 @@
 }
 
 .footer {
-  font-family: 'Raleway', sans-serif;
+  font-family: Raleway, sans-serif;
   font-size: 22px;
   color: #ccc;
   padding: 20px 0;
@@ -288,7 +288,7 @@
 
 .genre__title {
   margin-top: 0;
-  font-family: 'Raleway', sans-serif;
+  font-family: Raleway, sans-serif;
   font-weight: 400;
   font-size: 28px;
 }
@@ -296,7 +296,7 @@
 .genre__item {
   display: block;
   margin-bottom: 5px;
-  font-family: 'Raleway', sans-serif;
+  font-family: Raleway, sans-serif;
   font-weight: 400;
   font-size: 22px;
   cursor: pointer;
@@ -333,7 +333,7 @@
 
 .heading__title {
   color: deepskyblue;
-  font-family: 'Raleway', sans-serif;
+  font-family: Raleway, sans-serif;
   font-weight: 400;
   font-size: 48px;
   text-align: center;
@@ -357,7 +357,7 @@
 
 .movie-product__title {
   margin-top: 0px;
-  font-family: 'Raleway', sans-serif;
+  font-family: Raleway, sans-serif;
   font-weight: 400;
   font-size: 32px;
 }
@@ -427,7 +427,7 @@
 }
 
 .movie-product__heading a {
-  font-family: 'Raleway', sans-serif;
+  font-family: Raleway, sans-serif;
   font-weight: 400;
   font-size: 24px;
   color: deeppink;
@@ -449,7 +449,7 @@
   flex: 1 0 auto;
   margin: 0 10px;
   font-size: 12px;
-  font-family: 'Raleway', sans-serif;
+  font-family: Raleway, sans-serif;
   font-size: 18px;
 }
 
@@ -460,7 +460,7 @@
   margin: 10px 0;
   padding: 5px 10px;
   color: white;
-  font-family: 'Raleway', sans-serif;
+  font-family: Raleway, sans-serif;
   font-weight: 400;
   font-size: 14px;
   border-radius: 0 0 10px 0;
@@ -481,14 +481,14 @@
 }
 
 .movie-product__director {
-  font-family: 'Raleway', sans-serif;
+  font-family: Raleway, sans-serif;
   font-weight: 700;
   font-size: 14px;
   margin: 30px 10px;
 }
 
 .movie-product__actors {
-  font-family: 'Raleway', sans-serif;
+  font-family: Raleway, sans-serif;
   margin: 0 10px;
   font-size: 14px;
 }
@@ -500,7 +500,7 @@
 }
 
 .movie-product__price strong {
-  font-family: 'Raleway', sans-serif;
+  font-family: Helvetica, sans-serif;
   font-weight: 400;
   font-size: 28px;
 }
@@ -510,7 +510,7 @@
   padding: 5px 10px;
   border: 0;
   border-radius: 8px;
-  font-family: 'Raleway', sans-serif;
+  font-family: Raleway, sans-serif;
   font-weight: 400;
   font-size: 18px;
   outline: none;
@@ -556,7 +556,7 @@
   border-radius: 8px;
   text-align: center;
   text-decoration: none;
-  color: #000;
+  color: #444;
   font-size: 16px;
   font-family: sans-serif;
   background-color: #ccc;
@@ -568,7 +568,7 @@
 }
 
 .pagination__item.is-inactive {
-  opacity: .3;
+  opacity: .5;
 }
 
 .pagination__item.is-inactive a {
@@ -576,7 +576,7 @@
 }
 
 .pagination__item.is-inactive a:hover {
-  color: #000;
+  color: #444;
   background-color: #ccc;
 }
 
@@ -593,7 +593,7 @@
   box-sizing: border-box;
   height: 100%;
   margin: 0 0 20px 0;
-  font-family: 'Raleway', sans-serif;
+  font-family: Raleway, sans-serif;
   padding: 20px;
   border-radius: 10px;
   background-color: #eee;
@@ -655,7 +655,7 @@
   padding: 10px;
   border: 1px solid #ddd;
   border-radius: 10px;
-  font-family: 'Raleway', sans-serif;
+  font-family: Raleway, sans-serif;
   font-size: 16px;
   min-width: 250px;
 }
@@ -672,7 +672,7 @@
   color: #fff;
   cursor: pointer;
   outline: none;
-  font-family: 'Raleway', sans-serif;
+  font-family: Raleway, sans-serif;
   font-weight: 400;
   font-size: 18px;
   background-color: deepskyblue;

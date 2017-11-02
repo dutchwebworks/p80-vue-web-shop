@@ -4,13 +4,13 @@
 	height: 100%;
 	padding: 20px;
 	border-radius: 10px;
-	background-color: #eee;
+	background-color: map-get($color, 05);
 }
 
 .cart-checkout__title {
 	margin-top: 0;
 	color: map-get($color, 01);
-	font-family: 'Raleway', sans-serif;
+	font-family: map-get($fonts, custom);
 	font-size: 32px;
 	font-weight: 400;
 }
@@ -24,18 +24,18 @@
 		@include justify-content(space-between);
 		margin: 0 0 10px 0;
 		list-style: none;
-		font-family: 'Raleway', sans-serif;
+		font-family: map-get($fonts, custom);
 		font-size: 18px;
 		font-weight: 400;
 	}
 }
 
 .cart-checkout__total {
-	border-top: 1px solid #444;
+	border-top: 1px solid map-get($color, 03);
 	padding-top: 10px;
 	text-align: right;
 	padding-right: 30px;
-	font-family: 'Raleway', sans-serif;
+	font-family: map-get($fonts, custom);
 	font-weight: 700;
 	font-size: 24px;
 }
@@ -45,10 +45,10 @@
 	border: 0;
 	border-radius: 8px;
 	font-size: 18px;
-	color: #fff;
+	color: map-get($color, 06);
 	cursor: pointer;
 	outline: none;
-	font-family: 'Raleway', sans-serif;
+	font-family: map-get($fonts, custom);
 	font-weight: 400;
 	font-size: 18px;
 	background-color: map-get($color, 01);
@@ -56,7 +56,7 @@
 	&.is-cta,
 	&:hover {
 		background-color: map-get($color, 02);
-		color: #fff;
+		color: map-get($color, 06);
 	}
 
 	&.is-cta {

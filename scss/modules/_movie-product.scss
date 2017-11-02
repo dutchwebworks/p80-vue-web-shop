@@ -3,12 +3,12 @@
 	height: 100%;
 	padding: 20px;
 	border-radius: 10px;
-	background-color: #eee;
+	background-color: map-get($color, 05);
 }
 
 .movie-product__title {
 	margin-top: 0px;
-	font-family: 'Raleway', sans-serif;
+	font-family: map-get($fonts, custom);
 	font-weight: 400;
 	font-size: 32px;
 }
@@ -30,7 +30,7 @@
 	font-family: sans-serif;
 	border-radius: 8px;
 	border: 1px solid map-get($color, 01);
-	background-color: #fff;
+	background-color: map-get($color, 06);
 
 	// nth-child for Win/IE grid
 	@include grid-override('edge') {		
@@ -63,10 +63,10 @@
 	margin: 20px 0 10px 10px;
 
 	a {
-		font-family: 'Raleway', sans-serif;
+		font-family: map-get($fonts, custom);
 		font-weight: 400;
 		font-size: 24px;
-		color: deeppink;
+		color: map-get($color, 02);
 		text-decoration: none;
 		-webkit-transition: color .3s;
 		transition: color .3s;
@@ -81,7 +81,7 @@
 	@include flex(1, 0, auto);
 	margin: 0 10px;
 	font-size: 12px;
-	font-family: 'Raleway', sans-serif;
+	font-family: map-get($fonts, custom);
 	font-size: 18px;
 }
 
@@ -92,7 +92,7 @@
 	margin: 10px 0;
 	padding: 5px 10px;
 	color: white;
-	font-family: 'Raleway', sans-serif;
+	font-family: map-get($fonts, custom);
 	font-weight: 400;
 	font-size: 14px;
 	border-radius: 0 0 10px 0;
@@ -113,14 +113,14 @@
 }
 
 .movie-product__director {
-	font-family: 'Raleway', sans-serif;
+	font-family: map-get($fonts, custom);
 	font-weight: 700;
 	font-size: 14px;
 	margin: 30px 10px;
 }
 
 .movie-product__actors {
-	font-family: 'Raleway', sans-serif;
+	font-family: map-get($fonts, custom);
 	margin: 0 10px;
 	font-size: 14px;
 }
@@ -131,7 +131,7 @@
 	color: map-get($color, 02);
 
 	strong {
-		font-family: 'Raleway', sans-serif;
+		font-family: map-get($fonts, normal);
 		font-weight: 400;
 		font-size: 28px;		
 	}
@@ -142,11 +142,11 @@
 	padding: 5px 10px;
 	border: 0;
 	border-radius: 8px;
-	font-family: 'Raleway', sans-serif;
+	font-family: map-get($fonts, custom);
 	font-weight: 400;
 	font-size: 18px;
 	outline: none;
-	color: #fff;
+	color: map-get($color, 06);
 	cursor: pointer;
 	background-color: map-get($color, 01);
 
