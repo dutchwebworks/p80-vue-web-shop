@@ -1,9 +1,13 @@
 .footer {
 	padding: 20px 0;
 	text-align: center;
-	color: #ccc;
+	color: map-get($color, 03);
 	font-size: 22px;
 	font-family: map-get($fonts, custom);
+
+	p {
+		margin: 0;
+	}
 }
 
 .footer--shop {
