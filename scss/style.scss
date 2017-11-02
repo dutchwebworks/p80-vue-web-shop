@@ -13,8 +13,8 @@
 // ---------------------------------------------
 
 @import
-	"layout/movie-container",
 	"layout/wrapper-checkout",
+	"layout/wrapper-movies",
 	"layout/wrapper-shop";
 
 // ---------------------------------------------
@@ -22,14 +22,13 @@
 // ---------------------------------------------
 
 @import
-	"modules/cart",
-	"modules/checkout",
+	"modules/ajax-data",
+	"modules/cart-checkout",
+	"modules/cart-shop",
 	"modules/footer",
 	"modules/genre",
-	"modules/header",
-	"modules/intro",
+	"modules/heading",
 	"modules/loading",
 	"modules/movie-product",
 	"modules/pagination",
-	"modules/user-data",
 	"modules/user-info";

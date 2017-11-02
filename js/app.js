@@ -306,12 +306,16 @@ Vue.component("app-checkout", {
 	}
 });
 
+Vue.component("app-footer", {
+	template: "#vue-app-footer"
+});
+
 // ---------------------------------------------
 // Main instance
 // ---------------------------------------------
 
 new Vue({
-	el: "#app",
+	el: "#vue-app",
 	data: {
 		selectedComponent: "app-shop",
 	},
@@ -329,13 +333,4 @@ new Vue({
 
 Vue.filter("capitalizeFirstLetter", function(string){
 	return string.charAt(0).toUpperCase() + string.slice(1);
-});
-
-Vue.filter("formatPrice", function(string){
-	var price = string;
-
-	if(string % 1 === 0) {
-		price = string + ",-";
-	}
-	return price;
 });

@@ -1,7 +1,7 @@
 .pagination {
-	margin-top: 40px;
 	@include grid-row(3);
 	@include grid-column(2);
+	margin-top: 40px;
 }
 
 .pagination__list {
@@ -20,29 +20,29 @@
 		border-radius: 8px;
 		text-align: center;
 		text-decoration: none;
-		color: #000;
+		color: map-get($color, 03);
 		font-size: 16px;
 		font-family: sans-serif;
-		background-color: #ccc;
+		background-color: map-get($color, 05);
 	}
 
 	&:hover,
 	&.is-active {
 		a {
-			color: #fff;
+			color: map-get($color, 06);
 			background-color: map-get($color, 01);
 		}
 	}
 
 	&.is-inactive {
-		opacity: .3;
+		opacity: .5;
 
 		a {
 			cursor: default;
 
 			&:hover {
-				color: #000;
-				background-color: #ccc;
+				color: map-get($color, 03);
+				background-color: map-get($color, 05);
 			}
 		}
 	}
