@@ -12,7 +12,7 @@
     "scss"
   ],
   "author": "dennisburger <dennis@dutchwebworks.nl>",
-  "license": "ISC",
+  "license": "MIT",
   "devDependencies": {
     "grunt": "^1.0.1",
     "grunt-browser-sync": "^2.2.0",
