@@ -1,4 +1,4 @@
-.checkout__cart {
+.cart-checkout {
 	@include grid-column(3);
 	box-sizing: border-box;
 	height: 100%;
@@ -7,7 +7,7 @@
 	background-color: #eee;
 }
 
-.checkout__title {
+.cart-checkout__title {
 	margin-top: 0;
 	color: map-get($color, 01);
 	font-family: 'Raleway', sans-serif;
@@ -15,7 +15,7 @@
 	font-weight: 400;
 }
 
-.checkout__items {
+.cart-checkout__items {
 	margin: 0;
 	padding: 0;
 
@@ -30,7 +30,7 @@
 	}
 }
 
-.checkout__total {
+.cart-checkout__total {
 	border-top: 1px solid #444;
 	padding-top: 10px;
 	text-align: right;
@@ -40,7 +40,7 @@
 	font-size: 24px;
 }
 
-.checkout__button {
+.cart-checkout__button {
 	padding: 5px 10px;
 	border: 0;
 	border-radius: 8px;

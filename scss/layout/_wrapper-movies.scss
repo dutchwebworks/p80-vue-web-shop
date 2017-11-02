@@ -1,0 +1,4 @@
+.wrapper-movies {
+	@include grid-row(2);
+	@include grid-column(2);
+}

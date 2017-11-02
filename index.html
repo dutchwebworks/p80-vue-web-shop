@@ -22,13 +22,13 @@
 
 	<script type="text/x-template" id="vue-app-shop">
 		<section class="wrapper-shop">
-			<div class="intro intro--shop">
-				<h1 class="intro__title">Vue Web Shop</h1>
+			<div class="heading heading--shop">
+				<h1 class="heading__title">Vue Web Shop</h1>
 			</div>
 
 			<app-genre v-bind:total="movies.length"></app-genre>
 
-			<div class="movie-container">
+			<div class="wrapper-movies">
 				<app-movie-products v-bind:filtered-movies="filteredMovies"></app-movie-products>
 			</div>
 
@@ -36,7 +36,7 @@
 
 			<app-pagination v-bind:pagination="pagination"></app-pagination>
 
-			<footer class="footer">Vue demo JavaScript project, by Dennis Burger, oct. / nov. 2017</footer>
+			<footer class="footer footer--shop">Vue demo JavaScript project, by Dennis Burger, oct. / nov. 2017</footer>	
 		</section>		
 	</script>
 
@@ -57,9 +57,9 @@
 	<script type="text/x-template" id="vue-app-pagination">
 		<section class="pagination" v-show="pagination.pages > 1">
 			<ul class="pagination__list">
-				<li class="pagination__item" v-bind:class="{ 'is-inactive' : pagination.currentPage == 0 }"><a href="#" v-on:click.prevent="prevPage">Previous</a></li>
-				<li class="pagination__item" v-for="(page, index) in pagination.pages" v-bind:class="{ 'is-active' : (pagination.currentPage == index) }"><a href="#" v-on:click.prevent="paginatedMovies(index)">{{ page }}</a></li>
-				<li class="pagination__item" v-bind:class="{ 'is-inactive' : pagination.currentPage == (pagination.pages -1) }"><a href="#" v-on:click.prevent="nextPage">Next</a></li>
+				<li class="pagination__item" v-bind:class="{ 'is-inactive' : pagination.currentPage == 0 }"><a href="javascript:;" v-on:click.prevent="prevPage">Previous</a></li>
+				<li class="pagination__item" v-for="(page, index) in pagination.pages" v-bind:class="{ 'is-active' : (pagination.currentPage == index) }"><a href="javascript:;" v-on:click.prevent="paginatedMovies(index)">{{ page }}</a></li>
+				<li class="pagination__item" v-bind:class="{ 'is-inactive' : pagination.currentPage == (pagination.pages -1) }"><a href="javascript:;" v-on:click.prevent="nextPage">Next</a></li>
 			</ul>
 		</section>
 	</script>
@@ -70,7 +70,7 @@
 
 			<div class="movie-product__list">
 				<div class="movie-product__item" v-for="movie in filteredMovies">
-					<a href="#" v-bind:href="movie.imdbLink" class="movie-product__link" target="_blank" title="Open IMDB page">
+					<a href="javascript:;" v-bind:href="movie.imdbLink" class="movie-product__link" target="_blank" title="Open IMDB page">
 						<img v-bind:src="movie.imgThumb" class="movie-product__img" v-bind:alt="movie.title">
 					</a>
 
@@ -80,7 +80,7 @@
 
 					<p class="movie-product__description">{{ movie.description }}</p>
 
-					<p class="movie-product__genre"><a href="#" v-on:click="filterMovieList(movie.genre)" v-bind:title="'Filter by ' + movie.genre | capitalizeFirstLetter">{{ movie.genre | capitalizeFirstLetter }}</a></p>
+					<p class="movie-product__genre"><a href="javascript:;" v-on:click.prevent="filterMovieList(movie.genre)" v-bind:title="'Filter by ' + movie.genre | capitalizeFirstLetter">{{ movie.genre | capitalizeFirstLetter }}</a></p>
 
 					<p class="movie-product__director">Director: {{ movie.director }}</p>
 
@@ -97,32 +97,32 @@
 	</script>
 
 	<script type="text/x-template" id="vue-app-cart">
-		<section class="cart">
-			<h3 class="cart__title">Shopping cart: {{ cartItems.length }} items</h3>
+		<section class="cart-shop">
+			<h3 class="cart-shop__title">Shopping cart: {{ cartItems.length }} items</h3>
 
-			<transition-group name="list-item" tag="ul" class="cart__items">
-				<li class="cart__items-item" v-for="(value, key, index) in cartItems" :key="key"><span>{{ value.title }}</span> <span>&euro;{{ value.price | formatPrice }}</span> <a href="#" v-on:click.prevent="removeFromCart($event, value, key)">&times;</a></li>
+			<transition-group name="list-item" tag="ul" class="cart-shop__items">
+				<li class="cart-shop__items-item" v-for="(value, key, index) in cartItems" :key="key"><span>{{ value.title }}</span> <span>&euro;{{ value.price | formatPrice }}</span> <a href="javascript:;" v-on:click.prevent="removeFromCart($event, value, key)">&times;</a></li>
 			</transition-group>
 
-			<p class="cart__total" v-show="total > 0">Total: &euro;{{ total | formatPrice }}</p>
+			<p class="cart-shop__total" v-show="total > 0">Total: &euro;{{ total | formatPrice }}</p>
 
-			<div class="cart__cta-buttons">
+			<div class="cart-shop__cta-buttons">
 				<button v-on:click.prevent="emptyCart" v-show="total > 0">Empty cart</button>
-				<button class="cart__checkout is-cta" v-on:click.prevent="checkout" v-show="total > 0">Checkout</button>
+				<button class="cart-shop__checkout is-cta" v-on:click.prevent="checkout" v-show="total > 0">Checkout</button>
 			</div>
 		</section>
 	</script>
 
 	<script type="text/x-template" id="vue-app-checkout">
 		<section class="wrapper-checkout">
-			<div class="intro intro--checkout">
-				<h1 class="intro__title">Checkout</h1>
+			<div class="heading heading--checkout">
+				<h1 class="heading__title">Checkout</h1>
 			</div>
 
 			<div class="user-info user-info--checkout">
 				<h3 class="user-info__title">User information</h3>
 
-				<form>
+				<form action="/" method="post">
 					<p class="user-info__row">
 						<label class="user-info__item">
 							Firstname
@@ -193,26 +193,28 @@
 				</form>				
 			</div>	
 
-			<div class="checkout__cart">
-				<h3 class="checkout__title">Cart items</h3>
+			<div class="cart-checkout">
+				<h3 class="cart-checkout__title">Cart items</h3>
 
-				<ul class="checkout__items">
+				<ul class="cart-checkout__items">
 					<li v-for="item in cartItems"><span>{{ item.title }}</span> <span>&euro;{{ item.price }}</span></a></li>
 				</ul>
 
-				<p class="checkout__total">
+				<p class="cart-checkout__total">
 					Total: &euro; {{ userData.total }}
 				</p>
 
 				<p v-show="!showJson">
-					<button v-on:click="backToShop" class="checkout__button">Back to the shop</button>
+					<button v-on:click="backToShop" class="cart-checkout__button">Back to the shop</button>
 				</p>	
 			</div>
 
-			<div class="user-data" v-show="showJson">
-				<h3 class="user-data__title">Ajax call send</h3>		
+			<div class="ajax-data" v-show="showJson">
+				<h3 class="ajax-data__title">Ajax call send</h3>		
 				<code>{{ userData }}</code>
 			</div>
+
+			<footer class="footer footer--checkout">Vue demo JavaScript project, by Dennis Burger, oct. / nov. 2017</footer>
 		</section>
 	</script>
 
