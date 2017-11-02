@@ -87,15 +87,22 @@
 	font-size: 18px;
 	background-color: map-get($color, 01);
 
+	&[disabled="disabled"] {
+		opacity: .5;
+		cursor: default;
+	}
+
 	&.is-cta,
 	&:hover {
-		background-color: map-get($color, 02);
 		color: #fff;
+		background-color: map-get($color, 02);
 	}
 
 	&.is-cta {
 		&:hover {
-			background-color: deeppink;
+			color: map-get($color, 02);
+			border-color: map-get($color, 01);
+			background-color: #fff;		
 		}
 	}
 }

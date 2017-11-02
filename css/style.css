@@ -241,12 +241,14 @@
 }
 
 .cart-shop__cta-buttons button.is-cta, .cart-shop__cta-buttons button:hover {
-  background-color: deeppink;
   color: #fff;
+  background-color: deeppink;
 }
 
 .cart-shop__cta-buttons button.is-cta:hover {
-  background-color: deeppink;
+  color: deeppink;
+  border-color: deepskyblue;
+  background-color: #fff;
 }
 
 .footer {
@@ -676,13 +678,20 @@
   background-color: deepskyblue;
 }
 
+.user-info__submit[disabled="disabled"] {
+  opacity: .5;
+  cursor: default;
+}
+
 .user-info__submit.is-cta, .user-info__submit:hover {
-  background-color: deeppink;
   color: #fff;
+  background-color: deeppink;
 }
 
 .user-info__submit.is-cta:hover {
-  background-color: deeppink;
+  color: deeppink;
+  border-color: deepskyblue;
+  background-color: #fff;
 }
 
 /*# sourceMappingURL=style.css.map */
