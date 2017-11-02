@@ -2,9 +2,9 @@
 	box-sizing: border-box;
 	height: 100%;
 	margin: 0 0 20px 0;
-	font-family: map-get($fonts, custom);
 	padding: 20px;
 	border-radius: 10px;
+	font-family: map-get($fonts, custom);
 	background-color: map-get($color, 05);
 }
 
@@ -60,13 +60,13 @@
 	input[type="email"],
 	input[type="password"] {
 		display: block;
+		min-width: 250px;
 		margin-top: 10px;
 		padding: 10px;
-		border: 1px solid #ddd;
 		border-radius: 10px;
-		font-family: map-get($fonts, custom);
+		border: 1px solid #ddd;
 		font-size: 16px;
-		min-width: 250px;
+		font-family: map-get($fonts, custom);
 	}
 
 	&.is-active {
@@ -78,19 +78,13 @@
 	padding: 5px 10px;
 	border: 0;
 	border-radius: 8px;
-	font-size: 18px;
-	color: map-get($color, 06);
 	cursor: pointer;
 	outline: none;
+	color: map-get($color, 06);
 	font-family: map-get($fonts, custom);
 	font-weight: 400;
 	font-size: 18px;
-	background-color: map-get($color, 01);
-
-	&[disabled="disabled"] {
-		opacity: .5;
-		cursor: default;
-	}
+	background-color: map-get($color, 01);	
 
 	&.is-cta,
 	&:hover {
@@ -101,8 +95,17 @@
 	&.is-cta {
 		&:hover {
 			color: map-get($color, 02);
-			border-color: map-get($color, 01);
-			background-color: map-get($color, 06);		
+			background-color: map-get($color, 06);	
+		}
+	}
+
+	&[disabled="disabled"] {
+		opacity: .5;
+		cursor: default;
+
+		&:hover {
+			color: map-get($color, 06);
+			background-color: map-get($color, 02);
 		}
 	}
 }

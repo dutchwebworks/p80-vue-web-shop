@@ -7,7 +7,7 @@
 	<title>Vue Web Shop</title>
 </head>
 <body>
-	<div id="app">
+	<div id="vue-app">
 		<component :is="selectedComponent">
 			<app-loading></app-loading>
 		</component>				
@@ -42,83 +42,10 @@
 		</section>		
 	</script>
 
-	<script type="text/x-template" id="vue-app-genre">
-		<section class="genre">
-			<h3 class="genre__title">Filter by genre</h3>
-			
-			<label class="genre__item" v-bind:class="{ 'is-active' : selected == '' }">
-				<input type="radio" name="genre" checked value="" v-on:click="filterMovieList"> Show all ({{ total }})
-			</label>
-
-			<label class="genre__item" v-for="genre in genres" v-bind:class="{ 'is-active' : genre.genre == selected }">
-				<input type="radio" name="genre" v-model="selected" v-bind:value="genre.genre" v-on:click="filterMovieList"> {{ genre.genre | capitalizeFirstLetter }} ({{ genre.count }})
-			</label>			
-		</section>
-	</script>
-
-	<script type="text/x-template" id="vue-app-pagination">
-		<section class="pagination" v-show="pagination.pages > 1">
-			<ul class="pagination__list">
-				<li class="pagination__item" v-bind:class="{ 'is-inactive' : pagination.currentPage == 0 }"><a href="javascript:;" v-on:click.prevent="prevPage">Previous</a></li>
-				<li class="pagination__item" v-for="(page, index) in pagination.pages" v-bind:class="{ 'is-active' : (pagination.currentPage == index) }"><a href="javascript:;" v-on:click.prevent="paginatedMovies(index)">{{ page }}</a></li>
-				<li class="pagination__item" v-bind:class="{ 'is-inactive' : pagination.currentPage == (pagination.pages -1) }"><a href="javascript:;" v-on:click.prevent="nextPage">Next</a></li>
-			</ul>
-		</section>
-	</script>
-
-	<script type="text/x-template" id="vue-app-movie-products">
-		<section class="movie-product">
-			<h3 class="movie-product__title">Movies</h3>		
-
-			<div class="movie-product__list">
-				<div class="movie-product__item" v-for="movie in filteredMovies">
-					<a href="javascript:;" v-bind:href="movie.imdbLink" class="movie-product__link" target="_blank" title="Open IMDB page">
-						<img v-bind:src="movie.imgThumb" class="movie-product__img" v-bind:alt="movie.title">
-					</a>
-
-					<h3 class="movie-product__heading">
-						<a v-bind:href="movie.imdbLink" class="movie-product__heading-link" title="Open IMDB page" target="_blank">{{ movie.title }}</a>
-					</h3>
-
-					<p class="movie-product__description">{{ movie.description }}</p>
-
-					<p class="movie-product__genre"><a href="javascript:;" v-on:click.prevent="filterMovieList(movie.genre)" v-bind:title="'Filter by ' + movie.genre | capitalizeFirstLetter">{{ movie.genre | capitalizeFirstLetter }}</a></p>
-
-					<p class="movie-product__director">Director: {{ movie.director }}</p>
-
-					<ul class="movie-product__actors">
-						<li class="movie-product__actors-item" v-for="actor in movie.actors">{{ actor }}</li>
-					</ul>
-
-					<p class="movie-product__price"><strong>&euro; {{ movie.price }}</strong></p>
-
-					<button class="movie-product__cta" v-on:click.prevent="addToCart($event, movie)">Add to cart</button>
-				</div>		
-			</div>
-		</section>
-	</script>
-
-	<script type="text/x-template" id="vue-app-cart">
-		<section class="cart-shop">
-			<h3 class="cart-shop__title">Shopping cart: {{ cartItems.length }} items</h3>
-
-			<transition-group name="list-item" tag="ul" class="cart-shop__items">
-				<li class="cart-shop__items-item" v-for="(value, key, index) in cartItems" :key="key"><span>{{ value.title }}</span> <span>&euro;{{ value.price }}</span> <a href="javascript:;" v-on:click.prevent="removeFromCart($event, value, key)">&times;</a></li>
-			</transition-group>
-
-			<p class="cart-shop__total" v-show="total > 0">Total: &euro;{{ total }}</p>
-
-			<div class="cart-shop__cta-buttons">
-				<button v-on:click.prevent="emptyCart" v-show="total > 0">Empty cart</button>
-				<button class="cart-shop__checkout is-cta" v-on:click.prevent="checkout" v-show="total > 0">Checkout</button>
-			</div>
-		</section>
-	</script>
-
 	<script type="text/x-template" id="vue-app-checkout">
 		<section class="wrapper-checkout">
 			<div class="heading heading--checkout">
-				<h1 class="heading__title">Checkout</h1>
+				<h1 class="heading__title">Vue Web Checkout</h1>
 			</div>
 
 			<div class="user-info user-info--checkout">
@@ -213,12 +140,86 @@
 
 			<div class="ajax-data" v-show="showJson">
 				<h3 class="ajax-data__title">Ajax call send</h3>		
+
 				<code>{{ userData }}</code>
 			</div>
 
 			<footer class="footer footer--checkout">
 				<app-footer></app-footer>
 			</footer>
+		</section>
+	</script>
+
+	<script type="text/x-template" id="vue-app-genre">
+		<section class="genre">
+			<h3 class="genre__title">Filter by genre</h3>
+			
+			<label class="genre__item" v-bind:class="{ 'is-active' : selected == '' }">
+				<input type="radio" name="genre" checked value="" v-on:click="filterMovieList"> Show all ({{ total }})
+			</label>
+
+			<label class="genre__item" v-for="genre in genres" v-bind:class="{ 'is-active' : genre.genre == selected }">
+				<input type="radio" name="genre" v-model="selected" v-bind:value="genre.genre" v-on:click="filterMovieList"> {{ genre.genre | capitalizeFirstLetter }} ({{ genre.count }})
+			</label>			
+		</section>
+	</script>	
+
+	<script type="text/x-template" id="vue-app-movie-products">
+		<section class="movie-product">
+			<h3 class="movie-product__title">Movies</h3>		
+
+			<div class="movie-product__list">
+				<div class="movie-product__item" v-for="movie in filteredMovies">
+					<a href="javascript:;" v-bind:href="movie.imdbLink" class="movie-product__link" target="_blank" title="Open IMDB page">
+						<img v-bind:src="movie.imgThumb" class="movie-product__img" v-bind:alt="movie.title">
+					</a>
+
+					<h3 class="movie-product__heading">
+						<a v-bind:href="movie.imdbLink" class="movie-product__heading-link" title="Open IMDB page" target="_blank">{{ movie.title }}</a>
+					</h3>
+
+					<p class="movie-product__description">{{ movie.description }}</p>
+
+					<p class="movie-product__genre"><a href="javascript:;" v-on:click.prevent="filterMovieList(movie.genre)" v-bind:title="'Filter by ' + movie.genre | capitalizeFirstLetter">{{ movie.genre | capitalizeFirstLetter }}</a></p>
+
+					<p class="movie-product__director">Director: {{ movie.director }}</p>
+
+					<ul class="movie-product__actors">
+						<li class="movie-product__actors-item" v-for="actor in movie.actors">{{ actor }}</li>
+					</ul>
+
+					<p class="movie-product__price"><strong>&euro; {{ movie.price }}</strong></p>
+
+					<button class="movie-product__cta" v-on:click.prevent="addToCart($event, movie)">Add to cart</button>
+				</div>		
+			</div>
+		</section>
+	</script>
+
+	<script type="text/x-template" id="vue-app-cart">
+		<section class="cart-shop">
+			<h3 class="cart-shop__title">Shopping cart: {{ cartItems.length }} items</h3>
+
+			<transition-group name="list-item" tag="ul" class="cart-shop__items">
+				<li class="cart-shop__items-item" v-for="(value, key, index) in cartItems" :key="key"><span>{{ value.title }}</span> <span>&euro;{{ value.price }}</span> <a href="javascript:;" v-on:click.prevent="removeFromCart($event, value, key)">&times;</a></li>
+			</transition-group>
+
+			<p class="cart-shop__total" v-show="total > 0">Total: &euro;{{ total }}</p>
+
+			<div class="cart-shop__cta-buttons">
+				<button v-on:click.prevent="emptyCart" v-show="total > 0">Empty cart</button>
+				<button class="cart-shop__checkout is-cta" v-on:click.prevent="checkout" v-show="total > 0">Checkout</button>
+			</div>
+		</section>
+	</script>
+
+	<script type="text/x-template" id="vue-app-pagination">
+		<section class="pagination" v-show="pagination.pages > 1">
+			<ul class="pagination__list">
+				<li class="pagination__item" v-bind:class="{ 'is-inactive' : pagination.currentPage == 0 }"><a href="javascript:;" v-on:click.prevent="prevPage">Previous</a></li>
+				<li class="pagination__item" v-for="(page, index) in pagination.pages" v-bind:class="{ 'is-active' : (pagination.currentPage == index) }"><a href="javascript:;" v-on:click.prevent="paginatedMovies(index)">{{ page }}</a></li>
+				<li class="pagination__item" v-bind:class="{ 'is-inactive' : pagination.currentPage == (pagination.pages -1) }"><a href="javascript:;" v-on:click.prevent="nextPage">Next</a></li>
+			</ul>
 		</section>
 	</script>
 

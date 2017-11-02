@@ -1,17 +1,17 @@
 .cart-shop {
 	@include grid-row(2);
 	@include grid-column(3);
-	font-family: sans-serif;
 	padding: 20px;
 	border-radius: 10px;
+	font-family: sans-serif;
 	background-color: map-get($color, 05);
 }
 
 .cart-shop__title {
 	margin-top: 0;
-	font-family: map-get($fonts, custom);
 	font-weight: 400;
 	font-size: 28px;
+	font-family: map-get($fonts, custom);
 }
 
 .cart-shop__items {
@@ -25,9 +25,9 @@
 	grid-gap: 10px;
 	margin: 0 0 10px 0;
 	list-style: none;
-	font-family: map-get($fonts, custom);
 	font-size: 18px;
 	font-weight: 400;
+	font-family: map-get($fonts, custom);
 
 	span:nth-child(2){
 		text-align: right;
@@ -56,7 +56,7 @@
 
 	a {
 		position: relative;
-		top: -10px;
+		top: -8px;
 		text-decoration: none;
 		font-size: 32px;
 		font-weight: 700;
@@ -78,13 +78,13 @@
 }
 
 .cart-shop__total {
-	border-top: 1px solid map-get($color, 03);
 	padding-top: 10px;
 	text-align: right;
 	padding-right: 30px;
-	font-family: map-get($fonts, normal);
 	font-weight: 700;
 	font-size: 24px;
+	font-family: map-get($fonts, normal);
+	border-top: 1px solid map-get($color, 03);
 }
 
 .cart-shop__cta-buttons {

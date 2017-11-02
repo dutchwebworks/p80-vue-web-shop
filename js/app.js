@@ -315,7 +315,7 @@ Vue.component("app-footer", {
 // ---------------------------------------------
 
 new Vue({
-	el: "#app",
+	el: "#vue-app",
 	data: {
 		selectedComponent: "app-shop",
 	},

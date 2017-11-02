@@ -1,7 +1,7 @@
 .pagination {
-	margin-top: 40px;
 	@include grid-row(3);
 	@include grid-column(2);
+	margin-top: 40px;
 }
 
 .pagination__list {
@@ -23,7 +23,7 @@
 		color: map-get($color, 03);
 		font-size: 16px;
 		font-family: sans-serif;
-		background-color: #ccc;
+		background-color: map-get($color, 05);
 	}
 
 	&:hover,
@@ -42,7 +42,7 @@
 
 			&:hover {
 				color: map-get($color, 03);
-				background-color: #ccc;
+				background-color: map-get($color, 05);
 			}
 		}
 	}

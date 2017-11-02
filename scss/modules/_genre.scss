@@ -1,26 +1,26 @@
 .genre {
 	@include grid-row(2);
 	@include grid-column(1);
-	font-family: sans-serif;
 	padding: 20px;
 	border-radius: 10px;
+	font-family: sans-serif;
 	background-color: map-get($color, 05);
 }
 
 .genre__title {
 	margin-top: 0;
-	font-family: map-get($fonts, custom);
 	font-weight: 400;
 	font-size: 28px;
+	font-family: map-get($fonts, custom);
 }
 
 .genre__item {
 	display: block;
 	margin-bottom: 5px;
-	font-family: map-get($fonts, custom);
+	cursor: pointer;
 	font-weight: 400;
 	font-size: 22px;
-	cursor: pointer;
+	font-family: map-get($fonts, custom);
 
 	&:hover {
 		color: map-get($color, 01);

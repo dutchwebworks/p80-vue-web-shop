@@ -10,9 +10,9 @@
 .cart-checkout__title {
 	margin-top: 0;
 	color: map-get($color, 01);
-	font-family: map-get($fonts, custom);
 	font-size: 32px;
 	font-weight: 400;
+	font-family: map-get($fonts, custom);
 }
 
 .cart-checkout__items {
@@ -28,16 +28,20 @@
 		font-size: 18px;
 		font-weight: 400;
 	}
+
+	span:nth-child(2) {
+		font-family: map-get($fonts, normal);
+	}
 }
 
 .cart-checkout__total {
-	border-top: 1px solid map-get($color, 03);
 	padding-top: 10px;
-	text-align: right;
 	padding-right: 30px;
-	font-family: map-get($fonts, custom);
+	text-align: right;
 	font-weight: 700;
 	font-size: 24px;
+	font-family: map-get($fonts, normal);
+	border-top: 1px solid map-get($color, 03);
 }
 
 .cart-checkout__button {
@@ -45,18 +49,18 @@
 	border: 0;
 	border-radius: 8px;
 	font-size: 18px;
-	color: map-get($color, 06);
 	cursor: pointer;
 	outline: none;
-	font-family: map-get($fonts, custom);
+	color: map-get($color, 06);
 	font-weight: 400;
 	font-size: 18px;
+	font-family: map-get($fonts, custom);
 	background-color: map-get($color, 01);
 
 	&.is-cta,
 	&:hover {
-		background-color: map-get($color, 02);
 		color: map-get($color, 06);
+		background-color: map-get($color, 02);
 	}
 
 	&.is-cta {

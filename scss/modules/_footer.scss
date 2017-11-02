@@ -1,9 +1,9 @@
 .footer {
-	font-family: map-get($fonts, custom);
-	font-size: 22px;
-	color: #ccc;
 	padding: 20px 0;
 	text-align: center;
+	color: #ccc;
+	font-size: 22px;
+	font-family: map-get($fonts, custom);
 }
 
 .footer--shop {

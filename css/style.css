@@ -30,21 +30,22 @@
 .ajax-data {
   margin: 0;
   padding: 20px;
-  white-space: pre;
   color: #444;
   font-family: 'Courier New', mono-space;
 }
 
 .ajax-data code {
+  display: block;
+  white-space: pre;
   font-size: 14px;
 }
 
 .ajax-data__title {
   margin-top: 0;
-  font-family: Raleway, sans-serif;
+  color: #444;
   font-weight: 400;
   font-size: 32px;
-  color: #444;
+  font-family: Raleway, sans-serif;
 }
 
 .cart-checkout {
@@ -60,9 +61,9 @@
 .cart-checkout__title {
   margin-top: 0;
   color: deepskyblue;
-  font-family: Raleway, sans-serif;
   font-size: 32px;
   font-weight: 400;
+  font-family: Raleway, sans-serif;
 }
 
 .cart-checkout__items {
@@ -88,14 +89,18 @@
   font-weight: 400;
 }
 
+.cart-checkout__items span:nth-child(2) {
+  font-family: Helvetica, sans-serif;
+}
+
 .cart-checkout__total {
-  border-top: 1px solid #444;
   padding-top: 10px;
-  text-align: right;
   padding-right: 30px;
-  font-family: Raleway, sans-serif;
+  text-align: right;
   font-weight: 700;
   font-size: 24px;
+  font-family: Helvetica, sans-serif;
+  border-top: 1px solid #444;
 }
 
 .cart-checkout__button {
@@ -103,18 +108,18 @@
   border: 0;
   border-radius: 8px;
   font-size: 18px;
-  color: #fff;
   cursor: pointer;
   outline: none;
-  font-family: Raleway, sans-serif;
+  color: #fff;
   font-weight: 400;
   font-size: 18px;
+  font-family: Raleway, sans-serif;
   background-color: deepskyblue;
 }
 
 .cart-checkout__button.is-cta, .cart-checkout__button:hover {
-  background-color: deeppink;
   color: #fff;
+  background-color: deeppink;
 }
 
 .cart-checkout__button.is-cta:hover {
@@ -126,17 +131,17 @@
   grid-row: 2;
   -ms-grid-column: 3;
   grid-column: 3;
-  font-family: sans-serif;
   padding: 20px;
   border-radius: 10px;
+  font-family: sans-serif;
   background-color: #eee;
 }
 
 .cart-shop__title {
   margin-top: 0;
-  font-family: Raleway, sans-serif;
   font-weight: 400;
   font-size: 28px;
+  font-family: Raleway, sans-serif;
 }
 
 .cart-shop__items {
@@ -152,9 +157,9 @@
   grid-gap: 10px;
   margin: 0 0 10px 0;
   list-style: none;
-  font-family: Raleway, sans-serif;
   font-size: 18px;
   font-weight: 400;
+  font-family: Raleway, sans-serif;
 }
 
 .cart-shop__items-item span:nth-child(2) {
@@ -183,7 +188,7 @@
 
 .cart-shop__items-item a {
   position: relative;
-  top: -10px;
+  top: -8px;
   text-decoration: none;
   font-size: 32px;
   font-weight: 700;
@@ -204,13 +209,13 @@
 }
 
 .cart-shop__total {
-  border-top: 1px solid #444;
   padding-top: 10px;
   text-align: right;
   padding-right: 30px;
-  font-family: Helvetica, sans-serif;
   font-weight: 700;
   font-size: 24px;
+  font-family: Helvetica, sans-serif;
+  border-top: 1px solid #444;
 }
 
 .cart-shop__cta-buttons {
@@ -252,11 +257,11 @@
 }
 
 .footer {
-  font-family: Raleway, sans-serif;
-  font-size: 22px;
-  color: #ccc;
   padding: 20px 0;
   text-align: center;
+  color: #ccc;
+  font-size: 22px;
+  font-family: Raleway, sans-serif;
 }
 
 .footer--shop {
@@ -280,26 +285,26 @@
   grid-row: 2;
   -ms-grid-column: 1;
   grid-column: 1;
-  font-family: sans-serif;
   padding: 20px;
   border-radius: 10px;
+  font-family: sans-serif;
   background-color: #eee;
 }
 
 .genre__title {
   margin-top: 0;
-  font-family: Raleway, sans-serif;
   font-weight: 400;
   font-size: 28px;
+  font-family: Raleway, sans-serif;
 }
 
 .genre__item {
   display: block;
   margin-bottom: 5px;
-  font-family: Raleway, sans-serif;
+  cursor: pointer;
   font-weight: 400;
   font-size: 22px;
-  cursor: pointer;
+  font-family: Raleway, sans-serif;
 }
 
 .genre__item:hover {
@@ -332,13 +337,13 @@
 }
 
 .heading__title {
+  padding: 20px 0;
+  border-bottom: 2px dotted #ddd;
   color: deepskyblue;
-  font-family: Raleway, sans-serif;
   font-weight: 400;
   font-size: 48px;
   text-align: center;
-  padding: 20px 0;
-  border-bottom: 2px dotted #ddd;
+  font-family: Raleway, sans-serif;
 }
 
 .loading {
@@ -383,8 +388,8 @@
   -moz-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;
-  height: 100%;
   box-sizing: border-box;
+  height: 100%;
   padding: 5px;
   overflow: hidden;
   font-family: sans-serif;
@@ -524,11 +529,11 @@
 }
 
 .pagination {
-  margin-top: 40px;
   -ms-grid-row: 3;
   grid-row: 3;
   -ms-grid-column: 2;
   grid-column: 2;
+  margin-top: 40px;
 }
 
 .pagination__list {
@@ -559,7 +564,7 @@
   color: #444;
   font-size: 16px;
   font-family: sans-serif;
-  background-color: #ccc;
+  background-color: #eee;
 }
 
 .pagination__item:hover a, .pagination__item.is-active a {
@@ -577,7 +582,7 @@
 
 .pagination__item.is-inactive a:hover {
   color: #444;
-  background-color: #ccc;
+  background-color: #eee;
 }
 
 .pagination__item + .pagination__item {
@@ -593,9 +598,9 @@
   box-sizing: border-box;
   height: 100%;
   margin: 0 0 20px 0;
-  font-family: Raleway, sans-serif;
   padding: 20px;
   border-radius: 10px;
+  font-family: Raleway, sans-serif;
   background-color: #eee;
 }
 
@@ -651,13 +656,13 @@
 .user-info__item input[type="email"],
 .user-info__item input[type="password"] {
   display: block;
+  min-width: 250px;
   margin-top: 10px;
   padding: 10px;
-  border: 1px solid #ddd;
   border-radius: 10px;
-  font-family: Raleway, sans-serif;
+  border: 1px solid #ddd;
   font-size: 16px;
-  min-width: 250px;
+  font-family: Raleway, sans-serif;
 }
 
 .user-info__item.is-active {
@@ -668,19 +673,13 @@
   padding: 5px 10px;
   border: 0;
   border-radius: 8px;
-  font-size: 18px;
-  color: #fff;
   cursor: pointer;
   outline: none;
+  color: #fff;
   font-family: Raleway, sans-serif;
   font-weight: 400;
   font-size: 18px;
   background-color: deepskyblue;
-}
-
-.user-info__submit[disabled="disabled"] {
-  opacity: .5;
-  cursor: default;
 }
 
 .user-info__submit.is-cta, .user-info__submit:hover {
@@ -690,8 +689,17 @@
 
 .user-info__submit.is-cta:hover {
   color: deeppink;
-  border-color: deepskyblue;
   background-color: #fff;
+}
+
+.user-info__submit[disabled="disabled"] {
+  opacity: .5;
+  cursor: default;
+}
+
+.user-info__submit[disabled="disabled"]:hover {
+  color: #fff;
+  background-color: deeppink;
 }
 
 /*# sourceMappingURL=style.css.map */
