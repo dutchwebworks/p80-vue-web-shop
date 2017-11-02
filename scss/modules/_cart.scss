@@ -2,6 +2,16 @@
 	@include grid-row(2);
 	@include grid-column(3);
 	font-family: sans-serif;
+	padding: 20px;
+	border-radius: 10px;
+	background-color: #eee;
+}
+
+.cart__title {
+	margin-top: 0;
+	font-family: 'Raleway', sans-serif;
+	font-weight: 400;
+	font-size: 28px;
 }
 
 .cart__items {
@@ -15,7 +25,9 @@
 	grid-gap: 10px;
 	margin: 0 0 10px 0;
 	list-style: none;
-	font-size: 14px;
+	font-family: 'Raleway', sans-serif;
+	font-size: 18px;
+	font-weight: 400;
 
 	span:nth-child(2){
 		text-align: right;
@@ -42,9 +54,9 @@
 
 	a {
 		position: relative;
-		top: -7px;
+		top: -10px;
 		text-decoration: none;
-		font-size: 26px;
+		font-size: 32px;
 		font-weight: 700;
 		color: map-get($color, 04);
 		-webkit-transition: color .3s;
@@ -66,11 +78,13 @@
 }
 
 .cart__total {
-	border-top: 1px solid #000;
+	border-top: 1px solid #444;
 	padding-top: 10px;
 	text-align: right;
 	padding-right: 30px;
+	font-family: 'Raleway', sans-serif;
 	font-weight: 700;
+	font-size: 24px;
 }
 
 .cart__cta-buttons {
@@ -82,16 +96,17 @@
 		border: 0;
 		border-radius: 8px;
 		font-size: 18px;
-		color: #000;
+		color: #fff;
 		cursor: pointer;
 		outline: none;
-		background-color: #ccc;
-		-webkit-transition: background-color .3s, color .3s;
-		transition: background-color .3s, color .3s;
+		font-family: 'Raleway', sans-serif;
+		font-weight: 400;
+		font-size: 18px;
+		background-color: map-get($color, 01);
 
 		&.is-cta,
 		&:hover {
-			background-color: map-get($color, 03);
+			background-color: map-get($color, 02);
 			color: #fff;
 		}
 

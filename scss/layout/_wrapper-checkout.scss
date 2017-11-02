@@ -1,0 +1,7 @@
+.wrapper-checkout {
+	@include display-grid;	
+	@include grid-template-columns(1fr, 4);
+	grid-gap: 20px;
+	margin: 0 60px;
+	padding-bottom: 40px;
+}

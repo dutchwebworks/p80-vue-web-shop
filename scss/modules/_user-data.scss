@@ -1,0 +1,19 @@
+.user-data {
+	margin: 0;
+	padding: 20px;
+	white-space: pre;
+	color: #444;
+	font-family: 'Courier New', mono-space;
+
+	code {
+		font-size: 14px;
+	}
+}
+
+.user-data__title {
+	margin-top: 0;
+	font-family: 'Raleway', sans-serif;
+	font-weight: 400;
+	font-size: 32px;
+	color: #444;
+}

@@ -84,7 +84,8 @@ Vue.component("app-genre", {
 	data: function() {
 		return {
 			genres: [],
-			selected: ''
+			selected: '',
+			isActiveClass: 'is-active'
 		}
 	},
 	created: function() {
@@ -194,12 +195,17 @@ Vue.component("app-cart", {
 		}
 	},
 	created: function(){
+		if(bus.cartItems != undefined && bus.cartItems.length > 0) {
+			this.cartItems = bus.cartItems;
+			this.total = bus.total;
+		}
+
 		bus.$on("addToCart", this.addToCart);
 	},
 	methods: {
 		addToCart: function(item) {
 			this.cartItems.push(item);
-			this.total += parseInt(item.price);
+			this.total += item.price;
 		},
 		removeFromCart: function(event, item, key) {
 			this.total -= parseInt(item.price);
@@ -214,7 +220,9 @@ Vue.component("app-cart", {
 			}
 		},
 		checkout: function() {
-			alert("Pay €" + this.total + " for " + this.cartItems.length + " items?");
+			bus.cartItems = this.cartItems;		
+			bus.total = this.total;
+			bus.$emit("switchComponent", "app-checkout");
 		}
 	},
 });
@@ -223,17 +231,78 @@ Vue.component("app-checkout", {
 	template: "#vue-app-checkout",
 	data: function() {
 		return {
-			cartItems: [],
+			showJson: false,
+			cartItemIds: [],
+			userData: {
+				cartItemIds: [],
+				total: null,
+				firstname: '',
+				lastname: '',
+				email: '',
+				newsletters: [],
+				bank: '',
+				creditcard: ''
+			},
+			payment: {
+				banks: [
+					{ name: 'ING', value: 'ing' },
+					{ name: 'Rabobank', value: 'rabobank' },
+					{ name: 'ABN-Amro', value: 'abnamro' },
+					{ name: 'SNS', value: 'sns' },
+					{ name: 'ASN', value: 'asn' }
+				],
+				creditcards: [
+					{ name: 'Mastercard', value: 'mastercard' },
+					{ name: 'Visa', value: 'visa' },
+					{ name: 'Pay-Pal', value: 'paypal' }
+				]
+			}
 		}
 	},
 	created: function() {
-		this.cartItems = but.$emit("getCartItems");
+		for(i = 0, j = bus.cartItems.length; i < j; i++) {
+			this.userData.cartItemIds.push(parseInt(bus.cartItems[i].id));
+		}
+
+		this.cartItems = bus.cartItems;
+		this.userData.total = bus.total;
 	},
 	mounted: function() {
-		
+
 	},
 	methods: {
-		
+		backToShop: function() {
+			bus.$emit("switchComponent", "app-shop");
+		},
+		checkout: function() {
+			if(this.formValid) {
+				this.showJson = true;
+
+				axios.post('/order-products', this.userData)
+					.then(function (response) {
+						console.log(response);
+					})
+					.catch(function (error) {
+						console.log(error);
+					});
+			}
+		}
+	},
+	computed: {
+		paymentMethod: function() {
+			if(this.userData.paymentMethod == "ideal") {
+				this.userData.creditcard = '';
+			} else if(this.userData.paymentMethod == "creditcard") {
+				this.userData.bank = '';
+			}
+		},
+		formValid: function() {
+			if(this.userData.bank != "" || this.userData.creditcard != "") {
+				return true;
+			} else {
+				return false;
+			}
+		}
 	}
 });
 
@@ -260,4 +329,13 @@ new Vue({
 
 Vue.filter("capitalizeFirstLetter", function(string){
 	return string.charAt(0).toUpperCase() + string.slice(1);
+});
+
+Vue.filter("formatPrice", function(string){
+	var price = string;
+
+	if(string % 1 === 0) {
+		price = string + ",-";
+	}
+	return price;
 });
