@@ -6,7 +6,7 @@
 		"genre": "sci-fi",
 		"director": "Rian Johnson",
 		"imgThumb": "img/products/star-wars.jpg",
-		"price": 12.50,
+		"price": 12,
 		"actors": [
 			"Daisy Ridley",
 			"John Boyega",
@@ -51,7 +51,7 @@
 		"genre": "horror",
 		"director": "Frank Darabont",
 		"imgThumb": "img/products/walking-dead.jpg",
-		"price": 22.3,
+		"price": 23,
 		"actors": [
 			"Andrew Lincoln",
 			"Norman Reedus",
@@ -66,7 +66,7 @@
 		"genre": "sci-fi",
 		"director": "Greg Berlanti",
 		"imgThumb": "img/products/the-flash.jpg",
-		"price": 16.78,
+		"price": 16,
 		"actors": [
 			"Grant Gustin", 
 			"Candice Patton", 
@@ -201,7 +201,7 @@
 		"genre": "sci-fi",
 		"director": "Lana Wachowski",
 		"imgThumb": "img/products/the-matrix.jpg",
-		"price": 200,
+		"price": 210,
 		"actors": [
 			"Keanu Reeves",
 			"Laurence Fishburne",

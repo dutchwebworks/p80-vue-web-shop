@@ -126,11 +126,11 @@
 				<h3 class="cart-checkout__title">Cart items</h3>
 
 				<ul class="cart-checkout__items">
-					<li v-for="item in cartItems"><span>{{ item.title }}</span> <span>&euro;{{ item.price }}</span></a></li>
+					<li v-for="item in cartItems"><span>{{ item.title }}</span> <span>&euro;{{ item.price }},-</span></a></li>
 				</ul>
 
 				<p class="cart-checkout__total">
-					Total: &euro; {{ userData.total }}
+					Total: &euro; {{ userData.total }},-
 				</p>
 
 				<p v-show="!showJson">
@@ -188,7 +188,7 @@
 						<li class="movie-product__actors-item" v-for="actor in movie.actors">{{ actor }}</li>
 					</ul>
 
-					<p class="movie-product__price"><strong>&euro; {{ movie.price }}</strong></p>
+					<p class="movie-product__price"><strong>&euro; {{ movie.price }},-</strong></p>
 
 					<button class="movie-product__cta" v-on:click.prevent="addToCart($event, movie)">Add to cart</button>
 				</div>		
@@ -201,10 +201,10 @@
 			<h3 class="cart-shop__title">Shopping cart: {{ cartItems.length }} items</h3>
 
 			<transition-group name="list-item" tag="ul" class="cart-shop__items">
-				<li class="cart-shop__items-item" v-for="(value, key, index) in cartItems" :key="key"><span>{{ value.title }}</span> <span>&euro;{{ value.price }}</span> <a href="javascript:;" v-on:click.prevent="removeFromCart($event, value, key)">&times;</a></li>
+				<li class="cart-shop__items-item" v-for="(value, key, index) in cartItems" :key="key"><span>{{ value.title }}</span> <span>&euro;{{ value.price }},-</span> <a href="javascript:;" v-on:click.prevent="removeFromCart($event, value, key)">&times;</a></li>
 			</transition-group>
 
-			<p class="cart-shop__total" v-show="total > 0">Total: &euro;{{ total }}</p>
+			<p class="cart-shop__total" v-show="total > 0">Total: &euro;{{ total }},-</p>
 
 			<div class="cart-shop__cta-buttons">
 				<button v-on:click.prevent="emptyCart" v-show="total > 0">Empty cart</button>
@@ -229,6 +229,6 @@
 
 	<script src="js/libs/vue.js"></script>
 	<script src="js/libs/axios.js"></script>
-	<script src="js/app.js"></script>
+	<script src="js/vue-app.js"></script>
 </body>
 </html>
