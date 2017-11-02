@@ -95,7 +95,6 @@
 
 .cart-checkout__total {
   padding-top: 10px;
-  padding-right: 30px;
   text-align: right;
   font-weight: 700;
   font-size: 24px;
@@ -656,6 +655,8 @@
 .user-info__item input[type="email"],
 .user-info__item input[type="password"] {
   display: block;
+  box-sizing: border-box;
+  width: 100%;
   min-width: 250px;
   margin-top: 10px;
   padding: 10px;
