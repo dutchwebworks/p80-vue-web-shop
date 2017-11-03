@@ -4,7 +4,7 @@
 
 var bus = new Vue({
 	data: {
-		cartItems: []
+		// cartItems: []
 	}
 });
 
@@ -279,20 +279,20 @@ Vue.component("app-checkout", {
 		backToShop: function() {
 			bus.$emit("switchComponent", "app-shop");
 		},
-		onSubmit: function() {
-			this.$validator.validateAll();
+		validateBeforeSubmit: function() {
+			this.$validator.validateAll().then((result) => {
+				if (result && this.formValid) {
+					this.showJson = true;
 
-			if(this.formValid) {
-				this.showJson = true;
-
-				axios.post('/order-products', this.userData)
-					.then(function (response) {
-						console.log(response);
-					})
-					.catch(function (error) {
-						console.log(error);
-					});
-			}
+					axios.post('/order-products', this.userData)
+						.then(function (response) {
+							console.log(response);
+						})
+						.catch(function (error) {
+							console.log(error);
+						});
+				}
+			});			
 		}
 	},
 	computed: {
@@ -324,7 +324,7 @@ Vue.component("app-footer", {
 new Vue({
 	el: "#vue-app",
 	data: {
-		selectedComponent: "app-checkout",
+		selectedComponent: "app-shop",
 	},
 	created: function() {
 		var self = this;
