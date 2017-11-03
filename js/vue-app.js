@@ -2,7 +2,11 @@
 // Bus event mediator
 // ---------------------------------------------
 
-var bus = new Vue();
+var bus = new Vue({
+	data: {
+		cartItems: []
+	}
+});
 
 // ---------------------------------------------
 // Components
@@ -232,6 +236,7 @@ Vue.component("app-checkout", {
 	data: function() {
 		return {
 			showJson: false,
+			agreedToTerms: false,
 			cartItemIds: [],
 			userData: {
 				cartItemIds: [],
@@ -241,7 +246,7 @@ Vue.component("app-checkout", {
 				email: '',
 				newsletters: [],
 				bank: '',
-				creditcard: ''
+				creditcard: '',
 			},
 			payment: {
 				banks: [
@@ -274,7 +279,9 @@ Vue.component("app-checkout", {
 		backToShop: function() {
 			bus.$emit("switchComponent", "app-shop");
 		},
-		checkout: function() {
+		onSubmit: function() {
+			this.$validator.validateAll();
+
 			if(this.formValid) {
 				this.showJson = true;
 
@@ -317,7 +324,7 @@ Vue.component("app-footer", {
 new Vue({
 	el: "#vue-app",
 	data: {
-		selectedComponent: "app-shop",
+		selectedComponent: "app-checkout",
 	},
 	created: function() {
 		var self = this;

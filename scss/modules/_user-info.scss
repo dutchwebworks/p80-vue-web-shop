@@ -69,6 +69,10 @@
 		border: 1px solid #ddd;
 		font-size: 16px;
 		font-family: map-get($fonts, custom);
+
+		&.is-error {
+			border-color: map-get($color, 04);
+		}
 	}
 
 	&.is-active {
@@ -111,3 +115,16 @@
 		}
 	}
 }
+
+.user-info__validation {
+	display: block;
+	margin-top: 10px;
+
+	&.is-error {
+		color: map-get($color, 04);
+		font-family: map-get($fonts, custom);
+		font-weight: 400;
+		font-size: 14px;
+	}
+}
+

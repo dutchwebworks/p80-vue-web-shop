@@ -670,6 +670,12 @@
   font-family: Raleway, sans-serif;
 }
 
+.user-info__item input[type="text"].is-error,
+.user-info__item input[type="email"].is-error,
+.user-info__item input[type="password"].is-error {
+  border-color: crimson;
+}
+
 .user-info__item.is-active {
   font-weight: 700;
 }
@@ -705,6 +711,18 @@
 .user-info__submit[disabled="disabled"]:hover {
   color: #fff;
   background-color: deeppink;
+}
+
+.user-info__validation {
+  display: block;
+  margin-top: 10px;
+}
+
+.user-info__validation.is-error {
+  color: crimson;
+  font-family: Raleway, sans-serif;
+  font-weight: 400;
+  font-size: 14px;
 }
 
 /*# sourceMappingURL=style.css.map */

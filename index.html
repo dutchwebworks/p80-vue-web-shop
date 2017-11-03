@@ -51,25 +51,28 @@
 			<div class="user-info user-info--checkout">
 				<h3 class="user-info__title">User information</h3>
 
-				<form action="/" method="post">
+				<form action="/" method="post" v-on:submit.prevent="onSubmit">
 					<p class="user-info__row">
 						<label class="user-info__item">
 							Firstname
-							<input type="text" name="firstname" v-model="userData.firstname" placeholder="Firstname">
+							<input type="text" name="firstname" v-validate="'required|alpha'" v-model="userData.firstname" v-bind:class="{ 'is-error' : errors.first('firstname') }" placeholder="Firstname">
+							<span v-show="errors.has('firstname')" class="user-info__validation is-error">{{ errors.first('firstname') }}</span>
 						</label>
 					</p>
 
 					<p class="user-info__row">
 						<label class="user-info__item">
 							Lastname
-							<input type="text" name="lastname" v-model="userData.lastname" placeholder="Lastname">
+							<input type="text" name="lastname" v-validate="'required|alpha'" v-model="userData.lastname" v-bind:class="{ 'is-error' : errors.first('lastname') }" placeholder="Lastname">
+							<span v-show="errors.has('lastname')" class="user-info__validation is-error">{{ errors.first('lastname') }}</span>
 						</label>
 					</p>
 
 					<p class="user-info__row">
 						<label class="user-info__item">
 							E-mail
-							<input type="email" name="email" v-model="userData.email" placeholder="e-mail">
+							<input type="email" name="email" v-validate="'required|email'" v-model="userData.email" v-bind:class="{ 'is-error' : errors.first('email') }" placeholder="e-mail">
+							<span v-show="errors.has('email')" class="user-info__validation is-error">{{ errors.first('email') }}</span>
 						</label>
 					</p>
 
@@ -116,8 +119,17 @@
 						</ul>
 					</div>
 
+					<ul class="user-info__row ">
+						<li>
+							<label class="user-info__item">
+								<input type="checkbox" value="true" v-model="agreedToTerms">
+								I agree to our terms and conditions
+							</label>
+						</li>
+					</ul>
+
 					<p class="user-info__row">
-						<input type="submit" v-on:click.prevent="checkout" v-bind:disabled="!formValid || showJson" class="user-info__submit is-cta" value="Checkout">
+						<input type="submit" v-bind:disabled="!agreedToTerms" class="user-info__submit is-cta" value="Checkout">
 					</p>				
 				</form>				
 			</div>	
@@ -228,7 +240,13 @@
 	</script>
 
 	<script src="js/libs/vue.js"></script>
+	<script src="js/libs/vee-validate.js"></script>
 	<script src="js/libs/axios.js"></script>
+
+	<script>
+		Vue.use(VeeValidate);
+	</script>
+
 	<script src="js/vue-app.js"></script>
 </body>
 </html>
