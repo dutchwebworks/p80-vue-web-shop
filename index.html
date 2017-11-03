@@ -97,14 +97,18 @@
 
 					<p class="user-info__row">
 						<label class="user-info__item" v-bind:class="{ 'is-active' : userData.paymentMethod == 'ideal' }">
-							<input type="radio" value="ideal" v-model="userData.paymentMethod">
+							<input type="radio" name="paymentoptions" value="ideal" v-validate="'required'" v-model="userData.paymentMethod">
 							iDeal
 						</label>
 						
 						<label class="user-info__item" v-bind:class="{ 'is-active' : userData.paymentMethod == 'creditcard' }">
-							<input type="radio" value="creditcard" v-model="userData.paymentMethod">
+							<input type="radio" name="paymentoptions" value="creditcard" v-validate="'required'" v-model="userData.paymentMethod">
 							Creditcard
 						</label>
+					</p>
+
+					<p class="user-info__row user-info__validation is-error" v-show="errors.has('paymentoptions')">
+						 {{ errors.first('paymentoptions') }}
 					</p>
 
 					<div class="user-info__row payment payment--ideal" v-show="userData.paymentMethod == 'ideal'">
