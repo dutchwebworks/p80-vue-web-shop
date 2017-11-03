@@ -281,7 +281,7 @@ Vue.component("app-checkout", {
 		},
 		validateBeforeSubmit: function() {
 			this.$validator.validateAll().then((result) => {
-				if (result && this.formValid) {
+				if (result) {
 					this.showJson = true;
 
 					axios.post('/order-products', this.userData)
@@ -301,13 +301,6 @@ Vue.component("app-checkout", {
 				this.userData.creditcard = '';
 			} else if(this.userData.paymentMethod == "creditcard") {
 				this.userData.bank = '';
-			}
-		},
-		formValid: function() {
-			if(this.userData.bank != "" || this.userData.creditcard != "") {
-				return true;
-			} else {
-				return false;
 			}
 		}
 	}
