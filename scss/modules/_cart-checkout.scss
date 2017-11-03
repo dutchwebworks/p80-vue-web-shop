@@ -1,10 +1,15 @@
 .cart-checkout {
+	@include grid-row(2);
 	@include grid-column(3);
 	box-sizing: border-box;
 	height: 100%;
 	padding: 20px;
 	border-radius: 10px;
 	background-color: map-get($color, 05);
+
+	@include grid-override("edge") {
+		margin-left: 5px;
+	}
 }
 
 .cart-checkout__title {

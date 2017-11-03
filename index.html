@@ -143,7 +143,10 @@
 				<h3 class="cart-checkout__title">Cart items</h3>
 
 				<ul class="cart-checkout__items">
-					<li v-for="item in cartItems"><span>{{ item.title }}</span> <span>&euro;{{ item.price }},-</span></a></li>
+					<li v-for="item in cartItems">
+						<span>{{ item.title }}</span>
+						<span>&euro;{{ item.price }},-</span>
+					</li>
 				</ul>
 
 				<p class="cart-checkout__total">
@@ -218,7 +221,11 @@
 			<h3 class="cart-shop__title">Shopping cart: {{ cartItems.length }} items</h3>
 
 			<transition-group name="list-item" tag="ul" class="cart-shop__items">
-				<li class="cart-shop__items-item" v-for="(value, key, index) in cartItems" :key="key"><span>{{ value.title }}</span> <span>&euro;{{ value.price }},-</span> <a href="javascript:;" v-on:click.prevent="removeFromCart($event, value, key)">&times;</a></li>
+				<li class="cart-shop__items-item" v-for="(value, key, index) in cartItems" :key="key">
+					<span>{{ value.title }}</span>
+					<span>&euro;{{ value.price }},-</span>
+					<a href="javascript:;" v-on:click.prevent="removeFromCart($event, value, key)">&times;</a>
+				</li>
 			</transition-group>
 
 			<p class="cart-shop__total" v-show="total > 0">Total: &euro;{{ total }},-</p>
