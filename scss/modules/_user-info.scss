@@ -6,9 +6,14 @@
 	border-radius: 10px;
 	font-family: map-get($fonts, custom);
 	background-color: map-get($color, 05);
+
+	@include grid-override("edge") {
+		margin-right: 5px;
+	}
 }
 
 .user-info--checkout {
+	@include grid-row(2);
 	@include grid-column(2);
 }
 
@@ -69,6 +74,10 @@
 		border: 1px solid #ddd;
 		font-size: 16px;
 		font-family: map-get($fonts, custom);
+
+		&.is-error {
+			border-color: map-get($color, 04);
+		}
 	}
 
 	&.is-active {
@@ -111,3 +120,20 @@
 		}
 	}
 }
+
+.user-info__item--terms {
+	font-size: 14px;
+}
+
+.user-info__validation {
+	display: block;
+	margin-top: 10px;
+
+	&.is-error {
+		color: map-get($color, 04);
+		font-family: map-get($fonts, custom);
+		font-weight: 400;
+		font-size: 14px;
+	}
+}
+

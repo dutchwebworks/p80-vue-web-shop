@@ -51,25 +51,28 @@
 			<div class="user-info user-info--checkout">
 				<h3 class="user-info__title">User information</h3>
 
-				<form action="/" method="post">
+				<form action="/" method="post" v-on:submit.prevent="validateBeforeSubmit">
 					<p class="user-info__row">
 						<label class="user-info__item">
 							Firstname
-							<input type="text" name="firstname" v-model="userData.firstname" placeholder="Firstname">
+							<input type="text" name="firstname" v-validate="'required|alpha_spaces'" data-vv-as="first name" v-model="userData.firstname" v-bind:class="{ 'is-error' : errors.first('firstname') }" placeholder="Firstname">
+							<span v-show="errors.has('firstname')" class="user-info__validation is-error">{{ errors.first('firstname') }}</span>
 						</label>
 					</p>
 
 					<p class="user-info__row">
 						<label class="user-info__item">
 							Lastname
-							<input type="text" name="lastname" v-model="userData.lastname" placeholder="Lastname">
+							<input type="text" name="lastname" v-validate="'required|alpha_spaces'" data-vv-as="last name" v-model="userData.lastname" v-bind:class="{ 'is-error' : errors.first('lastname') }" placeholder="Lastname">
+							<span v-show="errors.has('lastname')" class="user-info__validation is-error">{{ errors.first('lastname') }}</span>
 						</label>
 					</p>
 
 					<p class="user-info__row">
 						<label class="user-info__item">
 							E-mail
-							<input type="email" name="email" v-model="userData.email" placeholder="e-mail">
+							<input type="email" name="email" v-validate="'required|email'" data-vv-as="e-mail" v-model="userData.email" v-bind:class="{ 'is-error' : errors.first('email') }" placeholder="e-mail">
+							<span v-show="errors.has('email')" class="user-info__validation is-error">{{ errors.first('email') }}</span>
 						</label>
 					</p>
 
@@ -94,14 +97,18 @@
 
 					<p class="user-info__row">
 						<label class="user-info__item" v-bind:class="{ 'is-active' : userData.paymentMethod == 'ideal' }">
-							<input type="radio" value="ideal" v-model="userData.paymentMethod">
+							<input type="radio" name="paymentoptions" value="ideal" v-validate="'required'" data-vv-as="payment method" v-model="userData.paymentMethod">
 							iDeal
 						</label>
 						
 						<label class="user-info__item" v-bind:class="{ 'is-active' : userData.paymentMethod == 'creditcard' }">
-							<input type="radio" value="creditcard" v-model="userData.paymentMethod">
+							<input type="radio" name="paymentoptions" value="creditcard" v-validate="'required'" data-vv-as="payment method" v-model="userData.paymentMethod">
 							Creditcard
 						</label>
+					</p>
+
+					<p class="user-info__row user-info__validation is-error" v-show="errors.has('paymentoptions')">
+						 {{ errors.first('paymentoptions') }}
 					</p>
 
 					<div class="user-info__row payment payment--ideal" v-show="userData.paymentMethod == 'ideal'">
@@ -116,8 +123,18 @@
 						</ul>
 					</div>
 
+					<ul class="user-info__row ">
+						<li>
+							<label class="user-info__item user-info__item--terms">
+								<input type="checkbox" value="true" v-validate="'required'" data-vv-as="payment method" v-model="agreedToTerms">
+								I agree to our terms and conditions
+							</label>
+							<span v-show="errors.has('agreedToTerms')" class="user-info__validation is-error">{{ errors.first('agreedToTerms') }}</span>
+						</li>
+					</ul>
+
 					<p class="user-info__row">
-						<input type="submit" v-on:click.prevent="checkout" v-bind:disabled="!formValid || showJson" class="user-info__submit is-cta" value="Checkout">
+						<input type="submit" v-bind:disabled="!agreedToTerms" class="user-info__submit is-cta" value="Checkout">
 					</p>				
 				</form>				
 			</div>	
@@ -126,7 +143,10 @@
 				<h3 class="cart-checkout__title">Cart items</h3>
 
 				<ul class="cart-checkout__items">
-					<li v-for="item in cartItems"><span>{{ item.title }}</span> <span>&euro;{{ item.price }},-</span></a></li>
+					<li v-for="item in cartItems">
+						<span>{{ item.title }}</span>
+						<span>&euro;{{ item.price }},-</span>
+					</li>
 				</ul>
 
 				<p class="cart-checkout__total">
@@ -201,7 +221,11 @@
 			<h3 class="cart-shop__title">Shopping cart: {{ cartItems.length }} items</h3>
 
 			<transition-group name="list-item" tag="ul" class="cart-shop__items">
-				<li class="cart-shop__items-item" v-for="(value, key, index) in cartItems" :key="key"><span>{{ value.title }}</span> <span>&euro;{{ value.price }},-</span> <a href="javascript:;" v-on:click.prevent="removeFromCart($event, value, key)">&times;</a></li>
+				<li class="cart-shop__items-item" v-for="(value, key, index) in cartItems" :key="key">
+					<span>{{ value.title }}</span>
+					<span>&euro;{{ value.price }},-</span>
+					<a href="javascript:;" v-on:click.prevent="removeFromCart($event, value, key)">&times;</a>
+				</li>
 			</transition-group>
 
 			<p class="cart-shop__total" v-show="total > 0">Total: &euro;{{ total }},-</p>
@@ -228,6 +252,7 @@
 	</script>
 
 	<script src="js/libs/vue.js"></script>
+	<script src="js/libs/vee-validate.js"></script>
 	<script src="js/libs/axios.js"></script>
 	<script src="js/vue-app.js"></script>
 </body>
