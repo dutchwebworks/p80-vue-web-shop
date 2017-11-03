@@ -2,7 +2,11 @@
 // Bus event mediator
 // ---------------------------------------------
 
-var bus = new Vue();
+var bus = new Vue({
+	data: {
+		// cartItems: []
+	}
+});
 
 // ---------------------------------------------
 // Components
@@ -232,6 +236,7 @@ Vue.component("app-checkout", {
 	data: function() {
 		return {
 			showJson: false,
+			agreedToTerms: false,
 			cartItemIds: [],
 			userData: {
 				cartItemIds: [],
@@ -241,7 +246,7 @@ Vue.component("app-checkout", {
 				email: '',
 				newsletters: [],
 				bank: '',
-				creditcard: ''
+				creditcard: '',
 			},
 			payment: {
 				banks: [
@@ -274,18 +279,20 @@ Vue.component("app-checkout", {
 		backToShop: function() {
 			bus.$emit("switchComponent", "app-shop");
 		},
-		checkout: function() {
-			if(this.formValid) {
-				this.showJson = true;
+		validateBeforeSubmit: function() {
+			this.$validator.validateAll().then((result) => {
+				if (result) {
+					this.showJson = true;
 
-				axios.post('/order-products', this.userData)
-					.then(function (response) {
-						console.log(response);
-					})
-					.catch(function (error) {
-						console.log(error);
-					});
-			}
+					axios.post('/order-products', this.userData)
+						.then(function (response) {
+							console.log(response);
+						})
+						.catch(function (error) {
+							console.log(error);
+						});
+				}
+			});			
 		}
 	},
 	computed: {
@@ -294,13 +301,6 @@ Vue.component("app-checkout", {
 				this.userData.creditcard = '';
 			} else if(this.userData.paymentMethod == "creditcard") {
 				this.userData.bank = '';
-			}
-		},
-		formValid: function() {
-			if(this.userData.bank != "" || this.userData.creditcard != "") {
-				return true;
-			} else {
-				return false;
 			}
 		}
 	}
@@ -334,3 +334,9 @@ new Vue({
 Vue.filter("capitalizeFirstLetter", function(string){
 	return string.charAt(0).toUpperCase() + string.slice(1);
 });
+
+// ---------------------------------------------
+// Vee Validate
+// ---------------------------------------------
+
+Vue.use(VeeValidate);
