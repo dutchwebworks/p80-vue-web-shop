@@ -1,13 +1,14 @@
 .genre {
 	@include grid-row(2);
 	@include grid-column(1);
+	margin-right: 5px;
 	padding: 20px;
 	border-radius: 10px;
 	font-family: sans-serif;
 	background-color: map-get($color, 05);
 
-	@include grid-override("edge") {
-		margin-right: 5px;
+	@include grid-override {
+		margin-right: 0;
 	}
 }
 

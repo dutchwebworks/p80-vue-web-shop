@@ -68,29 +68,29 @@
 // ---------------------------------------------
 
 @mixin grid-override($browser: false) {
-	@if($browser == 'ie') {
-		// Win/IE 10 & 11 only override
+	@if($browser == "legacy") {
+		// Win/IE 11 and lower
 		@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
-			@content;
-		}
-	} @else if($browser == 'edge') {
-		// Win/Edge only override
-		@supports(display: -ms-grid) {
-			@content;
-		}
-	} @else if($browser == 'modern') {
-		// Current CSS Grid spec. override
-		@supports (grid-area: auto) {
-			@content;
-		}
-	} @else {
-		// Win/Edge & current CSS Grid spec. override
-		@supports(display: grid) or (display: -ms-grid) {
 			@content;
 		}
 
-		// Win/IE 10 & 11 override
+		// MS/Edge 15 and lower
+		@supports(display: -ms-grid) {
+			@content;
+		}
+    } @else {
+		// Win/IE 11 and lower
 		@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+			@content;
+		}
+
+		// MS/Edge 15 and lower
+		@supports(display: -ms-grid) {
+			@content;
+		}
+
+		// Modern and Win/Edge 16+
+		@supports (display: grid) or ((display: grid) and (display: -ms-grid)) {
 			@content;
 		}
 	}
