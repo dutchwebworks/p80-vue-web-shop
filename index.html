@@ -55,7 +55,7 @@
 					<p class="user-info__row">
 						<label class="user-info__item">
 							Firstname
-							<input type="text" name="firstname" v-validate="'required'" v-model="userData.firstname" v-bind:class="{ 'is-error' : errors.first('firstname') }" placeholder="Firstname">
+							<input type="text" name="firstname" v-validate="'required|alpha_spaces'" v-model="userData.firstname" v-bind:class="{ 'is-error' : errors.first('firstname') }" placeholder="Firstname">
 							<span v-show="errors.has('firstname')" class="user-info__validation is-error">{{ errors.first('firstname') }}</span>
 						</label>
 					</p>
@@ -63,7 +63,7 @@
 					<p class="user-info__row">
 						<label class="user-info__item">
 							Lastname
-							<input type="text" name="lastname" v-validate="'required'" v-model="userData.lastname" v-bind:class="{ 'is-error' : errors.first('lastname') }" placeholder="Lastname">
+							<input type="text" name="lastname" v-validate="'required|alpha_spaces'" v-model="userData.lastname" v-bind:class="{ 'is-error' : errors.first('lastname') }" placeholder="Lastname">
 							<span v-show="errors.has('lastname')" class="user-info__validation is-error">{{ errors.first('lastname') }}</span>
 						</label>
 					</p>
