@@ -6,7 +6,7 @@
 	font-family: sans-serif;
 	background-color: map-get($color, 05);
 
-	@include grid-override("legacy") {
+	@include grid-override {
 		margin-left: 5px;
 	}
 }

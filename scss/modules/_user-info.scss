@@ -7,7 +7,7 @@
 	font-family: map-get($fonts, custom);
 	background-color: map-get($color, 05);
 
-	@include grid-override("edge") {
+	@include grid-override {
 		margin-right: 5px;
 	}
 }

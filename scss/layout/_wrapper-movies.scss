@@ -2,7 +2,7 @@
 	@include grid-row(2);
 	@include grid-column(2);
 
-	@include grid-override("edge") {
+	@include grid-override {
 		margin-left: 5px;
 		margin-right: 5px;
 	}
