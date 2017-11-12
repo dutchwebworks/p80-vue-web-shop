@@ -27,7 +27,7 @@
 .user-info__subtitle {
 	color: map-get($color, 02);
 	font-weight: 400;
-	font-size: 18px;
+	font-size: 22px;
 }
 
 .user-info__option-list {
@@ -137,3 +137,16 @@
 	}
 }
 
+.user-info__coupon-message {
+	display: block;
+	margin-top: 10px;
+	font-size: 14px;
+
+	&.is-correct {
+		color: map-get($color, 01);
+	}
+
+	&.is-incorrect {
+		color: map-get($color, 04);
+	}
+}

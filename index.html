@@ -49,7 +49,9 @@
 			</div>
 
 			<div class="user-info user-info--checkout">
-				<h3 class="user-info__title">User information</h3>
+				<h3 class="user-info__title">Checkout information</h3>
+
+				<h4 class="user-info__subtitle">Personal</h4>
 
 				<form action="/" method="post" v-on:submit.prevent="validateBeforeSubmit">
 					<p class="user-info__row">
@@ -74,6 +76,20 @@
 							<input type="email" name="email" v-validate="'required|email'" data-vv-as="e-mail" v-model="userData.email" v-bind:class="{ 'is-error' : errors.first('email') }" placeholder="e-mail">
 							<span v-show="errors.has('email')" class="user-info__validation is-error">{{ errors.first('email') }}</span>
 						</label>
+					</p>
+
+					<h4 class="user-info__subtitle">Coupon code</h4>
+
+					<p class="user-info__row">
+						<label class="user-info__item">
+							Optional
+							<input type="text" name="coupon" v-model="coupon.user" placeholder="Coupon">
+							<span v-bind:class="coupon.classname" class="user-info__coupon-message" v-show="coupon.message != ''">{{ coupon.message }}</span>
+						</label>
+					</p>
+
+					<p class="user-info__row">
+						<button class="user-info__submit" v-show="!coupon.couponDone" v-on:click="checkCouponCode">Check coupon</button>
 					</p>
 
 					<h4 class="user-info__subtitle">Subscribe to our e-mail newsletters</h4>
@@ -126,7 +142,7 @@
 					<ul class="user-info__row ">
 						<li>
 							<label class="user-info__item user-info__item--terms">
-								<input type="checkbox" value="true" v-validate="'required'" data-vv-as="payment method" v-model="agreedToTerms">
+								<input type="checkbox" name="terms" value="true" v-validate="'required'" data-vv-as="payment method" v-model="agreedToTerms">
 								I agree to our terms and conditions
 							</label>
 							<span v-show="errors.has('agreedToTerms')" class="user-info__validation is-error">{{ errors.first('agreedToTerms') }}</span>

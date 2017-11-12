@@ -745,7 +745,7 @@
 .user-info__subtitle {
   color: deeppink;
   font-weight: 400;
-  font-size: 18px;
+  font-size: 22px;
 }
 
 .user-info__option-list li + li {
@@ -850,6 +850,20 @@
   font-family: Raleway, sans-serif;
   font-weight: 400;
   font-size: 14px;
+}
+
+.user-info__coupon-message {
+  display: block;
+  margin-top: 10px;
+  font-size: 14px;
+}
+
+.user-info__coupon-message.is-correct {
+  color: deepskyblue;
+}
+
+.user-info__coupon-message.is-incorrect {
+  color: crimson;
 }
 
 /*# sourceMappingURL=style.css.map */
