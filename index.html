@@ -83,7 +83,7 @@
 					<p class="user-info__row">
 						<label class="user-info__item">
 							Optional
-							<input type="text" name="coupon" v-model="coupon.user" placeholder="Coupon">
+							<input type="text" v-bind:disabled="coupon.couponDone" v-bind:readonly="coupon.couponDone"name="coupon" v-model="coupon.user" placeholder="Coupon">
 							<span v-bind:class="coupon.classname" class="user-info__coupon-message" v-show="coupon.message != ''">{{ coupon.message }}</span>
 						</label>
 					</p>
@@ -159,7 +159,7 @@
 				<h3 class="cart-checkout__title">Cart items</h3>
 
 				<ul class="cart-checkout__items">
-					<li v-for="item in cartItems">
+					<li v-for="item in cartItems" v-bind:class="item.classname">
 						<span>{{ item.title }}</span>
 						<span>&euro;{{ item.price }},-</span>
 					</li>

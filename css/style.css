@@ -138,6 +138,10 @@
   font-family: Helvetica, sans-serif;
 }
 
+.cart-checkout__items .coupon {
+  color: #7ead51;
+}
+
 .cart-checkout__total {
   padding-top: 10px;
   text-align: right;
@@ -859,7 +863,7 @@
 }
 
 .user-info__coupon-message.is-correct {
-  color: deepskyblue;
+  color: #7ead51;
 }
 
 .user-info__coupon-message.is-incorrect {
