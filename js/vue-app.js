@@ -228,7 +228,7 @@ Vue.component("app-cart", {
 			bus.total = this.total;
 			bus.$emit("switchComponent", "app-checkout");
 		}
-	},
+	}
 });
 
 Vue.component("app-checkout", {
@@ -238,6 +238,19 @@ Vue.component("app-checkout", {
 			showJson: false,
 			agreedToTerms: false,
 			cartItemIds: [],
+			calculatedTotal: '',
+			coupon: {
+				url: "/json/coupon-codes.json",
+				items: [],
+				user: '',
+				couponDone: false,
+				successMessage: "Coupon used: ",
+				errorMessage: "Coupon code is incorrect",
+				message: '',
+				classname: '',
+				classnameCorrect: 'is-correct',
+				classnameInCorrect: 'is-incorrect'
+			},
 			userData: {
 				cartItemIds: [],
 				total: null,
@@ -271,11 +284,63 @@ Vue.component("app-checkout", {
 
 		this.cartItems = bus.cartItems;
 		this.userData.total = bus.total;
+
+		this.getCoupons(this.coupon.url);
 	},
 	mounted: function() {
 
 	},
 	methods: {
+		getCoupons: function(url) {
+			var self = this;
+
+			axios.get(url).then(function(response){
+				self.coupon.items = response.data;
+			});
+		},
+		validateCouponCode: function(coupon) {
+			for(i = 0, j = this.coupon.items.length; i < j; i++) {
+				if(this.coupon.items[i].code == coupon) {
+					return this.coupon.items[i];
+				}
+			}
+		},
+		checkCouponCode: function() {
+			var userCoupon = this.validateCouponCode(this.coupon.user);
+
+			if(typeof(userCoupon) == "object") {
+				this.coupon.message = this.coupon.successMessage + userCoupon.name + " discount: € " + userCoupon.discount + ",-";
+				this.coupon.classname = this.coupon.classnameCorrect;
+				this.coupon.couponDone = true;
+				bus.cartItems.push({
+					title: "Coupon: " + userCoupon.name,
+					classname: 'coupon',
+					price: userCoupon.discount * -1
+				});
+				this.userData.cartItemIds.push(userCoupon.code);
+				this.calculateTotal();
+			} else {
+				this.coupon.message = this.coupon.errorMessage;
+				this.coupon.classname = this.coupon.classnameInCorrect;
+			}
+		},
+		calculateTotal: function() {
+			var total = 0;
+
+			for(i = 0, j = bus.cartItems.length; i < j; i++) {
+				total += bus.cartItems[i].price;
+			}
+
+			if(this.userData.total > total) {
+				this.userData.total = total;
+
+				if(this.userData.total < 0) {
+					this.userData.total = 0;
+				}
+			}
+
+			this.calculatedTotal = total;
+		},
 		backToShop: function() {
 			bus.$emit("switchComponent", "app-shop");
 		},

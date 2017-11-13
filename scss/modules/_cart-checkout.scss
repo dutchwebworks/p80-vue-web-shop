@@ -37,6 +37,10 @@
 	span:nth-child(2) {
 		font-family: map-get($fonts, normal);
 	}
+
+	.coupon {
+		color: map-get($color, 07);
+	}
 }
 
 .cart-checkout__total {
