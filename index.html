@@ -32,7 +32,7 @@
 				<app-movie-products v-bind:filtered-movies="filteredMovies"></app-movie-products>
 			</div>
 
-			<app-cart></app-cart>	
+			<app-cart></app-cart>
 
 			<app-pagination v-bind:pagination="pagination"></app-pagination>
 
@@ -83,10 +83,18 @@
 					<p class="user-info__row">
 						<label class="user-info__item">
 							Optional
-							<input type="text" v-bind:disabled="coupon.couponDone" v-bind:readonly="coupon.couponDone"name="coupon" v-model="coupon.user" placeholder="Coupon">
+							<input type="text" v-bind:hover="showCouponTip = true" v-bind:disabled="coupon.couponDone" v-bind:readonly="coupon.couponDone" name="coupon" v-model="coupon.user" placeholder="Coupon">
 							<span v-bind:class="coupon.classname" class="user-info__coupon-message" v-show="coupon.message != ''">{{ coupon.message }}</span>
 						</label>
 					</p>
+
+					<template v-if="showCouponTip">
+						<h4 class="user-info__subsubtitle">Try on of our free coupon codes:</h4>
+
+						<ul class="user-info__coupon user-info__row">
+							<li v-for="item in coupon.items">{{ item.code }}</li>
+						</ul>
+					</template>
 
 					<p class="user-info__row">
 						<button class="user-info__submit" v-show="!coupon.couponDone" v-on:click="checkCouponCode">Check coupon</button>
