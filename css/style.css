@@ -747,9 +747,16 @@
 }
 
 .user-info__subtitle {
+  margin-top: 50px;
   color: deeppink;
   font-weight: 400;
   font-size: 22px;
+}
+
+.user-info__subsubtitle {
+  color: #444;
+  font-weight: 400;
+  font-size: 18px;
 }
 
 .user-info__option-list li + li {
@@ -868,6 +875,16 @@
 
 .user-info__coupon-message.is-incorrect {
   color: crimson;
+}
+
+.user-info__coupon li {
+  color: deepskyblue;
+  font-size: 22px;
+  font-family: monospace, sans-serif;
+}
+
+.user-info__coupon li + li {
+  margin-top: 5px;
 }
 
 /*# sourceMappingURL=style.css.map */

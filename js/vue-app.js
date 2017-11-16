@@ -239,6 +239,7 @@ Vue.component("app-checkout", {
 			agreedToTerms: false,
 			cartItemIds: [],
 			calculatedTotal: '',
+			showCouponTip: false,
 			coupon: {
 				url: "/json/coupon-codes.json",
 				items: [],
@@ -250,6 +251,7 @@ Vue.component("app-checkout", {
 				classname: '',
 				classnameCorrect: 'is-correct',
 				classnameInCorrect: 'is-incorrect'
+
 			},
 			userData: {
 				cartItemIds: [],
@@ -322,6 +324,7 @@ Vue.component("app-checkout", {
 			} else {
 				this.coupon.message = this.coupon.errorMessage;
 				this.coupon.classname = this.coupon.classnameInCorrect;
+				this.showCouponTip = true;
 			}
 		},
 		calculateTotal: function() {
@@ -341,7 +344,16 @@ Vue.component("app-checkout", {
 
 			this.calculatedTotal = total;
 		},
-		backToShop: function() {
+		removeCouponFromCart: function() {
+			for(i = 0, j = bus.cartItems.length; i < j; i++) {
+				if(bus.cartItems[i].id == undefined) {
+					bus.cartItems.splice(i, 1);
+					break;
+				}
+			}
+		},
+		backToShop: function() {			
+			this.removeCouponFromCart();
 			bus.$emit("switchComponent", "app-shop");
 		},
 		validateBeforeSubmit: function() {
