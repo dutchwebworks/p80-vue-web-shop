@@ -1,1 +1,1 @@
-browser-sync start --server --files="css/*.css, **/*.html"
+browser-sync start --server --cors --files="css/*.css, **/*.html"
