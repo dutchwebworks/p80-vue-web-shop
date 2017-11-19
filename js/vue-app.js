@@ -180,6 +180,11 @@ Vue.component("app-movie-products", {
 			filterByGenre: "",
 		}
 	},
+	mounted: function() {
+		setTimeout(function(){
+			$(".js-trailer-popup").magnificPopup({ type: "iframe" });	
+		},300);		
+	},
 	methods: {
 		addToCart: function(event, item) {
 			bus.$emit("addToCart", item);
@@ -187,7 +192,7 @@ Vue.component("app-movie-products", {
 		filterMovieList: function(genre) {
 			bus.$emit("filterGenre", genre);
 		}
-	}	
+	}
 });
 
 Vue.component("app-cart", {
@@ -205,6 +210,9 @@ Vue.component("app-cart", {
 		}
 
 		bus.$on("addToCart", this.addToCart);
+	},
+	destroyed: function() {
+		bus.$off("addToCart");
 	},
 	methods: {
 		addToCart: function(item) {
@@ -239,6 +247,7 @@ Vue.component("app-checkout", {
 			agreedToTerms: false,
 			cartItemIds: [],
 			calculatedTotal: '',
+			showCouponTip: false,
 			coupon: {
 				url: "/json/coupon-codes.json",
 				items: [],
@@ -252,15 +261,41 @@ Vue.component("app-checkout", {
 				classnameInCorrect: 'is-incorrect'
 			},
 			userData: {
-				cartItemIds: [],
-				total: null,
-				firstname: '',
-				lastname: '',
-				email: '',
+				address: {
+					firstname: '',
+					lastname: '',
+					street: '',
+					housenumber: '',
+					zipcode: '',
+					city: '',
+					province: '',
+					email: '',
+				},
+				cart: {
+					items: [],
+					total: '',
+				},
 				newsletters: [],
-				bank: '',
-				creditcard: '',
+				payment: {
+					method: '',
+					bank: '',
+					creditcard: '',
+				}
 			},
+			addressLookUp: {
+				zipcode: '',
+				housenumber: '',
+				addressFound: false,
+				addressNotFound: false,
+				addressResult: {
+					street: '',
+					number: '',
+					city: '',
+					province: '',
+				},
+				mapImageUrl: '',
+			},
+			serverAnswer: {},
 			payment: {
 				banks: [
 					{ name: 'ING', value: 'ing' },
@@ -279,11 +314,11 @@ Vue.component("app-checkout", {
 	},
 	created: function() {
 		for(i = 0, j = bus.cartItems.length; i < j; i++) {
-			this.userData.cartItemIds.push(parseInt(bus.cartItems[i].id));
+			this.userData.cart.items.push(parseInt(bus.cartItems[i].id));
 		}
 
 		this.cartItems = bus.cartItems;
-		this.userData.total = bus.total;
+		this.userData.cart.total = bus.total;
 
 		this.getCoupons(this.coupon.url);
 	},
@@ -291,6 +326,67 @@ Vue.component("app-checkout", {
 
 	},
 	methods: {
+		getAddress: function() {
+			var self = this;
+			var zipcodeSanitized = self.addressLookUp.zipcode.replace(" ", "").trim();
+			var housenumberSanitized = self.addressLookUp.housenumber.replace(" ", "").trim();
+
+			var settings = {
+				"crossDomain": true,
+				"headers": {
+					"x-api-key": "Fl8m60m9ts6vUvAaAtcE42K8of03Hmqo6vYp5A3O",
+					"accept": "application/hal+json"
+				}
+			};
+
+			axios.get("https://api.postcodeapi.nu/v2/addresses/?postcode=" + zipcodeSanitized + "&number=" + housenumberSanitized, settings)
+				.then(function(response){
+					var addressData = self.addressLookUp.addressResult;
+
+					if(response.data._embedded.addresses.length != 0) {
+						var serverData = response.data._embedded.addresses[0];
+						var lat = serverData.geo.center.wgs84.coordinates[1];
+						var long = serverData.geo.center.wgs84.coordinates[0];
+
+						// Lookup
+						addressData.city = serverData.city.label;
+						addressData.street = serverData.street;
+						addressData.number = serverData.number;
+						addressData.province = serverData.province.label;
+
+						// Userdata
+						self.userData.address.zipcode = zipcodeSanitized;
+						self.userData.address.housenumber = housenumberSanitized;
+						self.userData.address.city = serverData.city.label;
+						self.userData.address.street = serverData.street;
+						self.userData.address.province = serverData.province.label;
+
+						// Google Map
+						self.addressLookUp.mapImageUrl = "https://maps.googleapis.com/maps/api/staticmap?center=" + lat + "," + long + "&zoom=11&size=385x385&key=AIzaSyBa1a2OcucQZjaRimNBnZrdlRBpmX2ypf8";
+
+						self.addressLookUp.addressFound = true;
+						self.addressLookUp.addressNotFound = false;
+					} else {
+						addressData.city = '';
+						addressData.street = '';
+						addressData.number = '';
+						addressData.province = '';
+
+						self.userData.address.city = '';
+						self.userData.address.street = '';
+						self.userData.address.province = '';						
+
+						self.addressLookUp.addressNotFound = true;
+						self.addressLookUp.addressFound = false;
+					}
+					
+				})
+				.catch(function (error) {
+					self.addressLookUp.addressNotFound = true;
+					self.addressLookUp.addressFound = false;
+					console.log(error);
+				});
+		},
 		getCoupons: function(url) {
 			var self = this;
 
@@ -313,15 +409,17 @@ Vue.component("app-checkout", {
 				this.coupon.classname = this.coupon.classnameCorrect;
 				this.coupon.couponDone = true;
 				bus.cartItems.push({
+					id: userCoupon.code,
 					title: "Coupon: " + userCoupon.name,
 					classname: 'coupon',
 					price: userCoupon.discount * -1
 				});
-				this.userData.cartItemIds.push(userCoupon.code);
+				this.userData.cart.items.push(userCoupon.code);
 				this.calculateTotal();
 			} else {
 				this.coupon.message = this.coupon.errorMessage;
 				this.coupon.classname = this.coupon.classnameInCorrect;
+				this.showCouponTip = true;
 			}
 		},
 		calculateTotal: function() {
@@ -331,42 +429,54 @@ Vue.component("app-checkout", {
 				total += bus.cartItems[i].price;
 			}
 
-			if(this.userData.total > total) {
-				this.userData.total = total;
+			if(this.userData.cart.total > total) {
+				this.userData.cart.total = total;
 
-				if(this.userData.total < 0) {
-					this.userData.total = 0;
+				if(this.userData.cart.total < 0) {
+					this.userData.cart.total = 0;
 				}
 			}
 
 			this.calculatedTotal = total;
 		},
-		backToShop: function() {
+		removeCouponFromCart: function() {
+			for(i = 0, j = bus.cartItems.length; i < j; i++) {
+				if(bus.cartItems[i].id == undefined) {
+					bus.cartItems.splice(i, 1);
+					break;
+				}
+			}
+		},
+		backToShop: function() {			
+			this.removeCouponFromCart();
 			bus.$emit("switchComponent", "app-shop");
 		},
 		validateBeforeSubmit: function() {
+			var self = this;
 			this.$validator.validateAll().then((result) => {
 				if (result) {
-					this.showJson = true;
-
-					axios.post('/order-products', this.userData)
+					// Just an example post that will fail
+					axios.post('order-products', this.userData)
 						.then(function (response) {
 							console.log(response);
 						})
 						.catch(function (error) {
 							console.log(error);
 						});
+
+					// Fake response from server
+					axios.get('/json/order-products.json')
+						.then(function (response) {
+							if(response.data.payment == true) {
+								self.serverAnswer = response.data;
+								self.showJson = true;
+							}
+						})
+						.catch(function (error) {
+							console.log(error);
+						});
 				}
 			});			
-		}
-	},
-	computed: {
-		paymentMethod: function() {
-			if(this.userData.paymentMethod == "ideal") {
-				this.userData.creditcard = '';
-			} else if(this.userData.paymentMethod == "creditcard") {
-				this.userData.bank = '';
-			}
 		}
 	}
 });

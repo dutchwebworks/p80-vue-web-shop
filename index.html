@@ -4,6 +4,7 @@
 	<meta charset="UTF-8">
 	<link href="https://fonts.googleapis.com/css?family=Raleway:400,700" rel="stylesheet">
 	<link href="css/style.css" rel="stylesheet" type="text/css">
+	<link href="css/libs/magnific-popup.css" rel="stylesheet" type="text/css">
 	<title>Vue Web Shop</title>
 </head>
 <body>
@@ -32,7 +33,7 @@
 				<app-movie-products v-bind:filtered-movies="filteredMovies"></app-movie-products>
 			</div>
 
-			<app-cart></app-cart>	
+			<app-cart></app-cart>
 
 			<app-pagination v-bind:pagination="pagination"></app-pagination>
 
@@ -57,7 +58,7 @@
 					<p class="user-info__row">
 						<label class="user-info__item">
 							Firstname
-							<input type="text" name="firstname" v-validate="'required|alpha_spaces'" data-vv-as="first name" v-model="userData.firstname" v-bind:class="{ 'is-error' : errors.first('firstname') }" placeholder="Firstname">
+							<input type="text" name="firstname" v-validate="'required|alpha_spaces'" data-vv-as="first name" v-model="userData.address.firstname" v-bind:class="{ 'is-error' : errors.first('firstname') }" placeholder="Firstname">
 							<span v-show="errors.has('firstname')" class="user-info__validation is-error">{{ errors.first('firstname') }}</span>
 						</label>
 					</p>
@@ -65,7 +66,7 @@
 					<p class="user-info__row">
 						<label class="user-info__item">
 							Lastname
-							<input type="text" name="lastname" v-validate="'required|alpha_spaces'" data-vv-as="last name" v-model="userData.lastname" v-bind:class="{ 'is-error' : errors.first('lastname') }" placeholder="Lastname">
+							<input type="text" name="lastname" v-validate="'required|alpha_spaces'" data-vv-as="last name" v-model="userData.address.lastname" v-bind:class="{ 'is-error' : errors.first('lastname') }" placeholder="Lastname">
 							<span v-show="errors.has('lastname')" class="user-info__validation is-error">{{ errors.first('lastname') }}</span>
 						</label>
 					</p>
@@ -73,20 +74,84 @@
 					<p class="user-info__row">
 						<label class="user-info__item">
 							E-mail
-							<input type="email" name="email" v-validate="'required|email'" data-vv-as="e-mail" v-model="userData.email" v-bind:class="{ 'is-error' : errors.first('email') }" placeholder="e-mail">
+							<input type="email" name="email" v-validate="'required|email'" data-vv-as="e-mail" v-model="userData.address.email" v-bind:class="{ 'is-error' : errors.first('email') }" placeholder="E-mail">
 							<span v-show="errors.has('email')" class="user-info__validation is-error">{{ errors.first('email') }}</span>
 						</label>
 					</p>
+
+					<p class="user-info__row">
+						<label class="user-info__item">
+							ZIP-code
+							<input type="text" name="zipcode" v-validate="'required'" data-vv-as="zip code" v-model="addressLookUp.zipcode" v-bind:class="{ 'is-error' : errors.first('zipcode') }" placeholder="Zip code">
+							<span v-show="errors.has('zipcode')" class="user-info__validation is-error">{{ errors.first('zipcode') }}</span>
+						</label>
+					</p>
+
+					<p class="user-info__row">
+						<label class="user-info__item">
+							House number
+							<input type="text" name="housenumber" v-validate="'required'" v-on:blur="getAddress" data-vv-as="house number" v-model="addressLookUp.housenumber" v-bind:class="{ 'is-error' : errors.first('housenumber') }" placeholder="House number">
+							<span v-show="errors.has('housenumber')" class="user-info__validation is-error">{{ errors.first('housenumber') }}</span>
+						</label>
+					</p>					
+
+					<div v-show="addressLookUp.addressFound">
+						<h4 class="user-info__subtitle">Address found</h4>
+
+						<ul class="user-info__row">
+							<li>{{ addressLookUp.addressResult.street }} {{ addressLookUp.addressResult.number }}</li>
+							<li>{{ addressLookUp.addressResult.city }}</li>
+							<li>{{ addressLookUp.addressResult.province }}</li>
+						</ul>					
+
+						<p class="user-info__row" v-show="addressLookUp.mapImageUrl != ''">
+							<img v-bind:src="addressLookUp.mapImageUrl" class="user-info__map" alt="Google Maps">
+						</p>
+					</div>
+
+					<div v-show="addressLookUp.addressNotFound">
+						<h4 class="user-info__subtitle">Address invalid</h4>
+
+						<p class="user-info__row">
+							No valid address found. Fill in your own.
+						</p>
+
+						<p class="user-info__row">
+							<label class="user-info__item">
+								<input type="text" v-model="userData.address.street" placeholder="Street">
+							</label>
+						</p>
+
+						<p class="user-info__row">
+							<label class="user-info__item">
+								<input type="text" v-model="userData.address.city" placeholder="City">
+							</label>
+						</p>
+
+						<p class="user-info__row">
+							<label class="user-info__item">
+								<input type="text" v-model="userData.address.province" placeholder="Province">
+							</label>
+						</p>
+					</div>
 
 					<h4 class="user-info__subtitle">Coupon code</h4>
 
 					<p class="user-info__row">
 						<label class="user-info__item">
 							Optional
-							<input type="text" v-bind:disabled="coupon.couponDone" v-bind:readonly="coupon.couponDone"name="coupon" v-model="coupon.user" placeholder="Coupon">
+							<input type="text" v-bind:hover="showCouponTip = true" v-bind:disabled="coupon.couponDone" v-bind:readonly="coupon.couponDone" name="coupon" v-model="coupon.user" placeholder="Coupon">
 							<span v-bind:class="coupon.classname" class="user-info__coupon-message" v-show="coupon.message != ''">{{ coupon.message }}</span>
 						</label>
 					</p>
+
+					<template v-if="showCouponTip">
+						<h4 class="user-info__subsubtitle">Try on of our free coupon codes:</h4>
+
+						<ul class="user-info__coupon user-info__row">
+							<li v-for="item in coupon.items">{{ item.code }}</li>
+						</ul>
+					</template>
 
 					<p class="user-info__row">
 						<button class="user-info__submit" v-show="!coupon.couponDone" v-on:click="checkCouponCode">Check coupon</button>
@@ -112,13 +177,13 @@
 					<h4 class="user-info__subtitle">Payment options</h4>
 
 					<p class="user-info__row">
-						<label class="user-info__item" v-bind:class="{ 'is-active' : userData.paymentMethod == 'ideal' }">
-							<input type="radio" name="paymentoptions" value="ideal" v-validate="'required'" data-vv-as="payment method" v-model="userData.paymentMethod">
+						<label class="user-info__item" v-bind:class="{ 'is-active' : userData.payment.method == 'ideal' }">
+							<input type="radio" name="paymentoptions" value="ideal" v-validate="'required'" data-vv-as="payment method" v-model="userData.payment.method">
 							iDeal
 						</label>
 						
-						<label class="user-info__item" v-bind:class="{ 'is-active' : userData.paymentMethod == 'creditcard' }">
-							<input type="radio" name="paymentoptions" value="creditcard" v-validate="'required'" data-vv-as="payment method" v-model="userData.paymentMethod">
+						<label class="user-info__item" v-bind:class="{ 'is-active' : userData.payment.method == 'creditcard' }">
+							<input type="radio" name="paymentoptions" value="creditcard" v-validate="'required'" data-vv-as="payment method" v-model="userData.payment.method">
 							Creditcard
 						</label>
 					</p>
@@ -127,15 +192,15 @@
 						 {{ errors.first('paymentoptions') }}
 					</p>
 
-					<div class="user-info__row payment payment--ideal" v-show="userData.paymentMethod == 'ideal'">
+					<div class="user-info__row payment payment--ideal" v-show="userData.payment.method == 'ideal'">
 						<ul class="user-info__row user-info__option-list">
-							<li v-for="bank in payment.banks" v-bind:class="{ 'is-active' : bank.value == userData.bank }"><label><input type="radio" v-model="userData.bank" v-bind:value="bank.value">{{ bank.name }}</label></li>
+							<li v-for="bank in payment.banks" v-bind:class="{ 'is-active' : bank.value == userData.payment.bank }"><label><input type="radio" v-model="userData.payment.bank" v-bind:value="bank.value">{{ bank.name }}</label></li>
 						</ul>
 					</div>
 
-					<div class="user-info__row payment payment--ideal" v-show="userData.paymentMethod == 'creditcard'">
+					<div class="user-info__row payment payment--ideal" v-show="userData.payment.method == 'creditcard'">
 						<ul class="user-info__row user-info__option-list">
-							<li v-for="creditcard in payment.creditcards" v-bind:class="{ 'is-active' : creditcard.value == userData.creditcard }"><label><input type="radio" v-model="userData.creditcard" v-bind:value="creditcard.value">{{ creditcard.name }}</label></li>
+							<li v-for="creditcard in payment.creditcards" v-bind:class="{ 'is-active' : creditcard.value == userData.payment.creditcard }"><label><input type="radio" v-model="userData.payment.creditcard" v-bind:value="creditcard.value">{{ creditcard.name }}</label></li>
 						</ul>
 					</div>
 
@@ -160,24 +225,41 @@
 
 				<ul class="cart-checkout__items">
 					<li v-for="item in cartItems" v-bind:class="item.classname">
-						<span>{{ item.title }}</span>
+						<span v-bind:title="item.id">{{ item.title }}</span>
 						<span>&euro;{{ item.price }},-</span>
 					</li>
 				</ul>
 
 				<p class="cart-checkout__total">
-					Total: &euro; {{ userData.total }},-
+					Total: &euro; {{ userData.cart.total }},-
 				</p>
 
 				<p v-show="!showJson">
 					<button v-on:click="backToShop" class="cart-checkout__button">Back to the shop</button>
-				</p>	
+				</p>
+
+				<div class="order-done" v-show="showJson">
+					<h3 class="order-done__title">Your order has been sent</h3>
+
+					<p class="order-done__body">
+						Thank you for shopping at the Poort80 Vue Web Shop.
+						You'll receive an e-mail soon with your purchase details.
+					</p>
+				</div>
 			</div>
 
-			<div class="ajax-data" v-show="showJson">
-				<h3 class="ajax-data__title">Ajax call send</h3>		
+			<div class="ajax-data">
+				<h3 class="ajax-data__title">Ajax post call send</h3>
+				
+				<h4 class="ajax-data__sub-title">Payload</h4>
 
 				<code>{{ userData }}</code>
+
+				<h3 class="ajax-data__title">Server response</h3>
+
+				<h4 class="ajax-data__sub-title">Result</h4>
+
+				<code>{{ serverAnswer }}</code>
 			</div>
 
 			<footer class="footer footer--checkout">
@@ -206,7 +288,7 @@
 
 			<div class="movie-product__list">
 				<div class="movie-product__item" v-for="movie in filteredMovies">
-					<a href="javascript:;" v-bind:href="movie.imdbLink" class="movie-product__link" target="_blank" title="Open IMDB page">
+					<a v-bind:href="movie.trailer" class="js-trailer-popup movie-product__link" target="_blank" title="View the trailer">
 						<img v-bind:src="movie.imgThumb" class="movie-product__img" v-bind:alt="movie.title">
 					</a>
 
@@ -267,6 +349,8 @@
 	    <p>Vue demo JavaScript project, by Dennis Burger, oct. / nov. 2017</p>
 	</script>
 
+	<script src="js/libs/zepto.min.js"></script>
+	<script src="js/libs/magnificpopup-v1.1.0.js"></script>
 	<script src="js/libs/vue.js"></script>
 	<script src="js/libs/vee-validate.js"></script>
 	<script src="js/libs/axios.js"></script>

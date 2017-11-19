@@ -11,12 +11,24 @@
 		white-space: pre;
 		font-size: 14px;
 	}
+
+	code + .ajax-data__title {
+		margin-top: 40px;
+	}
 }
 
 .ajax-data__title {
-	margin-top: 0;
-	color: map-get($color, 03);
+	margin: 0 0 20px 0;
+	color: map-get($color, 02);
 	font-weight: 400;
 	font-size: 32px;
+	font-family: map-get($fonts, custom);
+}
+
+.ajax-data__sub-title {
+	margin: 0 0 20px 0;
+	color: map-get($color, 01);
+	font-weight: 400;
+	font-size: 18px;
 	font-family: map-get($fonts, custom);
 }

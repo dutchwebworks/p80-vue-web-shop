@@ -77,7 +77,11 @@ module.exports = function(grunt) {
 						forms: false
 					},
 					server: {
-						baseDir: '<%= config.projectRoot %>'
+						baseDir: '<%= config.projectRoot %>',
+						middleware: function (req, res, next) {
+							res.setHeader('Access-Control-Allow-Origin', '*');
+							next();
+						}
 					}
 				},	
 				bsFiles: {
