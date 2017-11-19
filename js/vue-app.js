@@ -261,6 +261,7 @@ Vue.component("app-checkout", {
 				zipcode: null,
 				housenumber: null,
 				addressFound: false,
+				addressNotFound: false,
 				addressResult: {
 					city: null,
 					street: null,
@@ -327,23 +328,41 @@ Vue.component("app-checkout", {
 
 			axios.get("https://api.postcodeapi.nu/v2/addresses/?postcode=" + self.addressLookUp.zipcode + "&number=" + self.addressLookUp.housenumber, settings)
 				.then(function(response){
-					var serverData = response.data._embedded.addresses[0];
+					var serverData = response.data._embedded.addresses;
 					var addressData = self.addressLookUp.addressResult;
 
-					// Lookup
-					addressData.city = serverData.city.label;
-					addressData.street = serverData.street;
-					addressData.number = serverData.number;
-					addressData.province = serverData.province.label;
+					if(serverData.length != 0) {
+						var serverData = response.data._embedded.addresses[0];
 
-					// Userdata
-					self.userData.zipcode = self.addressLookUp.zipcode;
-					self.userData.housenumber = self.addressLookUp.housenumber;
-					self.userData.city = serverData.city.label;
-					self.userData.street = serverData.street;
-					self.userData.province = serverData.province.label;
+						// Lookup
+						addressData.city = serverData.city.label;
+						addressData.street = serverData.street;
+						addressData.number = serverData.number;
+						addressData.province = serverData.province.label;
 
-					self.addressLookUp.addressFound = true;
+						// Userdata
+						self.userData.zipcode = self.addressLookUp.zipcode;
+						self.userData.housenumber = self.addressLookUp.housenumber;
+						self.userData.city = serverData.city.label;
+						self.userData.street = serverData.street;
+						self.userData.province = serverData.province.label;
+
+						self.addressLookUp.addressFound = true;
+						self.addressLookUp.addressNotFound = false;
+					} else {
+						self.userData.city = null;
+						self.userData.street = null;
+						self.userData.province = null;
+
+						addressData.city = null;
+						addressData.street = null;
+						addressData.number = null;
+						addressData.province = null;
+
+						self.addressLookUp.addressNotFound = true;
+						self.addressLookUp.addressFound = false;
+					}
+					
 				})
 				.catch(function (error) {
 					console.log(error);

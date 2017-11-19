@@ -105,6 +105,32 @@
 						</ul>					
 					</div>
 
+					<div v-show="addressLookUp.addressNotFound">
+						<h4 class="user-info__subtitle">Address</h4>
+
+						<p class="user-info__row">
+							No valid address found. Fill in your own.
+						</p>
+
+						<p class="user-info__row">
+							<label class="user-info__item">
+								<input type="text" v-model="userData.street" placeholder="Street">
+							</label>
+						</p>
+
+						<p class="user-info__row">
+							<label class="user-info__item">
+								<input type="text" v-model="userData.city" placeholder="City">
+							</label>
+						</p>
+
+						<p class="user-info__row">
+							<label class="user-info__item">
+								<input type="text" v-model="userData.province" placeholder="Province">
+							</label>
+						</p>
+					</div>
+
 					<h4 class="user-info__subtitle">Coupon code</h4>
 
 					<p class="user-info__row">
