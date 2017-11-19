@@ -180,13 +180,30 @@
 
 				<p v-show="!showJson">
 					<button v-on:click="backToShop" class="cart-checkout__button">Back to the shop</button>
-				</p>	
+				</p>
+
+				<div class="order-done" v-show="showJson">
+					<h3 class="order-done__title">Your order has been sent</h3>
+
+					<p class="order-done__body">
+						Thank you for shopping at the Poort80 Vue Web Shop.
+						You'll receive an e-mail soon with your purchased products.
+					</p>
+				</div>
 			</div>
 
 			<div class="ajax-data" v-show="showJson">
-				<h3 class="ajax-data__title">Ajax call send</h3>		
+				<h3 class="ajax-data__title">Ajax post call send</h3>
+				
+				<h4 class="ajax-data__sub-title">Payload</h4>
 
 				<code>{{ userData }}</code>
+
+				<h3 class="ajax-data__title">Server response</h3>
+
+				<h4 class="ajax-data__sub-title">Result</h4>
+
+				<code>{{ serverAnswer }}</code>
 			</div>
 
 			<footer class="footer footer--checkout">

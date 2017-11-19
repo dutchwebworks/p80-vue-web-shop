@@ -65,11 +65,23 @@
   font-size: 14px;
 }
 
+.ajax-data code + .ajax-data__title {
+  margin-top: 40px;
+}
+
 .ajax-data__title {
-  margin-top: 0;
-  color: #444;
+  margin: 0 0 20px 0;
+  color: deeppink;
   font-weight: 400;
   font-size: 32px;
+  font-family: Raleway, sans-serif;
+}
+
+.ajax-data__sub-title {
+  margin: 0 0 20px 0;
+  color: deepskyblue;
+  font-weight: 400;
+  font-size: 18px;
   font-family: Raleway, sans-serif;
 }
 
@@ -564,6 +576,7 @@
   flex: 1 0 auto;
   margin: 0 10px;
   font-size: 12px;
+  line-height: 1.2;
   font-family: Raleway, sans-serif;
   font-size: 18px;
 }
@@ -599,7 +612,7 @@
   font-family: Raleway, sans-serif;
   font-weight: 700;
   font-size: 14px;
-  margin: 30px 10px;
+  margin: 20px 10px 10px;
 }
 
 .movie-product__actors {
@@ -636,6 +649,21 @@
 
 .movie-product__cta:hover {
   background-color: deeppink;
+}
+
+.order-done__title {
+  margin-top: 0;
+  color: deepskyblue;
+  font-size: 32px;
+  font-weight: 400;
+  font-family: Raleway, sans-serif;
+}
+
+.order-done__body {
+  margin: 0;
+  font-size: 16px;
+  line-height: 1.6;
+  font-family: Raleway, sans-serif;
 }
 
 .pagination {

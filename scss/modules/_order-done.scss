@@ -1,0 +1,18 @@
+.order-done {
+	
+}
+
+.order-done__title {
+	margin-top: 0;
+	color: map-get($color, 01);
+	font-size: 32px;
+	font-weight: 400;
+	font-family: map-get($fonts, custom);
+}
+
+.order-done__body {
+	margin: 0;
+	font-size: 16px;
+	line-height: 1.6;
+	font-family: map-get($fonts, custom);
+}

@@ -268,6 +268,7 @@ Vue.component("app-checkout", {
 				bank: '',
 				creditcard: '',
 			},
+			serverAnswer: {},
 			payment: {
 				banks: [
 					{ name: 'ING', value: 'ing' },
@@ -362,13 +363,25 @@ Vue.component("app-checkout", {
 			bus.$emit("switchComponent", "app-shop");
 		},
 		validateBeforeSubmit: function() {
+			var self = this;
 			this.$validator.validateAll().then((result) => {
 				if (result) {
-					this.showJson = true;
-
-					axios.post('/order-products', this.userData)
+					// Just an example post that will fail
+					axios.post('order-products', this.userData)
 						.then(function (response) {
 							console.log(response);
+						})
+						.catch(function (error) {
+							console.log(error);
+						});
+
+					// Fake response from server
+					axios.get('/json/order-products.json')
+						.then(function (response) {
+							if(response.data.payment == true) {
+								self.serverAnswer = response.data;
+								self.showJson = true;
+							}
 						})
 						.catch(function (error) {
 							console.log(error);

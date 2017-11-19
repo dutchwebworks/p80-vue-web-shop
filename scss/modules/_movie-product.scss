@@ -90,6 +90,7 @@
 	@include flex(1, 0, auto);
 	margin: 0 10px;
 	font-size: 12px;
+	line-height: 1.2;
 	font-family: map-get($fonts, custom);
 	font-size: 18px;
 }
@@ -125,7 +126,7 @@
 	font-family: map-get($fonts, custom);
 	font-weight: 700;
 	font-size: 14px;
-	margin: 30px 10px;
+	margin:20px 10px 10px;
 }
 
 .movie-product__actors {
