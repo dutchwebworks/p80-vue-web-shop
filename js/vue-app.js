@@ -260,33 +260,40 @@ Vue.component("app-checkout", {
 				classnameCorrect: 'is-correct',
 				classnameInCorrect: 'is-incorrect'
 			},
+			userData: {
+				address: {
+					firstname: '',
+					lastname: '',
+					street: '',
+					housenumber: '',
+					zipcode: '',
+					city: '',
+					province: '',
+					email: '',
+				},
+				cart: {
+					items: [],
+					total: '',
+				},
+				newsletters: [],
+				payment: {
+					method: '',
+					bank: '',
+					creditcard: '',
+				}
+			},
 			addressLookUp: {
-				zipcode: null,
-				housenumber: null,
+				zipcode: '',
+				housenumber: '',
 				addressFound: false,
 				addressNotFound: false,
 				addressResult: {
-					city: null,
-					street: null,
-					number: null,
-					province: null,
+					street: '',
+					number: '',
+					city: '',
+					province: '',
 				},
-				map: '',
-			},
-			userData: {
-				cartItemIds: [],
-				total: null,
-				firstname: '',
-				lastname: '',
-				email: '',
-				newsletters: [],
-				bank: '',
-				creditcard: '',
-				zipcode: '',
-				housenumber: '',
-				city: '',
-				street: '',
-				province: '',
+				mapImageUrl: '',
 			},
 			serverAnswer: {},
 			payment: {
@@ -307,11 +314,11 @@ Vue.component("app-checkout", {
 	},
 	created: function() {
 		for(i = 0, j = bus.cartItems.length; i < j; i++) {
-			this.userData.cartItemIds.push(parseInt(bus.cartItems[i].id));
+			this.userData.cart.items.push(parseInt(bus.cartItems[i].id));
 		}
 
 		this.cartItems = bus.cartItems;
-		this.userData.total = bus.total;
+		this.userData.cart.total = bus.total;
 
 		this.getCoupons(this.coupon.url);
 	},
@@ -334,10 +341,9 @@ Vue.component("app-checkout", {
 
 			axios.get("https://api.postcodeapi.nu/v2/addresses/?postcode=" + zipcodeSanitized + "&number=" + housenumberSanitized, settings)
 				.then(function(response){
-					var serverData = response.data._embedded.addresses;
 					var addressData = self.addressLookUp.addressResult;
 
-					if(serverData.length != 0) {
+					if(response.data._embedded.addresses.length != 0) {
 						var serverData = response.data._embedded.addresses[0];
 						var lat = serverData.geo.center.wgs84.coordinates[1];
 						var long = serverData.geo.center.wgs84.coordinates[0];
@@ -349,26 +355,26 @@ Vue.component("app-checkout", {
 						addressData.province = serverData.province.label;
 
 						// Userdata
-						self.userData.zipcode = zipcodeSanitized;
-						self.userData.housenumber = housenumberSanitized;
-						self.userData.city = serverData.city.label;
-						self.userData.street = serverData.street;
-						self.userData.province = serverData.province.label;
+						self.userData.address.zipcode = zipcodeSanitized;
+						self.userData.address.housenumber = housenumberSanitized;
+						self.userData.address.city = serverData.city.label;
+						self.userData.address.street = serverData.street;
+						self.userData.address.province = serverData.province.label;
 
 						// Google Map
-						self.addressLookUp.map = "https://maps.googleapis.com/maps/api/staticmap?center=" + lat + "," + long + "&zoom=11&size=385x385&key=AIzaSyBa1a2OcucQZjaRimNBnZrdlRBpmX2ypf8";
+						self.addressLookUp.mapImageUrl = "https://maps.googleapis.com/maps/api/staticmap?center=" + lat + "," + long + "&zoom=11&size=385x385&key=AIzaSyBa1a2OcucQZjaRimNBnZrdlRBpmX2ypf8";
 
 						self.addressLookUp.addressFound = true;
 						self.addressLookUp.addressNotFound = false;
 					} else {
-						addressData.city = null;
-						addressData.street = null;
-						addressData.number = null;
-						addressData.province = null;
+						addressData.city = '';
+						addressData.street = '';
+						addressData.number = '';
+						addressData.province = '';
 
-						self.userData.city = null;
-						self.userData.street = null;
-						self.userData.province = null;						
+						self.userData.address.city = '';
+						self.userData.address.street = '';
+						self.userData.address.province = '';						
 
 						self.addressLookUp.addressNotFound = true;
 						self.addressLookUp.addressFound = false;
@@ -376,6 +382,8 @@ Vue.component("app-checkout", {
 					
 				})
 				.catch(function (error) {
+					self.addressLookUp.addressNotFound = true;
+					self.addressLookUp.addressFound = false;
 					console.log(error);
 				});
 		},
@@ -401,11 +409,12 @@ Vue.component("app-checkout", {
 				this.coupon.classname = this.coupon.classnameCorrect;
 				this.coupon.couponDone = true;
 				bus.cartItems.push({
+					id: userCoupon.code,
 					title: "Coupon: " + userCoupon.name,
 					classname: 'coupon',
 					price: userCoupon.discount * -1
 				});
-				this.userData.cartItemIds.push(userCoupon.code);
+				this.userData.cart.items.push(userCoupon.code);
 				this.calculateTotal();
 			} else {
 				this.coupon.message = this.coupon.errorMessage;
@@ -420,11 +429,11 @@ Vue.component("app-checkout", {
 				total += bus.cartItems[i].price;
 			}
 
-			if(this.userData.total > total) {
-				this.userData.total = total;
+			if(this.userData.cart.total > total) {
+				this.userData.cart.total = total;
 
-				if(this.userData.total < 0) {
-					this.userData.total = 0;
+				if(this.userData.cart.total < 0) {
+					this.userData.cart.total = 0;
 				}
 			}
 
@@ -468,15 +477,6 @@ Vue.component("app-checkout", {
 						});
 				}
 			});			
-		}
-	},
-	computed: {
-		paymentMethod: function() {
-			if(this.userData.paymentMethod == "ideal") {
-				this.userData.creditcard = '';
-			} else if(this.userData.paymentMethod == "creditcard") {
-				this.userData.bank = '';
-			}
 		}
 	}
 });

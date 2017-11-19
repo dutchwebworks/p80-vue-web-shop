@@ -58,7 +58,7 @@
 					<p class="user-info__row">
 						<label class="user-info__item">
 							Firstname
-							<input type="text" name="firstname" v-validate="'required|alpha_spaces'" data-vv-as="first name" v-model="userData.firstname" v-bind:class="{ 'is-error' : errors.first('firstname') }" placeholder="Firstname">
+							<input type="text" name="firstname" v-validate="'required|alpha_spaces'" data-vv-as="first name" v-model="userData.address.firstname" v-bind:class="{ 'is-error' : errors.first('firstname') }" placeholder="Firstname">
 							<span v-show="errors.has('firstname')" class="user-info__validation is-error">{{ errors.first('firstname') }}</span>
 						</label>
 					</p>
@@ -66,7 +66,7 @@
 					<p class="user-info__row">
 						<label class="user-info__item">
 							Lastname
-							<input type="text" name="lastname" v-validate="'required|alpha_spaces'" data-vv-as="last name" v-model="userData.lastname" v-bind:class="{ 'is-error' : errors.first('lastname') }" placeholder="Lastname">
+							<input type="text" name="lastname" v-validate="'required|alpha_spaces'" data-vv-as="last name" v-model="userData.address.lastname" v-bind:class="{ 'is-error' : errors.first('lastname') }" placeholder="Lastname">
 							<span v-show="errors.has('lastname')" class="user-info__validation is-error">{{ errors.first('lastname') }}</span>
 						</label>
 					</p>
@@ -74,7 +74,7 @@
 					<p class="user-info__row">
 						<label class="user-info__item">
 							E-mail
-							<input type="email" name="email" v-validate="'required|email'" data-vv-as="e-mail" v-model="userData.email" v-bind:class="{ 'is-error' : errors.first('email') }" placeholder="E-mail">
+							<input type="email" name="email" v-validate="'required|email'" data-vv-as="e-mail" v-model="userData.address.email" v-bind:class="{ 'is-error' : errors.first('email') }" placeholder="E-mail">
 							<span v-show="errors.has('email')" class="user-info__validation is-error">{{ errors.first('email') }}</span>
 						</label>
 					</p>
@@ -104,8 +104,8 @@
 							<li>{{ addressLookUp.addressResult.province }}</li>
 						</ul>					
 
-						<p class="user-info__row" v-show="addressLookUp.map != ''">
-							<img v-bind:src="addressLookUp.map" class="user-info__map" alt="Google Maps">
+						<p class="user-info__row" v-show="addressLookUp.mapImageUrl != ''">
+							<img v-bind:src="addressLookUp.mapImageUrl" class="user-info__map" alt="Google Maps">
 						</p>
 					</div>
 
@@ -118,19 +118,19 @@
 
 						<p class="user-info__row">
 							<label class="user-info__item">
-								<input type="text" v-model="userData.street" placeholder="Street">
+								<input type="text" v-model="userData.address.street" placeholder="Street">
 							</label>
 						</p>
 
 						<p class="user-info__row">
 							<label class="user-info__item">
-								<input type="text" v-model="userData.city" placeholder="City">
+								<input type="text" v-model="userData.address.city" placeholder="City">
 							</label>
 						</p>
 
 						<p class="user-info__row">
 							<label class="user-info__item">
-								<input type="text" v-model="userData.province" placeholder="Province">
+								<input type="text" v-model="userData.address.province" placeholder="Province">
 							</label>
 						</p>
 					</div>
@@ -177,13 +177,13 @@
 					<h4 class="user-info__subtitle">Payment options</h4>
 
 					<p class="user-info__row">
-						<label class="user-info__item" v-bind:class="{ 'is-active' : userData.paymentMethod == 'ideal' }">
-							<input type="radio" name="paymentoptions" value="ideal" v-validate="'required'" data-vv-as="payment method" v-model="userData.paymentMethod">
+						<label class="user-info__item" v-bind:class="{ 'is-active' : userData.payment.method == 'ideal' }">
+							<input type="radio" name="paymentoptions" value="ideal" v-validate="'required'" data-vv-as="payment method" v-model="userData.payment.method">
 							iDeal
 						</label>
 						
-						<label class="user-info__item" v-bind:class="{ 'is-active' : userData.paymentMethod == 'creditcard' }">
-							<input type="radio" name="paymentoptions" value="creditcard" v-validate="'required'" data-vv-as="payment method" v-model="userData.paymentMethod">
+						<label class="user-info__item" v-bind:class="{ 'is-active' : userData.payment.method == 'creditcard' }">
+							<input type="radio" name="paymentoptions" value="creditcard" v-validate="'required'" data-vv-as="payment method" v-model="userData.payment.method">
 							Creditcard
 						</label>
 					</p>
@@ -192,15 +192,15 @@
 						 {{ errors.first('paymentoptions') }}
 					</p>
 
-					<div class="user-info__row payment payment--ideal" v-show="userData.paymentMethod == 'ideal'">
+					<div class="user-info__row payment payment--ideal" v-show="userData.payment.method == 'ideal'">
 						<ul class="user-info__row user-info__option-list">
-							<li v-for="bank in payment.banks" v-bind:class="{ 'is-active' : bank.value == userData.bank }"><label><input type="radio" v-model="userData.bank" v-bind:value="bank.value">{{ bank.name }}</label></li>
+							<li v-for="bank in payment.banks" v-bind:class="{ 'is-active' : bank.value == userData.payment.bank }"><label><input type="radio" v-model="userData.payment.bank" v-bind:value="bank.value">{{ bank.name }}</label></li>
 						</ul>
 					</div>
 
-					<div class="user-info__row payment payment--ideal" v-show="userData.paymentMethod == 'creditcard'">
+					<div class="user-info__row payment payment--ideal" v-show="userData.payment.method == 'creditcard'">
 						<ul class="user-info__row user-info__option-list">
-							<li v-for="creditcard in payment.creditcards" v-bind:class="{ 'is-active' : creditcard.value == userData.creditcard }"><label><input type="radio" v-model="userData.creditcard" v-bind:value="creditcard.value">{{ creditcard.name }}</label></li>
+							<li v-for="creditcard in payment.creditcards" v-bind:class="{ 'is-active' : creditcard.value == userData.payment.creditcard }"><label><input type="radio" v-model="userData.payment.creditcard" v-bind:value="creditcard.value">{{ creditcard.name }}</label></li>
 						</ul>
 					</div>
 
@@ -225,13 +225,13 @@
 
 				<ul class="cart-checkout__items">
 					<li v-for="item in cartItems" v-bind:class="item.classname">
-						<span>{{ item.title }}</span>
+						<span v-bind:title="item.id">{{ item.title }}</span>
 						<span>&euro;{{ item.price }},-</span>
 					</li>
 				</ul>
 
 				<p class="cart-checkout__total">
-					Total: &euro; {{ userData.total }},-
+					Total: &euro; {{ userData.cart.total }},-
 				</p>
 
 				<p v-show="!showJson">
@@ -248,7 +248,7 @@
 				</div>
 			</div>
 
-			<div class="ajax-data" v-show="showJson">
+			<div class="ajax-data">
 				<h3 class="ajax-data__title">Ajax post call send</h3>
 				
 				<h4 class="ajax-data__sub-title">Payload</h4>
