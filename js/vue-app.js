@@ -267,7 +267,8 @@ Vue.component("app-checkout", {
 					street: null,
 					number: null,
 					province: null,
-				}
+				},
+				map: '',
 			},
 			userData: {
 				cartItemIds: [],
@@ -335,6 +336,8 @@ Vue.component("app-checkout", {
 
 					if(serverData.length != 0) {
 						var serverData = response.data._embedded.addresses[0];
+						var lat = serverData.geo.center.wgs84.coordinates[1];
+						var long = serverData.geo.center.wgs84.coordinates[0];
 
 						// Lookup
 						addressData.city = serverData.city.label;
@@ -348,6 +351,9 @@ Vue.component("app-checkout", {
 						self.userData.city = serverData.city.label;
 						self.userData.street = serverData.street;
 						self.userData.province = serverData.province.label;
+
+						// Google Map
+						self.addressLookUp.map = "https://maps.googleapis.com/maps/api/staticmap?center=" + lat + "," + long + "&zoom=11&size=385x385&key=AIzaSyBa1a2OcucQZjaRimNBnZrdlRBpmX2ypf8";
 
 						self.addressLookUp.addressFound = true;
 						self.addressLookUp.addressNotFound = false;

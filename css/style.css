@@ -915,4 +915,9 @@
   margin-top: 5px;
 }
 
+.user-info__map {
+  border-radius: 10px;
+  border: 2px solid deeppink;
+}
+
 /*# sourceMappingURL=style.css.map */
