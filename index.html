@@ -4,6 +4,7 @@
 	<meta charset="UTF-8">
 	<link href="https://fonts.googleapis.com/css?family=Raleway:400,700" rel="stylesheet">
 	<link href="css/style.css" rel="stylesheet" type="text/css">
+	<link href="css/libs/magnific-popup.css" rel="stylesheet" type="text/css">
 	<title>Vue Web Shop</title>
 </head>
 <body>
@@ -214,7 +215,7 @@
 
 			<div class="movie-product__list">
 				<div class="movie-product__item" v-for="movie in filteredMovies">
-					<a href="javascript:;" v-bind:href="movie.imdbLink" class="movie-product__link" target="_blank" title="Open IMDB page">
+					<a v-bind:href="movie.trailer" class="js-trailer-popup movie-product__link" target="_blank" title="View the trailer">
 						<img v-bind:src="movie.imgThumb" class="movie-product__img" v-bind:alt="movie.title">
 					</a>
 
@@ -275,6 +276,8 @@
 	    <p>Vue demo JavaScript project, by Dennis Burger, oct. / nov. 2017</p>
 	</script>
 
+	<script src="js/libs/zepto.min.js"></script>
+	<script src="js/libs/magnificpopup-v1.1.0.js"></script>
 	<script src="js/libs/vue.js"></script>
 	<script src="js/libs/vee-validate.js"></script>
 	<script src="js/libs/axios.js"></script>

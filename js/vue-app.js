@@ -180,6 +180,11 @@ Vue.component("app-movie-products", {
 			filterByGenre: "",
 		}
 	},
+	mounted: function() {
+		setTimeout(function(){
+			$(".js-trailer-popup").magnificPopup({ type: "iframe" });	
+		},300);		
+	},
 	methods: {
 		addToCart: function(event, item) {
 			bus.$emit("addToCart", item);
@@ -187,7 +192,7 @@ Vue.component("app-movie-products", {
 		filterMovieList: function(genre) {
 			bus.$emit("filterGenre", genre);
 		}
-	}	
+	}
 });
 
 Vue.component("app-cart", {
