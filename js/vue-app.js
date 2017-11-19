@@ -317,6 +317,8 @@ Vue.component("app-checkout", {
 	methods: {
 		getAddress: function() {
 			var self = this;
+			var zipcodeSanitized = self.addressLookUp.zipcode.replace(" ", "").trim();
+			var housenumberSanitized = self.addressLookUp.housenumber.replace(" ", "").trim();
 
 			var settings = {
 				"crossDomain": true,
@@ -326,7 +328,7 @@ Vue.component("app-checkout", {
 				}
 			};
 
-			axios.get("https://api.postcodeapi.nu/v2/addresses/?postcode=" + self.addressLookUp.zipcode + "&number=" + self.addressLookUp.housenumber, settings)
+			axios.get("https://api.postcodeapi.nu/v2/addresses/?postcode=" + zipcodeSanitized + "&number=" + housenumberSanitized, settings)
 				.then(function(response){
 					var serverData = response.data._embedded.addresses;
 					var addressData = self.addressLookUp.addressResult;
@@ -341,8 +343,8 @@ Vue.component("app-checkout", {
 						addressData.province = serverData.province.label;
 
 						// Userdata
-						self.userData.zipcode = self.addressLookUp.zipcode;
-						self.userData.housenumber = self.addressLookUp.housenumber;
+						self.userData.zipcode = zipcodeSanitized;
+						self.userData.housenumber = housenumberSanitized;
 						self.userData.city = serverData.city.label;
 						self.userData.street = serverData.street;
 						self.userData.province = serverData.province.label;
@@ -350,14 +352,14 @@ Vue.component("app-checkout", {
 						self.addressLookUp.addressFound = true;
 						self.addressLookUp.addressNotFound = false;
 					} else {
-						self.userData.city = null;
-						self.userData.street = null;
-						self.userData.province = null;
-
 						addressData.city = null;
 						addressData.street = null;
 						addressData.number = null;
 						addressData.province = null;
+
+						self.userData.city = null;
+						self.userData.street = null;
+						self.userData.province = null;						
 
 						self.addressLookUp.addressNotFound = true;
 						self.addressLookUp.addressFound = false;
