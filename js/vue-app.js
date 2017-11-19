@@ -211,6 +211,9 @@ Vue.component("app-cart", {
 
 		bus.$on("addToCart", this.addToCart);
 	},
+	destroyed: function() {
+		bus.$off("addToCart");
+	},
 	methods: {
 		addToCart: function(item) {
 			this.cartItems.push(item);
