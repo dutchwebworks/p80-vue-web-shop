@@ -74,10 +74,62 @@
 					<p class="user-info__row">
 						<label class="user-info__item">
 							E-mail
-							<input type="email" name="email" v-validate="'required|email'" data-vv-as="e-mail" v-model="userData.email" v-bind:class="{ 'is-error' : errors.first('email') }" placeholder="e-mail">
+							<input type="email" name="email" v-validate="'required|email'" data-vv-as="e-mail" v-model="userData.email" v-bind:class="{ 'is-error' : errors.first('email') }" placeholder="E-mail">
 							<span v-show="errors.has('email')" class="user-info__validation is-error">{{ errors.first('email') }}</span>
 						</label>
 					</p>
+
+					<p class="user-info__row">
+						<label class="user-info__item">
+							ZIP-code
+							<input type="text" name="zipcode" v-validate="'required'" data-vv-as="zip code" v-model="addressLookUp.zipcode" v-bind:class="{ 'is-error' : errors.first('zipcode') }" placeholder="Zip code">
+							<span v-show="errors.has('zipcode')" class="user-info__validation is-error">{{ errors.first('zipcode') }}</span>
+						</label>
+					</p>
+
+					<p class="user-info__row">
+						<label class="user-info__item">
+							House number
+							<input type="text" name="housenumber" v-validate="'required'" v-on:blur="getAddress" data-vv-as="house number" v-model="addressLookUp.housenumber" v-bind:class="{ 'is-error' : errors.first('housenumber') }" placeholder="House number">
+							<span v-show="errors.has('housenumber')" class="user-info__validation is-error">{{ errors.first('housenumber') }}</span>
+						</label>
+					</p>
+
+					<div v-show="addressLookUp.addressFound">
+						<h4 class="user-info__subtitle">Address found</h4>
+
+						<ul class="user-info__row">
+							<li>{{ addressLookUp.addressResult.street }} {{ addressLookUp.addressResult.number }}</li>
+							<li>{{ addressLookUp.addressResult.city }}</li>
+							<li>{{ addressLookUp.addressResult.province }}</li>
+						</ul>					
+					</div>
+
+					<div v-show="addressLookUp.addressNotFound">
+						<h4 class="user-info__subtitle">Address invalid</h4>
+
+						<p class="user-info__row">
+							No valid address found. Fill in your own.
+						</p>
+
+						<p class="user-info__row">
+							<label class="user-info__item">
+								<input type="text" v-model="userData.street" placeholder="Street">
+							</label>
+						</p>
+
+						<p class="user-info__row">
+							<label class="user-info__item">
+								<input type="text" v-model="userData.city" placeholder="City">
+							</label>
+						</p>
+
+						<p class="user-info__row">
+							<label class="user-info__item">
+								<input type="text" v-model="userData.province" placeholder="Province">
+							</label>
+						</p>
+					</div>
 
 					<h4 class="user-info__subtitle">Coupon code</h4>
 

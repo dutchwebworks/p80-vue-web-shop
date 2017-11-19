@@ -256,7 +256,18 @@ Vue.component("app-checkout", {
 				classname: '',
 				classnameCorrect: 'is-correct',
 				classnameInCorrect: 'is-incorrect'
-
+			},
+			addressLookUp: {
+				zipcode: null,
+				housenumber: null,
+				addressFound: false,
+				addressNotFound: false,
+				addressResult: {
+					city: null,
+					street: null,
+					number: null,
+					province: null,
+				}
 			},
 			userData: {
 				cartItemIds: [],
@@ -267,6 +278,11 @@ Vue.component("app-checkout", {
 				newsletters: [],
 				bank: '',
 				creditcard: '',
+				zipcode: '',
+				housenumber: '',
+				city: '',
+				street: '',
+				province: '',
 			},
 			serverAnswer: {},
 			payment: {
@@ -299,6 +315,61 @@ Vue.component("app-checkout", {
 
 	},
 	methods: {
+		getAddress: function() {
+			var self = this;
+			var zipcodeSanitized = self.addressLookUp.zipcode.replace(" ", "").trim();
+			var housenumberSanitized = self.addressLookUp.housenumber.replace(" ", "").trim();
+
+			var settings = {
+				"crossDomain": true,
+				"headers": {
+					"x-api-key": "Fl8m60m9ts6vUvAaAtcE42K8of03Hmqo6vYp5A3O",
+					"accept": "application/hal+json"
+				}
+			};
+
+			axios.get("https://api.postcodeapi.nu/v2/addresses/?postcode=" + zipcodeSanitized + "&number=" + housenumberSanitized, settings)
+				.then(function(response){
+					var serverData = response.data._embedded.addresses;
+					var addressData = self.addressLookUp.addressResult;
+
+					if(serverData.length != 0) {
+						var serverData = response.data._embedded.addresses[0];
+
+						// Lookup
+						addressData.city = serverData.city.label;
+						addressData.street = serverData.street;
+						addressData.number = serverData.number;
+						addressData.province = serverData.province.label;
+
+						// Userdata
+						self.userData.zipcode = zipcodeSanitized;
+						self.userData.housenumber = housenumberSanitized;
+						self.userData.city = serverData.city.label;
+						self.userData.street = serverData.street;
+						self.userData.province = serverData.province.label;
+
+						self.addressLookUp.addressFound = true;
+						self.addressLookUp.addressNotFound = false;
+					} else {
+						addressData.city = null;
+						addressData.street = null;
+						addressData.number = null;
+						addressData.province = null;
+
+						self.userData.city = null;
+						self.userData.street = null;
+						self.userData.province = null;						
+
+						self.addressLookUp.addressNotFound = true;
+						self.addressLookUp.addressFound = false;
+					}
+					
+				})
+				.catch(function (error) {
+					console.log(error);
+				});
+		},
 		getCoupons: function(url) {
 			var self = this;
 
