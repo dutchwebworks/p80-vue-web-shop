@@ -362,7 +362,7 @@ Vue.component("app-checkout", {
 						self.userData.address.province = serverData.province.label;
 
 						// Google Map
-						self.addressLookUp.mapImageUrl = "https://maps.googleapis.com/maps/api/staticmap?center=" + lat + "," + long + "&zoom=11&size=385x385&key=AIzaSyBa1a2OcucQZjaRimNBnZrdlRBpmX2ypf8";
+						self.addressLookUp.mapImageUrl = "https://maps.googleapis.com/maps/api/staticmap?center=" + lat + "," + long + "&markers=" + lat + "," + long + "&zoom=11&size=385x385&key=AIzaSyBa1a2OcucQZjaRimNBnZrdlRBpmX2ypf8";
 
 						self.addressLookUp.addressFound = true;
 						self.addressLookUp.addressNotFound = false;
