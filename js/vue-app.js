@@ -256,7 +256,17 @@ Vue.component("app-checkout", {
 				classname: '',
 				classnameCorrect: 'is-correct',
 				classnameInCorrect: 'is-incorrect'
-
+			},
+			addressLookUp: {
+				zipcode: null,
+				housenumber: null,
+				addressFound: false,
+				addressResult: {
+					city: null,
+					street: null,
+					number: null,
+					province: null,
+				}
 			},
 			userData: {
 				cartItemIds: [],
@@ -267,6 +277,11 @@ Vue.component("app-checkout", {
 				newsletters: [],
 				bank: '',
 				creditcard: '',
+				zipcode: '',
+				housenumber: '',
+				city: '',
+				street: '',
+				province: '',
 			},
 			serverAnswer: {},
 			payment: {
@@ -299,6 +314,41 @@ Vue.component("app-checkout", {
 
 	},
 	methods: {
+		getAddress: function() {
+			var self = this;
+
+			var settings = {
+				"crossDomain": true,
+				"headers": {
+					"x-api-key": "Fl8m60m9ts6vUvAaAtcE42K8of03Hmqo6vYp5A3O",
+					"accept": "application/hal+json"
+				}
+			};
+
+			axios.get("https://api.postcodeapi.nu/v2/addresses/?postcode=" + self.addressLookUp.zipcode + "&number=" + self.addressLookUp.housenumber, settings)
+				.then(function(response){
+					var serverData = response.data._embedded.addresses[0];
+					var addressData = self.addressLookUp.addressResult;
+
+					// Lookup
+					addressData.city = serverData.city.label;
+					addressData.street = serverData.street;
+					addressData.number = serverData.number;
+					addressData.province = serverData.province.label;
+
+					// Userdata
+					self.userData.zipcode = self.addressLookUp.zipcode;
+					self.userData.housenumber = self.addressLookUp.housenumber;
+					self.userData.city = serverData.city.label;
+					self.userData.street = serverData.street;
+					self.userData.province = serverData.province.label;
+
+					self.addressLookUp.addressFound = true;
+				})
+				.catch(function (error) {
+					console.log(error);
+				});
+		},
 		getCoupons: function(url) {
 			var self = this;
 
