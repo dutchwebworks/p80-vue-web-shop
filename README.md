@@ -11,7 +11,6 @@
 * **Adding movie products to cart**, plus (re)calculating the cart total.
 * Basic 'checkout' -page with user information form with **form validation**.
 * Basic usage of both (Win/IE, Edge) legacy and modern W3C **CSS Grid layout**.
-* **NO jQuery** is used.
 
 ## Prerequisites
 
