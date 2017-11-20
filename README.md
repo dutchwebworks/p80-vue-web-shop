@@ -52,6 +52,18 @@ Using **VueJS**, vanilla JavaScript, **Axios** (a promise based Ajax loader), (a
 * The data for movie products, coupon codes and fake server response is **loaded via Ajax (Axios) and json files**.
 * Basic usage of both (Win/IE, Edge) legacy and modern W3C **CSS Grid layout**.
 
+## Web browser support
+
+Because this is a demo project and it uses some ES6 promises, mainly Axios library for Ajax calls, and some ES6 arrow functions it will run in web browsers like:
+
+* Chrome (desktop & Android).
+* Firefox.
+* Safari (macOS & iOS).
+* Win/Edge.
+* Opera.
+
+*No support for old Win/IE*.
+
 ## Resources
 
 * [VueJS.org](https://vuejs.org)
