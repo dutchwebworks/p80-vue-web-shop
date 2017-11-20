@@ -105,7 +105,9 @@
 						</ul>					
 
 						<p class="user-info__row" v-show="addressLookUp.mapImageUrl != ''">
-							<img v-bind:src="addressLookUp.mapImageUrl" class="user-info__map" alt="Google Maps">
+							<a v-bind:href="addressLookUp.mapUrl" target="_blank" title="Open in Google Maps">
+								<img v-bind:src="addressLookUp.mapImageUrl" class="user-info__map" v-bind:alt="addressLookUp.addressResult.city">
+							</a>
 						</p>
 					</div>
 
@@ -248,7 +250,7 @@
 				</div>
 			</div>
 
-			<div class="ajax-data">
+            <div class="ajax-data" v-show="showJson">
 				<h3 class="ajax-data__title">Ajax post call send</h3>
 				
 				<h4 class="ajax-data__sub-title">Payload</h4>
@@ -346,7 +348,7 @@
 	</script>
 
 	<script type="text/x-template" id="vue-app-footer">
-	    <p>Vue demo JavaScript project, by Dennis Burger, oct. / nov. 2017</p>
+	    <p>Vue demo JavaScript project, by Dennis Burger, november 2017</p>
 	</script>
 
 	<script src="js/libs/zepto.min.js"></script>
