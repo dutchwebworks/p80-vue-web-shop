@@ -294,6 +294,7 @@ Vue.component("app-checkout", {
 					province: '',
 				},
 				mapImageUrl: '',
+				mapUrl: '',
 			},
 			serverAnswer: {},
 			payment: {
@@ -363,6 +364,11 @@ Vue.component("app-checkout", {
 
 						// Google Map
 						self.addressLookUp.mapImageUrl = "https://maps.googleapis.com/maps/api/staticmap?center=" + lat + "," + long + "&markers=" + lat + "," + long + "&zoom=11&size=320x320&key=AIzaSyBa1a2OcucQZjaRimNBnZrdlRBpmX2ypf8";
+
+						var mapStreet = serverData.street.replace(" ", "+");
+						var mapCity = serverData.city.label.replace(" ", "+");
+						// self.addressLookUp.mapUrl = "https://www.google.nl/maps/place/" + mapStreet + "+" + serverData.number + ",+" + mapCity;
+						self.addressLookUp.mapUrl = "https://www.google.nl/maps/place/" + lat + "," + long;
 
 						self.addressLookUp.addressFound = true;
 						self.addressLookUp.addressNotFound = false;

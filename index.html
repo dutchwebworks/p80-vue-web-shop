@@ -105,7 +105,9 @@
 						</ul>					
 
 						<p class="user-info__row" v-show="addressLookUp.mapImageUrl != ''">
-							<img v-bind:src="addressLookUp.mapImageUrl" class="user-info__map" alt="Google Maps">
+							<a v-bind:href="addressLookUp.mapUrl" target="_blank" title="Open in Google Maps">
+								<img v-bind:src="addressLookUp.mapImageUrl" class="user-info__map" v-bind:alt="addressLookUp.addressResult.city">
+							</a>
 						</p>
 					</div>
 
