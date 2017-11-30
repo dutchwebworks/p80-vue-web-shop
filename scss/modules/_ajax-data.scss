@@ -1,9 +1,12 @@
 .ajax-data {
 	@include grid-row(2);
-	@include grid-column(4);
+	@include grid-column(3);
 	margin: 0;
 	padding: 20px;
 	color: map-get($color, 03);
+	border-radius: 10px;
+	background-color: map-get($color, 05);
+
 	font-family: 'Courier New', mono-space;
 
 	code {

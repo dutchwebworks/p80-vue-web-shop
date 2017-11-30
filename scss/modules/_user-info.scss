@@ -14,7 +14,7 @@
 
 .user-info--checkout {
 	@include grid-row(2);
-	@include grid-column(2);
+	@include grid-column(1);
 }
 
 .user-info__title {
