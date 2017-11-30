@@ -473,7 +473,7 @@ Vue.component("app-checkout", {
 					// Fake response from server
 					axios.get('/json/order-products.json')
 						.then(function (response) {
-							if(response.data.payment == true) {
+							if(response.data.paid == true) {
 								self.serverAnswer = response.data;
 								self.showJson = true;
 								location.hash = "#vue-app";
