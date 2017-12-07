@@ -656,6 +656,10 @@
   background-color: deeppink;
 }
 
+.order-done {
+  margin-bottom: 40px;
+}
+
 .order-done__title {
   margin-top: 0;
   color: deepskyblue;

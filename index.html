@@ -223,6 +223,15 @@
 			</div>	
 
 			<div class="cart-checkout">
+				<div class="order-done" v-show="showJson">
+					<h3 class="order-done__title">Your order has been sent</h3>
+
+					<p class="order-done__body">
+						Thank you for shopping at the Poort80 Vue Web Shop.
+						You'll receive an e-mail soon with your purchase details.
+					</p>
+				</div>
+				
 				<h3 class="cart-checkout__title">Cart items</h3>
 
 				<ul class="cart-checkout__items">
@@ -238,16 +247,7 @@
 
 				<p v-show="!showJson">
 					<button v-on:click="backToShop" class="cart-checkout__button">Back to the shop</button>
-				</p>
-
-				<div class="order-done" v-show="showJson">
-					<h3 class="order-done__title">Your order has been sent</h3>
-
-					<p class="order-done__body">
-						Thank you for shopping at the Poort80 Vue Web Shop.
-						You'll receive an e-mail soon with your purchase details.
-					</p>
-				</div>
+				</p>				
 			</div>
 
             <div class="ajax-data" v-show="showJson">
