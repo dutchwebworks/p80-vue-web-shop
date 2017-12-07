@@ -37,24 +37,30 @@ browser-sync start --server --cors --files="css/*.css, **/*.html"
 
 Using **VueJS**, vanilla JavaScript, **Axios** (a promise based Ajax loader), (a tiny bit of) Zepto (jQuery alternative), **VeeValidate** (form validation) and **MagnificPopup** this simple web shop uses the following features:
 
-
-* Use of **Vue components**.
-* **Pagination** using **Vue computed properties**.
-* A simple cart with **add and remove products** and **(re)calculating** cart total.
-* Movie genre **filtering** using Vue computed properties.
-* Basic popup showing the **movie trailer** (MagnficiPopup).
-* Basic 'checkout' -page with an **user details form**.
-* Form validation and handling using **VueJS VeeValidate** (plugin) on different types of form fields.
-* Basic **coupon** entering / check system with (re)calculating the total.
-* **Address lookup based on zip-code and housenumber**.
-* **Generating static Google Maps** based on found zip-code / housenumber **GPS-data**.
-* Sending a **post json** request to a fake server. And receiving a fake answer.
-* The data for movie products, coupon codes and fake server response is **loaded via Ajax (Axios) and json files**.
-* Basic usage of both (Win/IE, Edge) legacy and modern W3C **CSS Grid layout**.
+* Build using VueJS and uses separate **Vue components** that talk to each other using VueJS event emitters and listners.
+* Ajax loaders.
+* **External data** is loaded using Axios promise based Ajax loader.
+* Clicking on the movie product poster opens a **movie trailer popup**.
+* Prices have a **NL locale format** via VueJS filters. JSON data contains floating numbers.
+* Sidebar shopping cart:
+	* Add products.
+	* Remove products.
+	* Price total (re)calculation.
+* **Filtering of movie products**. Click in sidebar catagory filter or on the movie product category label.
+* **Dynamic paging** of the movie product list.
+* Checkout page:
+	* User information form.
+	* Basic **form validation using VueJS VeeValidate**.
+	* Adding optional **coupon codes** (loaded in via Ajax) with price (re)calculation).
+	* **Search for address info using a (Dutch) postalcode lookup API**.
+	* Display a **static Google Map image** of the found address.
+	* Sending the user form as a JSON object using Ajax. Show JSON object in sidebar.
+	* Based on response and a check show a 'thank you' -block.  Show JSON object in sidebar.
+* Layout of this web page is done with legacy- and modern **CSS Grid**. This demo web site is not responsive.
 
 ## Web browser support
 
-Because this is a demo project and it uses some ES6 promises, mainly Axios library for Ajax calls, and some ES6 arrow functions it will run in web browsers like:
+Because this is a demo project and it uses some ES6 promises, mainly Axios library for Ajax calls, and some ES6 arrow functions it will run in following web browsers:
 
 * Chrome (desktop & Android).
 * Firefox.
