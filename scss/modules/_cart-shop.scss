@@ -33,17 +33,17 @@
 	font-weight: 400;
 	font-family: map-get($fonts, custom);
 
-	span:nth-child(2){
-		@include flex-basis(50px);
+	span:nth-child(2){		
 		margin-left: auto;
 		text-align: right;
+		white-space: nowrap;
 		font-family: map-get($fonts, normal);
 	}
 
 	a {
 		position: relative;
 		top: -8px;
-		@include flex-basis(25px);
+		margin-left: 10px;
 		text-align: right;
 		text-decoration: none;
 		font-family: map-get($fonts, normal);

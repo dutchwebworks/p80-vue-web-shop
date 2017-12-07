@@ -257,22 +257,16 @@
 }
 
 .cart-shop__items-item span:nth-child(2) {
-  -webkit-flex-basis: 50px;
-  -moz-flex-basis: 50px;
-  -ms-flex-preferred-size: 50px;
-  flex-basis: 50px;
   margin-left: auto;
   text-align: right;
+  white-space: nowrap;
   font-family: Helvetica, sans-serif;
 }
 
 .cart-shop__items-item a {
   position: relative;
   top: -8px;
-  -webkit-flex-basis: 25px;
-  -moz-flex-basis: 25px;
-  -ms-flex-preferred-size: 25px;
-  flex-basis: 25px;
+  margin-left: 10px;
   text-align: right;
   text-decoration: none;
   font-family: Helvetica, sans-serif;
