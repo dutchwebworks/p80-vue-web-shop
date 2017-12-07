@@ -6,7 +6,7 @@
 		"genre": "sci-fi",
 		"director": "Rian Johnson",
 		"imgThumb": "img/products/star-wars.jpg",
-		"price": 12,
+		"price": 14.95,
 		"actors": [
 			"Daisy Ridley",
 			"John Boyega",
@@ -22,7 +22,7 @@
 		"description": "When a young boy disappears, his mother, a police chief, and his friends must confront terrifying forces in order to get him back.",
 		"director": "Matt Duffer",
 		"imgThumb": "img/products/stranger-things.jpg",
-		"price": 15,
+		"price": 12.95,
 		"actors": [
 			"Millie Bobby Brown",
 			"Finn Wolfhard",
@@ -38,7 +38,7 @@
 		"genre": "drama",
 		"director": "David Benioff",
 		"imgThumb": "img/products/game-of-thrones.jpg",
-		"price": 34,
+		"price": 39.99,
 		"actors": [
 			"Emilia Clarke", 
 			"Peter Dinklage", 
@@ -54,7 +54,7 @@
 		"genre": "horror",
 		"director": "Frank Darabont",
 		"imgThumb": "img/products/walking-dead.jpg",
-		"price": 23,
+		"price": 25.50,
 		"actors": [
 			"Andrew Lincoln",
 			"Norman Reedus",
@@ -70,7 +70,7 @@
 		"genre": "sci-fi",
 		"director": "Greg Berlanti",
 		"imgThumb": "img/products/the-flash.jpg",
-		"price": 16,
+		"price": 15,
 		"actors": [
 			"Grant Gustin", 
 			"Candice Patton", 
@@ -86,7 +86,7 @@
 		"genre": "horror",
 		"director": "Stanley Kubrick",
 		"imgThumb": "img/products/the-shining.jpg",
-		"price": 89,
+		"price": 25.50,
 		"actors": [
 			"Jack Nicholson",
 			"Shelley Duvall",
@@ -102,7 +102,7 @@
 		"genre": "war",
 		"director": "Stanley Kubrick",
 		"imgThumb": "img/products/full-metal-jacket.jpg",
-		"price": 22,
+		"price": 15,
 		"actors": [
 			"Matthew Modine",
 			"R. Lee Ermey",
@@ -118,7 +118,7 @@
 		"genre": "sci-fi",
 		"director": "J.J. Abrams",
 		"imgThumb": "img/products/fringe.jpg",
-		"price": 45,
+		"price": 9.99,
 		"actors": [
 			"Anna Torv",
 			"Joshua Jackson", 
@@ -134,7 +134,7 @@
 		"genre": "war",
 		"director": "Oliver Stone",
 		"imgThumb": "img/products/platoon.jpg",
-		"price": 19,
+		"price": 4.95,
 		"actors": [
 			"Charlie Sheen",
 			"Tom Berenger",
@@ -150,7 +150,7 @@
 		"genre": "drama",
 		"director": "Mel Gibson",
 		"imgThumb": "img/products/braveheart.jpg",
-		"price": 56,
+		"price": 4.95,
 		"actors": [
 			"Mel Gibson",
 			"Sophie Marceau",
@@ -166,7 +166,7 @@
 		"genre": "action",
 		"director": "Jordan Vogt-Roberts",
 		"imgThumb": "img/products/king-kong.jpg",
-		"price": 22,
+		"price": 12.95,
 		"actors": [
 			"Tom Hiddleston",
 			"Samuel L. Jackson",
@@ -182,7 +182,7 @@
 		"genre": "drama",
 		"director": "Quentin Tarantino",
 		"imgThumb": "img/products/pulp-fiction.jpg",
-		"price": 89,
+		"price": 18.85,
 		"actors": [
 			"John Travolta",
 			"Uma Thurman",
@@ -198,7 +198,7 @@
 		"genre": "drama",
 		"director": "David Fincher",
 		"imgThumb": "img/products/fight-club.jpg",
-		"price": 89,
+		"price": 4.95,
 		"actors": [
 			"Brad Pitt",
 			"Edward Norton",
@@ -214,7 +214,7 @@
 		"genre": "sci-fi",
 		"director": "Lana Wachowski",
 		"imgThumb": "img/products/the-matrix.jpg",
-		"price": 210,
+		"price": 19.99,
 		"actors": [
 			"Keanu Reeves",
 			"Laurence Fishburne",
@@ -230,7 +230,7 @@
 		"genre": "sci-fi",
 		"director": "Christopher Nolan",
 		"imgThumb": "img/products/inception.jpg",
-		"price": 150,
+		"price": 25,
 		"actors": [
 			"Leonardo DiCaprio",
 			"Joseph Gordon-Levitt",
@@ -246,7 +246,7 @@
 		"genre": "comedy",
 		"director": "Martin Scorsese",
 		"imgThumb": "img/products/wolf-of-wallstreet.jpg",
-		"price": 66,
+		"price": 25,
 		"actors": [
 			"Leonardo DiCaprio",
 			"Jonah Hill",
@@ -262,7 +262,7 @@
 		"genre": "action",
 		"director": "Alejandro González Iñárritu",
 		"imgThumb": "img/products/the-revenant.jpg",
-		"price": 180,
+		"price": 35,
 		"actors": [
 			"Leonardo DiCaprio",
 			"Tom Hardy",
@@ -278,7 +278,7 @@
 		"genre": "comedy",
 		"director": "Chuck Russell",
 		"imgThumb": "img/products/the-mask.jpg",
-		"price": 26,
+		"price": 4.95,
 		"actors": [
 			"Jim Carrey",
 			"Cameron Diaz",

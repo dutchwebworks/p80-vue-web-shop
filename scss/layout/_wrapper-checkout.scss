@@ -2,7 +2,7 @@
 	@include display-grid;	
 	@include grid-template-columns(1fr, 3);
 	grid-gap: 20px;
-	max-width: 70vw;
+	max-width: 90vw;
 	margin: 0 auto;
 	padding-bottom: 20px;
 }

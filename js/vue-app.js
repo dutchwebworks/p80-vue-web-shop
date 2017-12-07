@@ -517,6 +517,10 @@ Vue.filter("capitalizeFirstLetter", function(string){
 	return string.charAt(0).toUpperCase() + string.slice(1);
 });
 
+Vue.filter("euroCurrency", function(price){
+	return "\u20AC " + Number(price).toLocaleString("nl-NL", { minimumFractionDigits: 2 });
+});
+
 // ---------------------------------------------
 // Vee Validate
 // ---------------------------------------------
