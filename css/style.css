@@ -4,7 +4,7 @@
   -ms-grid-columns: (1fr)[3];
   grid-template-columns: repeat(3, 1fr);
   grid-gap: 20px;
-  max-width: 70vw;
+  max-width: 90vw;
   margin: 0 auto;
   padding-bottom: 20px;
 }
@@ -46,6 +46,7 @@
   grid-template-columns: 250px 1fr 350px;
   grid-template-rows: auto minmax(800px, auto);
   grid-gap: 10px;
+  max-width: 90vw;
   margin: 0 auto;
 }
 
@@ -435,8 +436,8 @@
 
 .heading--checkout {
   -ms-grid-column: 1;
-  -ms-grid-column-span: 4;
-  grid-column: 1 / span 4;
+  -ms-grid-column-span: 3;
+  grid-column: 1 / span 3;
 }
 
 .heading__title {
