@@ -236,6 +236,11 @@ Vue.component("app-cart", {
 			bus.total = this.total;
 			bus.$emit("switchComponent", "app-checkout");
 		}
+	},
+	filters: {
+		euroCurrency: function(price) {
+			return "\u20AC " + Number(price).toLocaleString('nl-NL', { minimumFractionDigits: 2 });
+		}
 	}
 });
 
