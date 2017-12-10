@@ -9,6 +9,18 @@ var bus = new Vue({
 });
 
 // ---------------------------------------------
+// Globlal filters
+// ---------------------------------------------
+
+Vue.filter("capitalizeFirstLetter", function(string){
+	return string.charAt(0).toUpperCase() + string.slice(1);
+});
+
+Vue.filter("euroCurrency", function(price){
+	return "\u20AC " + Number(price).toLocaleString("nl-NL", { minimumFractionDigits: 2 });
+});
+
+// ---------------------------------------------
 // Components
 // ---------------------------------------------
 
@@ -235,11 +247,6 @@ Vue.component("app-cart", {
 			bus.cartItems = this.cartItems;		
 			bus.total = this.total;
 			bus.$emit("switchComponent", "app-checkout");
-		}
-	},
-	filters: {
-		euroCurrency: function(price) {
-			return "\u20AC " + Number(price).toLocaleString('nl-NL', { minimumFractionDigits: 2 });
 		}
 	}
 });
@@ -512,18 +519,6 @@ new Vue({
 			self.selectedComponent = name;
 		});
 	}
-});
-
-// ---------------------------------------------
-// Globlal filters
-// ---------------------------------------------
-
-Vue.filter("capitalizeFirstLetter", function(string){
-	return string.charAt(0).toUpperCase() + string.slice(1);
-});
-
-Vue.filter("euroCurrency", function(price){
-	return "\u20AC " + Number(price).toLocaleString("nl-NL", { minimumFractionDigits: 2 });
 });
 
 // ---------------------------------------------
