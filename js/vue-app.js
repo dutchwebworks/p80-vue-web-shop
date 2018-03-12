@@ -344,8 +344,8 @@ Vue.component("app-checkout", {
 	methods: {
 		getAddress: function() {
 			var self = this;
-			var zipcodeSanitized = self.addressLookUp.zipcode.replace(" ", "").trim();
-			var housenumberSanitized = self.addressLookUp.housenumber.replace(" ", "").trim();
+			var zipcodeSanitized = self.addressLookUp.zipcode.replace(" ", "");
+			var housenumberSanitized = self.addressLookUp.housenumber.replace(" ", "");
 
 			var settings = {
 				"crossDomain": true,
