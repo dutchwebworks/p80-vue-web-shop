@@ -95,3 +95,38 @@
 		}
 	}
 }
+
+// ---------------------------------------------
+// Basic MS CSS Grid and W3C CSS Grid columns or rows
+//
+// Usage: @include grid-basic(5, 1fr, 22px); // Repeat 5 columns, 1fr width, with 22px gap
+// Usage: @include grid-basic(5, 1fr, 5px, rows); // Repeat 5 rows, 1fr width, with 5px gap
+// ---------------------------------------------
+
+@mixin grid-basic($repeat: 1, $width: 1fr, $gap: 20px, $kind: columns) {
+	$ieRepeat: $repeat - 1;
+	-ms-grid-#{$kind}: $width unquote("(#{$gap} #{$width})[#{$ieRepeat}]");
+	grid-template-#{$kind}: repeat($repeat, $width);
+	grid-gap: $gap;
+}
+// ---------------------------------------------
+// Companion mixin for above grid-basic mixin
+// Win/IE10 and 11 old CSS Grid, placement of grid-child items
+// Skipping 1 (semi) grid gap
+// $repeat arg. value must be same as above $repeat arg. value
+//
+// Usage: @include grid-basic-ie-placement(5); // Place grid-child items in each column, skipping the (semi-column) 'gap'
+// Usage: @include grid-basic-ie-placement(5, row); // Place grid-child items in each row, skipping the (semi-row) 'gap'
+// ---------------------------------------------
+
+@mixin grid-basic-ie-placement($repeat: 1, $kind: column) {
+	@for $i from 1 through $repeat {
+		&:nth-child(#{$i}) {
+			@if($i > 1) {
+				-ms-grid-#{$kind}: $i * 2 - 1;
+			} @else {
+				-ms-grid-#{$kind}: $i;
+			}
+		}
+	}
+}
