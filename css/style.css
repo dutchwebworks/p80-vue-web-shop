@@ -349,6 +349,19 @@
   margin: 0;
 }
 
+.footer p + p {
+  margin-top: 10px;
+}
+
+.footer a {
+  font-size: 14px;
+  color: deeppink;
+}
+
+.footer a:hover {
+  color: deepskyblue;
+}
+
 .footer--shop {
   -ms-grid-row: 4;
   grid-row: 4;

@@ -14,10 +14,10 @@
   "author": "dennisburger <dennis@dutchwebworks.nl>",
   "license": "MIT",
   "devDependencies": {
-    "grunt": "^1.0.1",
+    "grunt": "^1.0.2",
     "grunt-browser-sync": "^2.2.0",
-    "grunt-contrib-watch": "^1.0.0",
-    "grunt-sass": "^2.0.0",
+    "grunt-contrib-watch": "^1.1.0",
+    "grunt-sass": "^2.1.0",
     "load-grunt-tasks": "^3.5.2"
   }
 }
