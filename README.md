@@ -1,6 +1,6 @@
 # Poort80 Vue Web Shop demo project
 
-*By Dennis Burger, Poort80 Amsterdam, november 2017*
+*By Dennis Burger, Poort80 Amsterdam, November 2017*
 
 This is a VueJS / JavaScript based demo web shop.
 
